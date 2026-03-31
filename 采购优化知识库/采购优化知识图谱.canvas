@@ -1,0 +1,35 @@
+{
+	"nodes":[
+		{"id":"a1b2c3d4e5f60010","type":"group","x":-550,"y":200,"width":520,"height":700,"color":"5","label":"核心概念"},
+		{"id":"a1b2c3d4e5f60020","type":"group","x":400,"y":200,"width":580,"height":500,"color":"4","label":"项目实战"},
+		{"id":"a1b2c3d4e5f60030","type":"group","x":400,"y":780,"width":580,"height":320,"color":"6","label":"理论课程链接"},
+		{"id":"a1b2c3d4e5f60001","type":"file","file":"采购优化知识库/采购优化 MOC.md","x":0,"y":0,"width":300,"height":120,"color":"5"},
+		{"id":"a1b2c3d4e5f60011","type":"file","file":"采购优化知识库/概念笔记/混合整数线性规划 MILP.md","x":-520,"y":250,"width":220,"height":80,"color":"5"},
+		{"id":"a1b2c3d4e5f60012","type":"file","file":"采购优化知识库/概念笔记/目标函数与约束条件.md","x":-270,"y":250,"width":220,"height":80,"color":"5"},
+		{"id":"a1b2c3d4e5f60013","type":"file","file":"采购优化知识库/概念笔记/损耗率与开料优化.md","x":-520,"y":370,"width":220,"height":80,"color":"2"},
+		{"id":"a1b2c3d4e5f60014","type":"file","file":"采购优化知识库/概念笔记/采购聚合策略.md","x":-270,"y":370,"width":220,"height":80,"color":"2"},
+		{"id":"a1b2c3d4e5f60015","type":"file","file":"采购优化知识库/概念笔记/BOM物料清单爆炸.md","x":-520,"y":490,"width":220,"height":80,"color":"1"},
+		{"id":"a1b2c3d4e5f60016","type":"file","file":"采购优化知识库/概念笔记/安全库存与采购周期.md","x":-270,"y":490,"width":220,"height":80,"color":"3"},
+		{"id":"a1b2c3d4e5f60017","type":"file","file":"采购优化知识库/概念笔记/敏感性分析.md","x":-400,"y":610,"width":220,"height":80,"color":"6"},
+		{"id":"a1b2c3d4e5f60021","type":"file","file":"采购优化知识库/项目实战/MVP通用采购模型.md","x":430,"y":260,"width":240,"height":100,"color":"4"},
+		{"id":"a1b2c3d4e5f60022","type":"file","file":"采购优化知识库/项目实战/钢材采购优化模型.md","x":700,"y":260,"width":240,"height":100,"color":"2"},
+		{"id":"a1b2c3d4e5f60023","type":"file","file":"采购优化知识库/项目实战/罐箱采购优化模型.md","x":560,"y":420,"width":240,"height":100,"color":"1"},
+		{"id":"a1b2c3d4e5f60031","type":"file","file":"瑞俊的数字化管理课/Rayray课代表的数字化管理课(2) - 前言2决策之殇.md","x":430,"y":830,"width":240,"height":80,"color":"6"},
+		{"id":"a1b2c3d4e5f60032","type":"file","file":"瑞俊的数字化管理课/Rayray课代表的数字化管理课(3) - 前言3 从数据科学角度看决策优化问题.md","x":700,"y":830,"width":240,"height":80,"color":"6"},
+		{"id":"a1b2c3d4e5f60033","type":"file","file":"瑞俊的数字化管理课/Rayray课代表的数字化管理(8) - 预测那些事儿3 - 机器学习结合运筹优化.md","x":430,"y":950,"width":240,"height":80,"color":"6"},
+		{"id":"a1b2c3d4e5f60034","type":"file","file":"瑞俊的数字化管理课/加餐 - 时间序列中的数据科学.md","x":700,"y":950,"width":240,"height":80,"color":"6"}
+	],
+	"edges":[
+		{"id":"e1b2c3d4e5f60001","fromNode":"a1b2c3d4e5f60001","fromSide":"left","toNode":"a1b2c3d4e5f60010","toSide":"top","label":"概念体系"},
+		{"id":"e1b2c3d4e5f60002","fromNode":"a1b2c3d4e5f60001","fromSide":"right","toNode":"a1b2c3d4e5f60020","toSide":"top","label":"项目落地"},
+		{"id":"e1b2c3d4e5f60003","fromNode":"a1b2c3d4e5f60011","fromSide":"right","toNode":"a1b2c3d4e5f60021","toSide":"left","label":"框架"},
+		{"id":"e1b2c3d4e5f60004","fromNode":"a1b2c3d4e5f60013","fromSide":"right","toNode":"a1b2c3d4e5f60022","toSide":"left","label":"应用于"},
+		{"id":"e1b2c3d4e5f60005","fromNode":"a1b2c3d4e5f60014","fromSide":"right","toNode":"a1b2c3d4e5f60022","toSide":"left","label":"应用于"},
+		{"id":"e1b2c3d4e5f60006","fromNode":"a1b2c3d4e5f60015","fromSide":"right","toNode":"a1b2c3d4e5f60023","toSide":"left","label":"应用于"},
+		{"id":"e1b2c3d4e5f60007","fromNode":"a1b2c3d4e5f60016","fromSide":"right","toNode":"a1b2c3d4e5f60023","toSide":"left","label":"应用于"},
+		{"id":"e1b2c3d4e5f60008","fromNode":"a1b2c3d4e5f60017","fromSide":"right","toNode":"a1b2c3d4e5f60022","toSide":"bottom","label":"验证"},
+		{"id":"e1b2c3d4e5f60009","fromNode":"a1b2c3d4e5f60020","fromSide":"bottom","toNode":"a1b2c3d4e5f60030","toSide":"top","label":"理论支撑"},
+		{"id":"e1b2c3d4e5f6000a","fromNode":"a1b2c3d4e5f60012","fromSide":"bottom","toNode":"a1b2c3d4e5f60031","toSide":"left","label":"源自"},
+		{"id":"e1b2c3d4e5f6000b","fromNode":"a1b2c3d4e5f60011","fromSide":"bottom","toNode":"a1b2c3d4e5f60032","toSide":"left","label":"源自"}
+	]
+}

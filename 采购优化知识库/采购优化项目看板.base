@@ -1,0 +1,52 @@
+filters:
+  and:
+    - file.inFolder("采购优化知识库")
+    - file.ext == "md"
+formulas:
+  type_icon: if(type == "概念笔记", "📐", if(type == "项目实战", "🏭", if(type == "MOC", "📚", "📝")))
+  has_model: if(model, model, "—")
+  tag_list: if(tags, tags.join(", "), "")
+  days_since_update: (now() - file.mtime).days.round(0)
+properties:
+  type:
+    displayName: 笔记类型
+  model:
+    displayName: 关联模型
+  status:
+    displayName: 状态
+  formula.has_model:
+    displayName: 模型
+  formula.days_since_update:
+    displayName: 更新天数
+views:
+  - type: table
+    name: 全部笔记
+    groupBy:
+      property: type
+      direction: ASC
+    order:
+      - formula.type_icon
+      - file.name
+      - type
+      - formula.has_model
+      - status
+      - formula.days_since_update
+  - type: cards
+    name: 概念卡片
+    filters:
+      and:
+        - type == "概念笔记"
+    order:
+      - file.name
+      - tags
+      - formula.has_model
+  - type: table
+    name: 项目实战
+    filters:
+      and:
+        - type == "项目实战"
+    order:
+      - file.name
+      - model
+      - status
+      - formula.days_since_update
