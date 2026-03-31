@@ -1,0 +1,58 @@
+filters:
+  and:
+    - file.inFolder("26年工作区")
+    - file.ext == "md"
+formulas:
+  type_icon: if(type == "战略框架", "🏛️", if(type == "重点行动计划", "🎯", if(type == "经营数据", "📊", if(type == "会议纪要", "📝", if(type == "MOC", "📚", "📄")))))
+  owner_display: if(owner, owner, "—")
+  priority_sort: if(priority == "P0", 0, if(priority == "P1", 1, 2))
+  policy_display: if(policy_nr, policy_nr, "—")
+properties:
+  type:
+    displayName: 笔记类型
+  status:
+    displayName: 状态
+  priority:
+    displayName: 优先级
+  owner:
+    displayName: 负责人
+  formula.type_icon:
+    displayName: 类型
+  formula.owner_display:
+    displayName: 责任人
+  formula.policy_display:
+    displayName: 方针编号
+views:
+  - type: table
+    name: 全部笔记
+    groupBy:
+      property: type
+      direction: ASC
+    order:
+      - formula.type_icon
+      - file.name
+      - type
+      - status
+      - priority
+      - formula.owner_display
+  - type: table
+    name: 行动计划
+    filters:
+      and:
+        - type == "重点行动计划"
+    order:
+      - file.name
+      - formula.policy_display
+      - status
+      - priority
+      - formula.owner_display
+  - type: cards
+    name: 按优先级
+    groupBy:
+      property: priority
+      direction: ASC
+    order:
+      - file.name
+      - type
+      - status
+      - formula.owner_display
