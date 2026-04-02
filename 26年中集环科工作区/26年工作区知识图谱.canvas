@@ -1,0 +1,38 @@
+{
+	"nodes":[
+		{"id":"g001","type":"group","x":-600,"y":-300,"width":500,"height":600,"color":"1","label":"战略框架"},
+		{"id":"g002","type":"group","x":100,"y":-300,"width":600,"height":400,"color":"4","label":"重点行动计划"},
+		{"id":"g003","type":"group","x":100,"y":180,"width":600,"height":300,"color":"2","label":"经营数据与会议"},
+		{"id":"g004","type":"group","x":-600,"y":380,"width":500,"height":200,"color":"6","label":"关联知识区"},
+		{"id":"n000","type":"file","file":"26年中集环科工作区/26年工作区 MOC.md","x":-200,"y":-450,"width":300,"height":100,"color":"5"},
+		{"id":"n001","type":"file","file":"26年中集环科工作区/战略框架/总经理要求与战略目标.md","x":-570,"y":-250,"width":220,"height":80,"color":"1"},
+		{"id":"n002","type":"file","file":"26年中集环科工作区/战略框架/2026年公司方针总览.md","x":-570,"y":-140,"width":220,"height":80,"color":"1"},
+		{"id":"n003","type":"file","file":"26年中集环科工作区/战略框架/组织架构与职责.md","x":-320,"y":-250,"width":200,"height":80,"color":"1"},
+		{"id":"n004","type":"file","file":"26年中集环科工作区/战略框架/考评体系与绩效合同.md","x":-320,"y":-140,"width":200,"height":80,"color":"1"},
+		{"id":"n011","type":"file","file":"26年中集环科工作区/重点行动计划/增收—渗透率提升.md","x":130,"y":-250,"width":250,"height":80,"color":"4"},
+		{"id":"n012","type":"file","file":"26年中集环科工作区/重点行动计划/增收—新市场新领域.md","x":410,"y":-250,"width":250,"height":80,"color":"4"},
+		{"id":"n013","type":"file","file":"26年中集环科工作区/重点行动计划/增收—多元化业务.md","x":130,"y":-140,"width":250,"height":80,"color":"4"},
+		{"id":"n014","type":"file","file":"26年中集环科工作区/重点行动计划/减支—成本领先.md","x":410,"y":-140,"width":250,"height":80,"color":"3"},
+		{"id":"n015","type":"file","file":"26年中集环科工作区/重点行动计划/固本—制造与HSE.md","x":130,"y":-30,"width":250,"height":80,"color":"3"},
+		{"id":"n016","type":"file","file":"26年中集环科工作区/重点行动计划/培元—创新与数字化.md","x":410,"y":-30,"width":250,"height":80,"color":"2"},
+		{"id":"n021","type":"file","file":"26年中集环科工作区/经营数据/Q1经营指标.md","x":130,"y":220,"width":250,"height":80,"color":"2"},
+		{"id":"n022","type":"file","file":"26年中集环科工作区/经营数据/E项目改善跟踪.md","x":410,"y":220,"width":250,"height":80,"color":"2"},
+		{"id":"n023","type":"file","file":"26年中集环科工作区/会议纪要/方针细化讨论会 2026-03-06.md","x":130,"y":340,"width":250,"height":80,"color":"6"},
+		{"id":"n024","type":"file","file":"26年中集环科工作区/会议纪要/双碳数字化讨论会 2026-01-07.md","x":410,"y":340,"width":250,"height":80,"color":"6"},
+		{"id":"n031","type":"file","file":"运筹优化知识库/采购优化 MOC.md","x":-570,"y":420,"width":220,"height":80,"color":"5"},
+		{"id":"n032","type":"file","file":"瑞俊的数字化管理课/瑞俊的数字化管理课 MOC.md","x":-320,"y":420,"width":220,"height":80,"color":"6"}
+	],
+	"edges":[
+		{"id":"e001","fromNode":"n000","fromSide":"left","toNode":"g001","toSide":"top","label":"战略顶层"},
+		{"id":"e002","fromNode":"n000","fromSide":"right","toNode":"g002","toSide":"top","label":"执行落地"},
+		{"id":"e003","fromNode":"n002","fromSide":"right","toNode":"n011","toSide":"left","label":"增收#1#2"},
+		{"id":"e004","fromNode":"n002","fromSide":"right","toNode":"n012","toSide":"left","label":"增收#3#4#5"},
+		{"id":"e005","fromNode":"n002","fromSide":"right","toNode":"n016","toSide":"left","label":"培元#17#18#19"},
+		{"id":"e006","fromNode":"n016","fromSide":"bottom","toNode":"n024","toSide":"top","label":"双碳/IoT"},
+		{"id":"e007","fromNode":"n011","fromSide":"bottom","toNode":"n021","toSide":"top","label":"Q1数据"},
+		{"id":"e008","fromNode":"n011","fromSide":"bottom","toNode":"n022","toSide":"top","label":"E项目"},
+		{"id":"e009","fromNode":"n016","fromSide":"left","toNode":"n031","toSide":"right","label":"采购优化"},
+		{"id":"e010","fromNode":"n016","fromSide":"left","toNode":"n032","toSide":"right","label":"理论支撑"},
+		{"id":"e011","fromNode":"n023","fromSide":"left","toNode":"n002","toSide":"bottom","label":"方针细化"}
+	]
+}
