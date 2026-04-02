@@ -35,6 +35,9 @@ views:
       - status
       - priority
       - formula.owner_display
+    sort:
+      - property: file.name
+        direction: ASC
   - type: table
     name: 行动计划
     filters:
