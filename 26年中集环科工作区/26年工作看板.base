@@ -1,6 +1,6 @@
 filters:
   and:
-    - file.inFolder("26年工作区")
+    - file.inFolder("26年中集环科工作区")
     - file.ext == "md"
 formulas:
   type_icon: if(type == "战略框架", "🏛️", if(type == "重点行动计划", "🎯", if(type == "经营数据", "📊", if(type == "会议纪要", "📝", if(type == "MOC", "📚", "📄")))))
