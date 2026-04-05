@@ -236,7 +236,7 @@ body {
 <script>
 // ====== DATA BLOCK START ======
 const DATA = {
-  "update_time": "2026-04-05 17:00",
+  "update_time": "2026-04-05 17:21",
   "btc_price_usd": 67244,
   "btc_24h_change": -1.7,
   "btc_7d_change": -3.2,
@@ -245,16 +245,20 @@ const DATA = {
   "usdt_cny_rate": 6.9,
   "total_btc": 4.2,
   "accumulated_btc": 0.0,
+  "strike_step": 1000,
   "pools": {
     "A": {
       "name": "A池-现金流",
       "btc": 1.47,
       "pct": 35,
       "strategy": "Sell High",
-      "strike": 77331,
+      "strike": 75000,
+      "strike_alt": 76000,
+      "premium_pct": 11.5,
       "tenor": "14天",
-      "apy": 18.0,
-      "buy_low_target": 57157,
+      "apy": 18.2,
+      "buy_low_target": 59000,
+      "buy_low_disc_pct": 12.3,
       "status": "运行中"
     },
     "B": {
@@ -262,11 +266,13 @@ const DATA = {
       "btc": 2.1,
       "pct": 50,
       "strategy": "Sell High远期+网格",
-      "strike": 80020,
+      "strike": 79000,
+      "strike_alt": 78000,
+      "premium_pct": 17.5,
       "tenor": "30天",
-      "apy": 12.0,
-      "grid_low": 57157,
-      "grid_high": 77331,
+      "apy": 11.0,
+      "grid_low": 57000,
+      "grid_high": 78000,
       "status": "运行中"
     },
     "C": {
@@ -285,8 +291,9 @@ const DATA = {
     "months_elapsed": 3
   },
   "recommendations": [
-    "A池: Sell High行权价$77,331(+15%), 周期14天, 预估APY 18.0%",
-    "B池: Sell High行权价$80,020(+19%), 周期30天; 网格区间$57,157-$77,331",
+    "A池 Sell High: 建议行权价 $75,000(+11.5%) 或 $76,000(+13.0%), 周期14天, 预估APY 18.2%",
+    "B池 Sell High: 建议行权价 $79,000(+17.5%) 或 $78,000(+16.0%), 周期30天",
+    "Buy Low备选: $59,000(-12.3%); 网格区间 $57,000-$78,000",
     "恐贪指数偏低(恐惧区), IV偏高 - 适合卖期权赚取权利金",
     "月度提现: 4月尚未提取, 建议月初P2P出金$3,623 USDT(≈¥25,000)"
   ],
@@ -401,10 +408,11 @@ function render() {
       <div class="pool-btc">${d.pools.A.btc} BTC</div>
       <div class="pool-detail">
         <strong>策略:</strong> ${d.pools.A.strategy}<br>
-        <strong>行权价:</strong> ${formatUSD(d.pools.A.strike)} (+15%)<br>
+        <strong>行权价:</strong> <span style="color:var(--green);font-size:15px;font-weight:700">${formatUSD(d.pools.A.strike)}</span> (+${d.pools.A.premium_pct || ''}%)<br>
+        <strong>备选档:</strong> ${formatUSD(d.pools.A.strike_alt || d.pools.A.strike + 1000)} (更保守)<br>
         <strong>周期:</strong> ${d.pools.A.tenor}<br>
         <strong>预估APY:</strong> <span style="color:var(--green)">${d.pools.A.apy}%</span><br>
-        <strong>Buy Low目标:</strong> ${formatUSD(d.pools.A.buy_low_target)}<br>
+        <strong>Buy Low:</strong> ${formatUSD(d.pools.A.buy_low_target)} (-${d.pools.A.buy_low_disc_pct || ''}%)<br>
         <strong>状态:</strong> <span class="tag tag-up">${d.pools.A.status}</span>
       </div>
     </div>
@@ -413,7 +421,8 @@ function render() {
       <div class="pool-btc">${d.pools.B.btc} BTC</div>
       <div class="pool-detail">
         <strong>策略:</strong> ${d.pools.B.strategy}<br>
-        <strong>行权价:</strong> ${formatUSD(d.pools.B.strike)} (+19%)<br>
+        <strong>行权价:</strong> <span style="color:var(--blue);font-size:15px;font-weight:700">${formatUSD(d.pools.B.strike)}</span> (+${d.pools.B.premium_pct || ''}%)<br>
+        <strong>备选档:</strong> ${formatUSD(d.pools.B.strike_alt || d.pools.B.strike - 1000)} (更激进)<br>
         <strong>周期:</strong> ${d.pools.B.tenor}<br>
         <strong>预估APY:</strong> <span style="color:var(--blue)">${d.pools.B.apy}%</span><br>
         <strong>网格区间:</strong> ${formatUSD(d.pools.B.grid_low)} - ${formatUSD(d.pools.B.grid_high)}<br>
