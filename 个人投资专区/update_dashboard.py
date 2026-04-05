@@ -24,11 +24,67 @@ POOL_B_PCT = 0.50
 POOL_C_PCT = 0.15
 
 # 策略参数
-A_STRIKE_MULT = 1.15      # A池行权价 = 现价 × 1.15
-B_STRIKE_MULT = 1.19      # B池行权价 = 现价 × 1.19
 GRID_RANGE = 0.15         # 网格区间 ±15%
-BUY_LOW_DISCOUNT = 0.85   # Buy Low目标价 = 现价 × 0.85
 C_POOL_TRIGGER = 40000    # C池抄底触发价
+
+# 币安双币理财行权价档位规则（基于BTC价格区间的标准间距）
+# BTC价格区间 → 行权价间距
+# < $20,000 → $500
+# $20,000-$50,000 → $1,000
+# $50,000-$100,000 → $1,000 或 $2,000
+# > $100,000 → $2,000 或 $5,000
+def get_strike_step(price):
+    """根据BTC价格返回行权价间距"""
+    if price < 20000: return 500
+    elif price < 50000: return 1000
+    elif price < 100000: return 1000
+    else: return 2000
+
+def snap_to_strike(price, direction='up'):
+    """将价格对齐到最近的行权价档位"""
+    step = get_strike_step(price)
+    if direction == 'up':
+        return int((price // step + 1) * step)
+    else:
+        return int((price // step) * step)
+
+def find_sell_high_strikes(price, premium_pct_low=0.08, premium_pct_high=0.20):
+    """
+    根据当前BTC价格，生成合理的Sell High行权价候选档位
+    A池: 保守，+10%~+15% 区间选最近档位
+    B池: 激进，+15%~+20% 区间选最近档位
+    返回: (a_strike, b_strike, buy_low_target)
+    """
+    step = get_strike_step(price)
+
+    # A池行权价: 现价+10%~+15%之间的档位
+    a_target = price * 1.12  # 偏向+12%附近
+    a_strike = int(round(a_target / step) * step)
+    # 确保至少比现价高8%
+    while a_strike < price * 1.08:
+        a_strike += step
+    # 确保不超过+18%
+    if a_strike > price * 1.18:
+        a_strike -= step
+
+    # B池行权价: 现价+15%~+22%之间的档位
+    b_target = price * 1.18  # 偏向+18%附近
+    b_strike = int(round(b_target / step) * step)
+    # 确保比A池高
+    while b_strike <= a_strike:
+        b_strike += step
+    # 确保不超过+25%
+    if b_strike > price * 1.25:
+        b_strike -= step
+
+    # Buy Low目标价: 现价-10%~-15%之间的档位
+    buy_low_target_raw = price * 0.88
+    buy_low_target = int(round(buy_low_target_raw / step) * step)
+    # 确保比现价低至少8%
+    while buy_low_target > price * 0.92:
+        buy_low_target -= step
+
+    return a_strike, b_strike, buy_low_target
 
 # 现金流
 ANNUAL_TARGET_CNY = 300000
@@ -148,18 +204,28 @@ def calc_strategy(price, usdt_cny):
     b_btc = round(TOTAL_BTC * POOL_B_PCT, 2)
     c_btc = round(TOTAL_BTC * POOL_C_PCT, 2)
 
-    a_strike = round(price * A_STRIKE_MULT)
-    b_strike = round(price * B_STRIKE_MULT)
-    grid_low = round(price * (1 - GRID_RANGE))
-    grid_high = round(price * (1 + GRID_RANGE))
-    buy_low = round(price * BUY_LOW_DISCOUNT)
+    # 使用档位对齐的行权价
+    a_strike, b_strike, buy_low = find_sell_high_strikes(price)
+    step = get_strike_step(price)
+
+    # 网格区间也对齐到档位
+    grid_low = snap_to_strike(price * (1 - GRID_RANGE), 'down')
+    grid_high = snap_to_strike(price * (1 + GRID_RANGE), 'up')
+
     monthly_usdt = round(ANNUAL_TARGET_CNY / 12 / usdt_cny)
     monthly_cny = round(ANNUAL_TARGET_CNY / 12)
 
-    # APY估算：基于恐贪指数和波动率的简单模型
-    # 恐惧时权利金高，贪婪时权利金低
-    base_apy_a = 18.0
-    base_apy_b = 12.0
+    # 计算实际溢价百分比
+    a_premium_pct = round((a_strike / price - 1) * 100, 1)
+    b_premium_pct = round((b_strike / price - 1) * 100, 1)
+    buy_low_disc_pct = round((1 - buy_low / price) * 100, 1)
+
+    # APY估算：行权价距离越远，APY越低；距离越近，APY越高
+    # 基准：+10% → ~22% APY, +15% → ~16% APY, +20% → ~12% APY
+    base_apy_a = max(8, min(30, 32 - a_premium_pct * 1.2))
+    base_apy_b = max(6, min(25, 32 - b_premium_pct * 1.2))
+    base_apy_a = round(base_apy_a, 1)
+    base_apy_b = round(base_apy_b, 1)
 
     now = datetime.now()
     months_elapsed = now.month - 1  # 1月=0, 4月=3
@@ -189,10 +255,15 @@ def calc_strategy(price, usdt_cny):
         }
     ]
 
+    # 相邻档位供参考
+    a_strike_alt = a_strike + step  # A池备选（更保守）
+    b_strike_alt = b_strike - step  # B池备选（更激进）
+
     # 操作建议
     recs = [
-        f'A池: Sell High行权价${a_strike:,}(+{round((A_STRIKE_MULT-1)*100)}%), 周期14天, 预估APY {base_apy_a}%',
-        f'B池: Sell High行权价${b_strike:,}(+{round((B_STRIKE_MULT-1)*100)}%), 周期30天; 网格区间${grid_low:,}-${grid_high:,}',
+        f'A池 Sell High: 建议行权价 ${a_strike:,}(+{a_premium_pct}%) 或 ${a_strike_alt:,}(+{round((a_strike_alt/price-1)*100,1)}%), 周期14天, 预估APY {base_apy_a}%',
+        f'B池 Sell High: 建议行权价 ${b_strike:,}(+{b_premium_pct}%) 或 ${b_strike_alt:,}(+{round((b_strike_alt/price-1)*100,1)}%), 周期30天',
+        f'Buy Low备选: ${buy_low:,}(-{buy_low_disc_pct}%); 网格区间 ${grid_low:,}-${grid_high:,}',
     ]
     if price < 55000:
         recs.append('风险提示: BTC接近C池触发线，关注是否需要启动抄底')
@@ -208,12 +279,16 @@ def calc_strategy(price, usdt_cny):
         recs.append(f'月度提现: 本月已达标, 下次提现{int(month_name)+1}月初')
 
     return {
+        'strike_step': step,
         'pools': {
             'A': {'name': 'A池-现金流', 'btc': a_btc, 'pct': round(POOL_A_PCT*100),
-                   'strategy': 'Sell High', 'strike': a_strike, 'tenor': '14天',
-                   'apy': base_apy_a, 'buy_low_target': buy_low, 'status': '运行中'},
+                   'strategy': 'Sell High', 'strike': a_strike, 'strike_alt': a_strike_alt,
+                   'premium_pct': a_premium_pct, 'tenor': '14天',
+                   'apy': base_apy_a, 'buy_low_target': buy_low, 'buy_low_disc_pct': buy_low_disc_pct,
+                   'status': '运行中'},
             'B': {'name': 'B池-增币', 'btc': b_btc, 'pct': round(POOL_B_PCT*100),
-                   'strategy': 'Sell High远期+网格', 'strike': b_strike, 'tenor': '30天',
+                   'strategy': 'Sell High远期+网格', 'strike': b_strike, 'strike_alt': b_strike_alt,
+                   'premium_pct': b_premium_pct, 'tenor': '30天',
                    'apy': base_apy_b, 'grid_low': grid_low, 'grid_high': grid_high, 'status': '运行中'},
             'C': {'name': 'C池-储备', 'btc': c_btc, 'pct': round(POOL_C_PCT*100),
                    'strategy': '冷存储', 'status': '安全锁定'},
@@ -409,7 +484,7 @@ def main():
     # 7. Git提交
     git_push([HTML_PATH, report_path])
 
-    print('\n✓ 更新完成!')
+    print('\n[OK] 更新完成!')
     print(f'  看板: {HTML_PATH}')
     print(f'  周报: {report_path}')
 
