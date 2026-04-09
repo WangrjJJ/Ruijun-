@@ -1,0 +1,7 @@
+- [采购优化MILP项目](project_procurement_optimization.md) — 三模型(MVP/钢材/罐箱)架构、文件清单、当前进度
+- [用户画像](user_profile.md) — 王瑞俊，中集环科企管部副总经理，数字化转型+绩效+投资评估
+- [协作风格](feedback_style.md) — 快节奏、简短指令、直接执行、中文输出
+- [Obsidian Vault架构](project_obsidian_vault.md) — 六区知识库结构(含Michigan MADS)、frontmatter约定
+- [特罐搬迁投资批复](project_tank_relocation.md) — 9980万元搬迁方案、产能5000台、2026.4启动、财务测算
+- [投资建议须独立评价](feedback_investment_critical.md) — 投资讨论必须用第一性原理+数据审视，不合理直接指出
+- [深蓝行动IDP](project_shenlan_idp.md) — 二期班挑战课题(客户价值导向数字化决策体系)、导师反馈、180天计划、领导力2.0
