@@ -156,6 +156,33 @@ SOURCES = {
         "note": "需登录，建议改用 SooPAT（www.soopat.com）手动检索后录入",
     },
 
+    # ── 竞争对手A股/港股动态（akshare股价+新闻）──
+    "competitor_singamas": {
+        "name": "胜狮货柜（0716.HK）— 直接竞争对手监测",
+        "category": "competitor",
+        "type": "competitor_stock",
+        "hk_symbol": "00716",          # 港股代码
+        "name_zh": "胜狮货柜",
+        "enabled": True,
+    },
+
+    # ── 主要客户动态（罐箱租赁商融资成本指标）──
+    "customer_macro_signal": {
+        "name": "罐箱主要客户宏观信号（美元利率+化工品价格）",
+        "category": "customer",
+        "type": "customer_macro",
+        "enabled": True,
+    },
+
+    # ── 中集环科自身A股新闻（301559.SZ）──
+    "self_news_301559": {
+        "name": "中集环科 A股新闻（301559.SZ）",
+        "category": "industry",
+        "type": "self_stock_news",
+        "a_symbol": "301559",
+        "enabled": True,
+    },
+
     # ── 手工录入（展会/竞品/会议）──
     "manual_events": {
         "name": "行业展会与会议（手工录入）",
@@ -515,6 +542,189 @@ def fetch_manual_source(source_id: str, source: dict) -> list:
 # 报告生成
 # ============================================================
 
+# ============================================================
+# 竞争对手与客户信号
+# ============================================================
+
+def fetch_competitor_stock(source_id: str, source: dict) -> list:
+    """
+    监测竞争对手港股股价动态
+    胜狮货柜（0716.HK）是中集环科在罐箱业务的主要上市竞争对手
+    股价走势可反映行业景气度和竞争格局变化
+    """
+    items = []
+    try:
+        symbol = source["hk_symbol"]
+        name = source["name_zh"]
+
+        df = ak.stock_hk_daily(symbol=symbol, adjust="")
+        if df.empty:
+            return []
+
+        df = df.sort_values("date")
+        # 只取近6个月
+        cutoff = (datetime.now() - timedelta(days=180)).date()
+        df["date"] = pd.to_datetime(df["date"]).dt.date
+        df = df[df["date"] >= cutoff].reset_index(drop=True)
+        if df.empty:
+            return []
+
+        current = float(df["close"].iloc[-1])
+        price_3m = float(df["close"].iloc[max(0, len(df)-63)])  # ≈3个月交易日
+        price_6m = float(df["close"].iloc[0])
+        trend_3m = (current / price_3m - 1) * 100
+        trend_6m = (current / price_6m - 1) * 100
+
+        direction_3m = "↑" if trend_3m > 0 else "↓"
+        direction_6m = "↑" if trend_6m > 0 else "↓"
+
+        # 研判信号
+        if trend_3m < -15:
+            signal = "⚠️ 竞品股价大幅下跌，行业景气度低迷"
+            relevance = "HIGH"
+        elif trend_3m > 15:
+            signal = "📈 竞品股价大幅上涨，行业需求可能复苏"
+            relevance = "HIGH"
+        elif abs(trend_3m) > 8:
+            signal = f"{'上涨' if trend_3m > 0 else '下跌'}明显，关注行业动向"
+            relevance = "MEDIUM"
+        else:
+            signal = "股价相对平稳"
+            relevance = "LOW"
+
+        title = (
+            f"【竞品】{name}（{symbol}）现价 HK${current:.2f} | "
+            f"近3月 {direction_3m}{abs(trend_3m):.1f}% | 近6月 {direction_6m}{abs(trend_6m):.1f}%"
+        )
+
+        items.append({
+            "source_id": source_id,
+            "source_name": source["name"],
+            "category": "competitor",
+            "title": title,
+            "url": f"https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sym={symbol}",
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "relevance": relevance,
+            "score": 60 if relevance == "HIGH" else (30 if relevance == "MEDIUM" else 5),
+            "keywords": [name, "竞争对手", "罐箱"],
+            "note": signal,
+        })
+
+        # 额外获取竞品新闻（若可能）
+        try:
+            profile = ak.stock_hk_company_profile_em(symbol=symbol)
+            if not profile.empty:
+                intro = str(profile.get("公司介绍", pd.Series()).iloc[0] if "公司介绍" in profile.columns else "")[:200]
+                if intro:
+                    items.append({
+                        "source_id": source_id + "_profile",
+                        "source_name": source["name"] + " 公司简介",
+                        "category": "competitor",
+                        "title": f"【竞品档案】{name}：{intro[:80]}...",
+                        "url": "",
+                        "date": "",
+                        "relevance": "LOW",
+                        "score": 5,
+                        "keywords": [name],
+                        "note": "",
+                    })
+        except Exception:
+            pass
+
+    except Exception as e:
+        print(f"  [WARN] 竞品股价获取失败: {e}")
+
+    return items
+
+
+def fetch_customer_macro(source_id: str, source: dict) -> list:
+    """
+    罐箱主要客户（租赁商）的宏观信号
+    核心逻辑：租赁商融资成本 = f(美元利率)
+      美元利率↑ → 租赁商融资成本↑ → 新箱订购减少 → 中集环科订单下降
+    数据代理：美国10年期国债收益率（US10Y）
+    """
+    items = []
+    try:
+        # 获取美联储基准利率（美联储利率决议报告）
+        df = ak.macro_bank_usa_interest_rate()
+        if df.empty:
+            raise ValueError("数据为空")
+
+        # 过滤非空今值记录，按日期排序
+        df["日期"] = pd.to_datetime(df["日期"])
+        df = df[df["今值"].notna()].sort_values("日期").tail(12)
+        latest_rate = float(df["今值"].iloc[-1]) if not df.empty else None
+        prev_rate = float(df["今值"].iloc[-6]) if len(df) >= 6 else None
+
+        if latest_rate is not None:
+            change = latest_rate - prev_rate if prev_rate else 0
+            if latest_rate > 4.5:
+                signal = f"⚠️ 美联储利率仍处高位（{latest_rate:.2f}%），租赁商融资成本压制罐箱需求"
+                relevance = "HIGH"
+            elif change < -0.5:
+                signal = f"📉 美联储降息中（较6月前-{abs(change):.1f}%），租赁商融资成本改善，罐箱需求可能复苏"
+                relevance = "HIGH"
+            else:
+                signal = f"美联储利率 {latest_rate:.2f}%，较前期变动 {change:+.2f}%"
+                relevance = "MEDIUM"
+
+            items.append({
+                "source_id": source_id,
+                "source_name": source["name"],
+                "category": "customer",
+                "title": f"【客户宏观】美联储利率 {latest_rate:.2f}% → {signal[:50]}",
+                "url": "",
+                "date": datetime.now().strftime("%Y-%m-%d"),
+                "relevance": relevance,
+                "score": 60 if relevance == "HIGH" else 30,
+                "keywords": ["美元利率", "租赁商", "罐箱需求"],
+                "note": signal,
+            })
+    except Exception as e:
+        print(f"  [WARN] 客户宏观信号获取失败: {e}")
+
+    return items
+
+
+def fetch_self_stock_news(source_id: str, source: dict) -> list:
+    """获取中集环科A股新闻（301559.SZ）"""
+    items = []
+    try:
+        df = ak.stock_news_em(symbol=source["a_symbol"])
+        if df.empty:
+            return []
+
+        for _, row in df.head(10).iterrows():
+            title = str(row.get("新闻标题", ""))
+            content = str(row.get("新闻内容", ""))[:200]
+            date_str = str(row.get("发布时间", ""))[:10]
+            url = str(row.get("新闻链接", ""))
+
+            if not title:
+                continue
+
+            score, keywords = score_relevance(title + " " + content)
+            relevance = classify_relevance(score)
+
+            items.append({
+                "source_id": source_id,
+                "source_name": source["name"],
+                "category": "industry",
+                "title": f"【公司动态】{title}",
+                "url": url,
+                "date": date_str,
+                "relevance": relevance if score > 0 else "LOW",
+                "score": max(score, 10),  # 公司自身新闻基础分10
+                "keywords": keywords,
+                "note": "",
+            })
+    except Exception as e:
+        print(f"  [WARN] 自身股票新闻获取失败: {e}")
+
+    return items
+
+
 def generate_macro_section(macro: dict) -> list:
     """生成原料价格信号部分"""
     lines = [
@@ -582,6 +792,8 @@ def generate_report(all_items: list, macro: Optional[dict] = None,
     policy_items = [i for i in all_items if i["category"] == "policy"]
     industry_items = [i for i in all_items if i["category"] == "industry"]
     patent_items = [i for i in all_items if i["category"] == "patent"]
+    competitor_items = [i for i in all_items if i["category"] == "competitor"]
+    customer_items = [i for i in all_items if i["category"] == "customer"]
 
     def render_items(items: list, max_items: int = 10) -> list:
         lines = []
@@ -643,6 +855,25 @@ def generate_report(all_items: list, macro: Optional[dict] = None,
         lines += render_items(high_industry, max_items=8)
     else:
         lines.append("_本期行业扫描无高/中相关条目_")
+
+    # 竞争对手动态
+    if competitor_items:
+        lines += ["", "## 竞争对手动态", ""]
+        for item in competitor_items:
+            note = f"\n  > {item['note']}" if item.get("note") else ""
+            date_str = f"（{item['date']}）" if item.get("date") else ""
+            link = f" [→ HKEX]({item['url']})" if item.get("url") else ""
+            lines.append(f"- **{item['title']}**{date_str}{link}{note}")
+        lines.append("")
+
+    # 主要客户宏观信号
+    if customer_items:
+        lines += ["## 主要客户宏观信号", ""]
+        for item in customer_items:
+            note = f"\n  > {item['note']}" if item.get("note") else ""
+            date_str = f"（{item['date']}）" if item.get("date") else ""
+            lines.append(f"- **{item['title']}**{date_str}{note}")
+        lines.append("")
 
     if patent_items:
         lines += ["", "## 专利动态", ""]
@@ -747,6 +978,12 @@ def main(source_filter: Optional[str] = None, list_sources: bool = False):
             items = fetch_rss_source(sid, source)
         elif source["type"] == "manual":
             items = fetch_manual_source(sid, source)
+        elif source["type"] == "competitor_stock":
+            items = fetch_competitor_stock(sid, source)
+        elif source["type"] == "customer_macro":
+            items = fetch_customer_macro(sid, source)
+        elif source["type"] == "self_stock_news":
+            items = fetch_self_stock_news(sid, source)
         else:
             print(f"  [SKIP] 未知类型: {source['type']}")
             continue
