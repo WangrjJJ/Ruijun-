@@ -4,19 +4,19 @@
 中集环科 ETO罐箱制造场景的外部环境监测工具
 
 监测维度：
-  1. 监管政策  — 危化品运输/压力容器/进出口新规
-  2. 行业动态  — 化工物流市场、竞争格局变化
-  3. 专利扫描  — 国内同类产品专利申请动态
-  4. 技术标准  — 国标/行标更新（GB/T、TSG等）
+  1. 原料价格信号  — 铁矿石/焦炭/钢材上游成本趋势（akshare，可靠）
+  2. 监管政策      — 危化品运输/压力容器/进出口新规（网页抓取，尽力而为）
+  3. 行业动态      — 化工物流市场、竞争格局（网页抓取）
+  4. 手工情报      — 展会/会议/竞品（人工录入）
 
 运行方式：
   python3 intel_scanner.py              # 全量扫描并生成月度简报
-  python3 intel_scanner.py --source policy  # 仅扫描政策
-  python3 intel_scanner.py --source patent  # 仅扫描专利
+  python3 intel_scanner.py --source macro   # 仅原料价格信号
+  python3 intel_scanner.py --source policy  # 仅政策扫描
   python3 intel_scanner.py --list-sources   # 列出所有配置源
 
 依赖：
-  pip3 install requests beautifulsoup4 feedparser
+  pip3 install requests beautifulsoup4 feedparser akshare pandas
 """
 
 import sys
@@ -33,9 +33,11 @@ import certifi
 try:
     import requests
     from bs4 import BeautifulSoup
+    import pandas as pd
+    import akshare as ak
 except ImportError as e:
     print(f"[ERROR] 缺少依赖: {e}")
-    print("请运行: pip3 install requests beautifulsoup4")
+    print("请运行: pip3 install requests beautifulsoup4 akshare pandas")
     sys.exit(1)
 
 try:
@@ -90,86 +92,71 @@ KEYWORDS = {
 }
 
 # ── 信息源配置 ──
-# type: rss=RSS订阅, html=HTML抓取, manual=手工录入占位
+# type: macro=akshare数据, html=HTML抓取, rss=RSS, manual=手工录入
 SOURCES = {
-    # ── 监管政策 ──
-    "mot_news": {
-        "name": "交通运输部 — 新闻动态",
-        "category": "policy",
-        "type": "html",
-        "url": "https://www.mot.gov.cn/jiaotongyaowen/",
-        "list_selector": "ul.list_con li",          # CSS选择器（找列表项）
-        "title_selector": "a",
-        "date_selector": "span",
-        "link_base": "https://www.mot.gov.cn",
+    # ── 原料价格信号（akshare，可靠）──
+    "macro_upstream": {
+        "name": "上游原料价格信号（铁矿石/焦炭/废钢）",
+        "category": "macro",
+        "type": "macro",
         "enabled": True,
     },
+
+    # ── 监管政策（HTML抓取，尽力而为）──
     "mem_safety": {
-        "name": "应急管理部 — 法规标准",
+        "name": "应急管理部 — 工作动态",
         "category": "policy",
         "type": "html",
-        "url": "https://www.mem.gov.cn/fw/flfgbz/",
-        "list_selector": "ul.list_style li",
-        "title_selector": "a",
-        "date_selector": "span.date",
-        "link_base": "https://www.mem.gov.cn",
-        "enabled": True,
-    },
-    "gacc_news": {
-        "name": "海关总署 — 公告通知",
-        "category": "policy",
-        "type": "html",
-        "url": "http://www.customs.gov.cn/customs/302249/302266/index.html",
-        "list_selector": "ul.list_con li",
-        "title_selector": "a",
-        "date_selector": "span",
-        "link_base": "http://www.customs.gov.cn",
-        "enabled": True,
-    },
-    "samr_std": {
-        "name": "市场监管总局 — 特种设备标准",
-        "category": "policy",
-        "type": "html",
-        "url": "https://www.samr.gov.cn/tzsbj/",
-        "list_selector": "ul.list-style li",
+        "url": "https://www.mem.gov.cn/xw/yjglbgzdt/",
+        "list_selector": "ul li",
         "title_selector": "a",
         "date_selector": None,
-        "link_base": "https://www.samr.gov.cn",
+        "link_base": "https://www.mem.gov.cn",
+        "encoding": "utf-8",
+        "enabled": True,
+    },
+    "ccin_policy": {
+        "name": "中国化工报 — 政策动态",
+        "category": "policy",
+        "type": "html",
+        "url": "http://www.ccin.com.cn/detail/category/8",
+        "list_selector": "ul li",
+        "title_selector": "a",
+        "date_selector": None,
+        "link_base": "http://www.ccin.com.cn",
+        "encoding": "utf-8",
         "enabled": True,
     },
 
-    # ── 行业动态 (RSS) ──
-    "chemnet_news": {
-        "name": "中国化工网 — 行业动态",
+    # ── 行业动态 ──
+    "ccin_industry": {
+        "name": "中国化工报 — 行业新闻",
         "category": "industry",
-        "type": "rss",
-        "url": "https://www.chemnet.com/rss/news.xml",
+        "type": "html",
+        "url": "http://www.ccin.com.cn/",
+        "list_selector": "ul li",
+        "title_selector": "a",
+        "date_selector": None,
+        "link_base": "http://www.ccin.com.cn",
+        "encoding": "utf-8",
         "enabled": True,
     },
-    "sinotrans_news": {
-        "name": "中国国际货运代理协会动态",
-        "category": "industry",
-        "type": "rss",
-        "url": "https://www.cifa.org.cn/rss.xml",
-        "enabled": False,  # 待验证RSS地址
-    },
 
-    # ── 专利扫描 ──
+    # ── 专利（需登录，先禁用，可换 SooPAT 公开接口）──
     "cnipa_patent": {
-        "name": "国家知识产权局 — 罐箱相关专利",
+        "name": "国家知识产权局 — 罐箱专利（待配置）",
         "category": "patent",
         "type": "html",
-        # 搜索罐式集装箱相关专利，可调整关键词
-        "url": "https://pss-system.cponline.cnipa.gov.cn/searchResult/index?searchKey=罐式集装箱",
+        "url": "https://pss-system.cponline.cnipa.gov.cn/",
         "list_selector": "div.result-item",
         "title_selector": "span.title",
-        "date_selector": "span.date",
+        "date_selector": None,
         "link_base": "",
-        "enabled": False,  # 知产局需要登录，先禁用
-        "note": "需要登录后使用，或改用 SooPAT / patentics 等第三方"
+        "enabled": False,
+        "note": "需登录，建议改用 SooPAT（www.soopat.com）手动检索后录入",
     },
 
-    # ── 手工录入占位（重要会议/展会）──
+    # ── 手工录入（展会/竞品/会议）──
     "manual_events": {
         "name": "行业展会与会议（手工录入）",
         "category": "industry",
@@ -183,11 +170,18 @@ SOURCES = {
                 "relevance": "high",
             },
             {
-                "title": "intermodal Asia 2026",
+                "title": "intermodal Asia 2026（上海，多式联运展）",
                 "date": "2026-06",
                 "url": "",
-                "note": "多式联运展，ISO罐箱行业风向",
+                "note": "ISO罐箱行业国际风向，欧洲客户需求变化",
                 "relevance": "high",
+            },
+            {
+                "title": "中国压力容器学术会议",
+                "date": "2026-10",
+                "url": "",
+                "note": "新材料/新工艺，竞品技术动向",
+                "relevance": "medium",
             },
         ],
         "enabled": True,
@@ -281,33 +275,167 @@ def classify_relevance(score: int) -> str:
 # 数据抓取
 # ============================================================
 
+# ============================================================
+# 原料价格宏观信号（akshare，可靠性高）
+# ============================================================
+
+def fetch_macro_intel() -> dict:
+    """
+    从akshare获取钢铁上游原料价格信号
+    用于判断钢材成本压力方向（提前1-2个月预判钢价走势）
+
+    信号逻辑：
+      铁矿石↑ + 焦炭↑ → 钢材成本压力上行 → 可能涨价 → 早买
+      铁矿石↓ + 焦炭↓ → 成本回落 → 等待买入窗口
+    """
+    result = {
+        "commodity_index": None,
+        "futures": {},
+        "signal": "",
+        "signal_detail": [],
+    }
+
+    # 1. 大宗商品价格综合指数
+    try:
+        df = ak.macro_china_commodity_price_index()
+        df["日期"] = pd.to_datetime(df["日期"])
+        latest = df.iloc[-1]
+        prev_5 = df.iloc[-6] if len(df) > 6 else df.iloc[0]
+
+        idx_now = float(latest["最新值"])
+        idx_5d = float(prev_5["最新值"])
+        idx_trend = (idx_now / idx_5d - 1) * 100
+
+        result["commodity_index"] = {
+            "value": idx_now,
+            "trend_5d_pct": round(idx_trend, 2),
+            "yr_change_pct": float(latest["近1年涨跌幅"]) if latest["近1年涨跌幅"] else None,
+            "date": str(latest["日期"])[:10],
+        }
+    except Exception as e:
+        result["signal_detail"].append(f"大宗商品指数获取失败: {e}")
+
+    # 2. 上游关键品种：铁矿石(I0)、焦炭(J0)、焦煤(JM0)
+    upstream_symbols = {
+        "I0": "铁矿石",
+        "J0": "焦炭",
+        "JM0": "焦煤",
+        "RB0": "螺纹钢",
+        "HC0": "热轧卷板",
+    }
+
+    end_dt = datetime.now()
+    start_dt = end_dt - timedelta(days=90)
+    up_trends = []
+
+    for symbol, name in upstream_symbols.items():
+        try:
+            df = ak.futures_main_sina(
+                symbol=symbol,
+                start_date=start_dt.strftime("%Y%m%d"),
+                end_date=end_dt.strftime("%Y%m%d"),
+            )
+            if df.empty:
+                continue
+
+            df["日期"] = pd.to_datetime(df["日期"])
+            df = df.sort_values("日期")
+
+            current = float(df["收盘价"].iloc[-1])
+            price_30d = float(df["收盘价"].iloc[max(0, len(df)-22)])
+            trend_30d = (current / price_30d - 1) * 100
+
+            result["futures"][symbol] = {
+                "name": name,
+                "current": current,
+                "trend_30d_pct": round(trend_30d, 2),
+                "dir": "↑" if trend_30d > 0 else "↓",
+            }
+
+            if symbol in ("I0", "J0"):  # 只用铁矿+焦炭判断方向
+                up_trends.append(trend_30d)
+
+        except Exception as e:
+            result["signal_detail"].append(f"{name}({symbol}) 获取失败: {e}")
+
+    # 3. 生成综合信号
+    if up_trends:
+        avg_upstream = sum(up_trends) / len(up_trends)
+        if avg_upstream > 3:
+            result["signal"] = "⚠️ 上游成本压力上行"
+            result["signal_detail"].append(
+                f"铁矿石/焦炭30日均涨幅 +{avg_upstream:.1f}%，钢材成本存在上行压力，"
+                f"建议提前锁定采购"
+            )
+        elif avg_upstream < -3:
+            result["signal"] = "✅ 上游成本回落"
+            result["signal_detail"].append(
+                f"铁矿石/焦炭30日均跌幅 {avg_upstream:.1f}%，钢材成本存在回落空间，"
+                f"可适当等待更低买点"
+            )
+        else:
+            result["signal"] = "🔵 上游成本平稳"
+            result["signal_detail"].append(
+                f"铁矿石/焦炭30日均变动 {avg_upstream:.1f}%，成本端无明显趋势"
+            )
+
+    return result
+
+
 def fetch_html_source(source_id: str, source: dict, session: requests.Session) -> list:
-    """抓取HTML类型信息源"""
+    """
+    抓取HTML类型信息源（健壮版）
+    采用分级回退策略：精确选择器 → 宽泛li/a → 纯链接扫描
+    """
     items = []
     try:
         resp = session.get(source["url"], timeout=CONFIG["request_timeout"])
-        resp.encoding = resp.apparent_encoding or "utf-8"
+        # 编码：优先用配置指定，其次 apparent_encoding
+        resp.encoding = source.get("encoding") or resp.apparent_encoding or "utf-8"
         soup = BeautifulSoup(resp.text, "html.parser")
 
-        list_items = soup.select(source["list_selector"])
-        for li in list_items[:30]:  # 最多取30条
-            a = li.select_one(source["title_selector"])
+        # 策略1：用配置的CSS选择器
+        list_items = soup.select(source["list_selector"]) if source.get("list_selector") else []
+
+        # 策略2：选择器取不到，用宽泛回退（所有li）
+        if not list_items:
+            list_items = soup.find_all("li")
+
+        candidate_links = []
+
+        for li in list_items[:50]:
+            a = li.find("a", href=True)
             if not a:
                 continue
-
             title = a.get_text(strip=True)
             href = a.get("href", "")
+
+            # 过滤：太短/太长的文本通常是导航项
+            if not (6 < len(title) < 80):
+                continue
+
             if href and not href.startswith("http"):
                 href = source.get("link_base", "") + href
 
-            date_el = li.select_one(source["date_selector"]) if source.get("date_selector") else None
-            pub_date = date_el.get_text(strip=True) if date_el else ""
+            candidate_links.append((title, href))
 
-            if not title:
-                continue
+        # 策略3：若li策略依然取不到，直接扫全页链接
+        if not candidate_links:
+            for a in soup.find_all("a", href=True)[:80]:
+                title = a.get_text(strip=True)
+                if 6 < len(title) < 80:
+                    href = a.get("href", "")
+                    if href and not href.startswith("http"):
+                        href = source.get("link_base", "") + href
+                    candidate_links.append((title, href))
 
+        for title, href in candidate_links[:30]:
             score, keywords = score_relevance(title)
             relevance = classify_relevance(score)
+
+            # 策略：跳过0分条目（减少噪音）
+            if score == 0:
+                continue
 
             items.append({
                 "source_id": source_id,
@@ -315,7 +443,7 @@ def fetch_html_source(source_id: str, source: dict, session: requests.Session) -
                 "category": source["category"],
                 "title": title,
                 "url": href,
-                "date": pub_date,
+                "date": "",
                 "relevance": relevance,
                 "score": score,
                 "keywords": keywords,
@@ -387,7 +515,61 @@ def fetch_manual_source(source_id: str, source: dict) -> list:
 # 报告生成
 # ============================================================
 
-def generate_report(all_items: list, source_filter: Optional[str] = None) -> str:
+def generate_macro_section(macro: dict) -> list:
+    """生成原料价格信号部分"""
+    lines = [
+        "## 上游原料价格信号",
+        "",
+        f"> **综合判断：{macro.get('signal', '数据获取中')}**",
+        "",
+    ]
+
+    # 大宗商品指数
+    ci = macro.get("commodity_index")
+    if ci:
+        trend_dir = "↑" if ci["trend_5d_pct"] > 0 else "↓"
+        lines += [
+            f"**大宗商品综合价格指数（{ci['date']}）：** {ci['value']:.0f}  "
+            f"5日 {trend_dir}{abs(ci['trend_5d_pct']):.1f}%  "
+            f"年同比 {ci['yr_change_pct']:+.1f}%" if ci.get("yr_change_pct") else f"5日 {trend_dir}{abs(ci['trend_5d_pct']):.1f}%",
+            "",
+        ]
+
+    # 上游品种明细
+    futures = macro.get("futures", {})
+    if futures:
+        lines += [
+            "| 品种 | 当前价（元/吨） | 30日涨跌 | 对钢材成本影响 |",
+            "|------|----------------|----------|----------------|",
+        ]
+        impact_map = {
+            "I0": "直接（占钢材成本约40%）",
+            "J0": "直接（占钢材成本约15%）",
+            "JM0": "间接（焦炭原料）",
+            "RB0": "终端参考",
+            "HC0": "终端参考（Q345R代理）",
+        }
+        for sym, data in futures.items():
+            trend_str = f"{data['dir']}{abs(data['trend_30d_pct']):.1f}%"
+            impact = impact_map.get(sym, "—")
+            lines.append(
+                f"| {data['name']}（{sym}） | "
+                f"¥{data['current']:,.0f} | "
+                f"{trend_str} | "
+                f"{impact} |"
+            )
+        lines.append("")
+
+    # 信号解读
+    for detail in macro.get("signal_detail", []):
+        lines.append(f"> {detail}")
+    lines.append("")
+
+    return lines
+
+
+def generate_report(all_items: list, macro: Optional[dict] = None,
+                    source_filter: Optional[str] = None) -> str:
     """生成月度情报简报（Markdown格式）"""
     now = datetime.now()
     month_str = now.strftime("%Y-%m")
@@ -395,7 +577,6 @@ def generate_report(all_items: list, source_filter: Optional[str] = None) -> str
     # 按相关度分组
     high = [i for i in all_items if i["relevance"] == "HIGH"]
     medium = [i for i in all_items if i["relevance"] == "MEDIUM"]
-    low = [i for i in all_items if i["relevance"] == "LOW"]
 
     # 按来源分类
     policy_items = [i for i in all_items if i["category"] == "policy"]
@@ -407,12 +588,10 @@ def generate_report(all_items: list, source_filter: Optional[str] = None) -> str
         for item in sorted(items, key=lambda x: x["score"], reverse=True)[:max_items]:
             kw_str = "、".join(item["keywords"][:3]) if item["keywords"] else ""
             kw_tag = f"  `{kw_str}`" if kw_str else ""
-            note = f"  > {item['note']}" if item.get("note") else ""
+            note = f"\n  > {item['note']}" if item.get("note") else ""
             date_str = f"（{item['date']}）" if item["date"] else ""
-            link = f"[→ 原文]({item['url']})" if item["url"] else ""
-            lines.append(f"- **{item['title']}**{date_str} {link}{kw_tag}")
-            if note:
-                lines.append(note)
+            link = f" [→ 原文]({item['url']})" if item["url"] else ""
+            lines.append(f"- **{item['title']}**{date_str}{link}{kw_tag}{note}")
         return lines
 
     lines = [
@@ -422,6 +601,7 @@ def generate_report(all_items: list, source_filter: Optional[str] = None) -> str
         f"date: {now.strftime('%Y-%m-%d')}",
         "tags:",
         "  - 市场情报",
+        "  - 原料价格",
         "  - 政策监测",
         "  - 行业动态",
         "---",
@@ -429,62 +609,49 @@ def generate_report(all_items: list, source_filter: Optional[str] = None) -> str
         f"# 市场情报简报 {month_str}",
         "",
         f"> 生成时间：{now.strftime('%Y-%m-%d %H:%M')} | "
-        f"本次扫描：{len(all_items)} 条 | "
-        f"高相关：{len(high)} 条 | 中相关：{len(medium)} 条",
+        f"网页扫描：{len(all_items)} 条 | "
+        f"高相关：{len(high)} | 中相关：{len(medium)}",
         "",
         "---",
         "",
-        "## 高相关条目（需关注）",
-        "",
     ]
 
+    # 原料价格信号（放最前，是最可靠的部分）
+    if macro:
+        lines += generate_macro_section(macro)
+        lines += ["---", ""]
+
+    # 高相关条目汇总
+    lines += ["## 网页扫描高相关条目", ""]
     if high:
         lines += render_items(high)
     else:
-        lines.append("_本期无高相关条目_")
+        lines.append("_本期无高相关条目（可能是选择器需调试，或本期确实无相关内容）_")
 
-    lines += [
-        "",
-        "---",
-        "",
-        "## 监管政策动态",
-        "",
-    ]
+    lines += ["", "---", "", "## 监管政策动态", ""]
 
     high_policy = [i for i in policy_items if i["relevance"] in ("HIGH", "MEDIUM")]
     if high_policy:
         lines += render_items(high_policy, max_items=8)
     else:
-        lines.append("_本期政策动态无明显相关内容_")
+        lines.append("_本期政策扫描无高/中相关条目_")
 
-    lines += [
-        "",
-        "## 行业与市场动态",
-        "",
-    ]
+    lines += ["", "## 行业与市场动态", ""]
 
     high_industry = [i for i in industry_items if i["relevance"] in ("HIGH", "MEDIUM")]
     if high_industry:
         lines += render_items(high_industry, max_items=8)
     else:
-        lines.append("_本期无明显相关行业动态_")
+        lines.append("_本期行业扫描无高/中相关条目_")
 
     if patent_items:
-        lines += [
-            "",
-            "## 专利动态",
-            "",
-        ]
+        lines += ["", "## 专利动态", ""]
         lines += render_items(patent_items, max_items=5)
 
     # 展会日历
     manual = [i for i in all_items if i["source_id"] == "manual_events"]
     if manual:
-        lines += [
-            "",
-            "## 重要会议与展会",
-            "",
-        ]
+        lines += ["", "## 重要会议与展会", ""]
         lines += render_items(manual)
 
     lines += [
@@ -557,6 +724,7 @@ def main(source_filter: Optional[str] = None, list_sources: bool = False):
     session = get_session()
     cache = load_cache()
     all_items = []
+    macro_data = None
 
     for sid, source in SOURCES.items():
         if not source.get("enabled", True):
@@ -566,7 +734,13 @@ def main(source_filter: Optional[str] = None, list_sources: bool = False):
 
         print(f"\n[扫描] {source['name']}...")
 
-        if source["type"] == "html":
+        if source["type"] == "macro":
+            macro_data = fetch_macro_intel()
+            sig = macro_data.get("signal", "获取中")
+            futures_count = len(macro_data.get("futures", {}))
+            print(f"  原料品种: {futures_count} 个 | 综合信号: {sig}")
+            continue
+        elif source["type"] == "html":
             items = fetch_html_source(sid, source, session)
             time.sleep(CONFIG["request_delay"])
         elif source["type"] == "rss":
@@ -577,13 +751,13 @@ def main(source_filter: Optional[str] = None, list_sources: bool = False):
             print(f"  [SKIP] 未知类型: {source['type']}")
             continue
 
-        # 过滤已缓存（去重）
+        # 去重（基于缓存）
         new_items = []
         for item in items:
             iid = item_id(item["title"], item["url"])
             if iid not in cache:
                 new_items.append(item)
-                cache[iid] = now_str = datetime.now().isoformat()
+                cache[iid] = datetime.now().isoformat()
 
         high_count = sum(1 for i in items if i["relevance"] in ("HIGH", "MEDIUM"))
         print(f"  获取 {len(items)} 条 | 新增 {len(new_items)} 条 | 相关(高+中) {high_count} 条")
@@ -592,7 +766,7 @@ def main(source_filter: Optional[str] = None, list_sources: bool = False):
     save_cache(cache)
 
     # 生成报告
-    report_content = generate_report(all_items, source_filter)
+    report_content = generate_report(all_items, macro=macro_data, source_filter=source_filter)
     now = datetime.now()
     month_str = now.strftime("%Y-%m")
     suffix = f"_{source_filter}" if source_filter else ""
@@ -605,7 +779,7 @@ def main(source_filter: Optional[str] = None, list_sources: bool = False):
 
     high_all = sum(1 for i in all_items if i["relevance"] == "HIGH")
     med_all = sum(1 for i in all_items if i["relevance"] == "MEDIUM")
-    print(f"\n[汇总] 共 {len(all_items)} 条 | 高相关 {high_all} | 中相关 {med_all}")
+    print(f"\n[汇总] 网页扫描 {len(all_items)} 条 | 高相关 {high_all} | 中相关 {med_all}")
     print(f"[报告] 已保存至: {report_path}")
     print("\n完成。")
 
