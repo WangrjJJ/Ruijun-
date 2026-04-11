@@ -237,12 +237,12 @@ body {
 // ====== DATA BLOCK START ======
 const DATA = {
   "update_time": "2026-04-11 10:51",
-  "btc_price_usd": 71500,
-  "btc_24h_change": 0,
+  "btc_price_usd": 72967,
+  "btc_24h_change": 1.4,
   "btc_7d_change": 0,
-  "fear_greed_index": 50,
-  "fear_greed_label": "中性",
-  "usdt_cny_rate": 6.9,
+  "fear_greed_index": 15,
+  "fear_greed_label": "极度恐惧",
+  "usdt_cny_rate": 6.83,
   "total_btc": 2.83,
   "accumulated_btc": 0.0,
   "strike_step": 1000,
@@ -252,13 +252,13 @@ const DATA = {
       "btc": 0.99,
       "pct": 35,
       "strategy": "Sell High",
-      "strike": 80000,
-      "strike_alt": 81000,
-      "premium_pct": 11.9,
+      "strike": 82000,
+      "strike_alt": 83000,
+      "premium_pct": 12.4,
       "tenor": "14天",
-      "apy": 17.7,
-      "buy_low_target": 63000,
-      "buy_low_disc_pct": 11.9,
+      "apy": 17.1,
+      "buy_low_target": 64000,
+      "buy_low_disc_pct": 12.3,
       "status": "运行中"
     },
     "B": {
@@ -266,13 +266,13 @@ const DATA = {
       "btc": 1.42,
       "pct": 50,
       "strategy": "Sell High远期+网格",
-      "strike": 84000,
-      "strike_alt": 83000,
-      "premium_pct": 17.5,
+      "strike": 86000,
+      "strike_alt": 85000,
+      "premium_pct": 17.9,
       "tenor": "30天",
-      "apy": 11.0,
-      "grid_low": 60000,
-      "grid_high": 83000,
+      "apy": 10.5,
+      "grid_low": 62000,
+      "grid_high": 84000,
       "status": "运行中"
     },
     "C": {
@@ -286,15 +286,15 @@ const DATA = {
   "cashflow": {
     "annual_target_cny": 300000,
     "ytd_withdrawn_cny": 0,
-    "monthly_target_usdt": 3623,
+    "monthly_target_usdt": 3660,
     "monthly_target_cny": 25000,
     "months_elapsed": 3
   },
   "recommendations": [
-    "A池 Sell High：行权价 $80,000(+11.9%) 或 $81,000, 周期14天, APY 17.7%",
-    "B池 Sell High：行权价 $84,000(+17.5%) 或 $83,000, 周期30天, APY 11.0%",
-    "Buy Low参考：$63,000(-11.9%)；网格区间 $60,000-$83,000",
-    "⚠️ 月度提现滞后3个月！建议本周P2P出金$3,623 USDT(≈¥25,000)"
+    "A池 Sell High：行权价 $82,000(+12.4%) 或 $83,000, 周期14天, APY 17.1%",
+    "B池 Sell High：行权价 $86,000(+17.9%) 或 $85,000, 周期30天, APY 10.5%",
+    "Buy Low参考：$64,000(-12.3%)；网格区间 $62,000-$84,000",
+    "⚠️ 月度提现滞后3个月！建议本周P2P出金$3,660 USDT(≈¥25,000)"
   ],
   "risk_signals": [
     {
@@ -302,7 +302,7 @@ const DATA = {
       "condition": "< $40,000",
       "current": "正常",
       "level": "ok",
-      "action": "当前$71,500，距首档触发线30%"
+      "action": "当前$72,967，距首档触发线33%"
     },
     {
       "name": "波动率IV",
