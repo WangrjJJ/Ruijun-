@@ -3,9 +3,16 @@
 # 用法: bash sync_memory.sh        （从 .claude → Vault，然后 push）
 #       bash sync_memory.sh restore （从 Vault → .claude，新设备恢复用）
 
-MEMORY_SRC="/c/Users/01455310/.claude/projects/C--Users-01455310/memory"
-VAULT_DST="/c/Users/01455310/Documents/Obsidian Vault/Claude记忆同步"
-VAULT_ROOT="/c/Users/01455310/Documents/Obsidian Vault"
+# 自动检测操作系统，适配 Windows / Mac 路径
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    MEMORY_SRC="$HOME/.claude/projects/-Users-wangruijun/memory"
+    VAULT_DST="$HOME/Documents/Ruijun的知识库/Claude记忆同步"
+    VAULT_ROOT="$HOME/Documents/Ruijun的知识库"
+else
+    MEMORY_SRC="/c/Users/01455310/.claude/projects/C--Users-01455310/memory"
+    VAULT_DST="/c/Users/01455310/Documents/Obsidian Vault/Claude记忆同步"
+    VAULT_ROOT="/c/Users/01455310/Documents/Obsidian Vault"
+fi
 
 if [ "$1" = "restore" ]; then
     echo "=== 恢复模式：Vault → .claude ==="
