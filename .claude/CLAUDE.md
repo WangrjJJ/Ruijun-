@@ -139,6 +139,33 @@
 - `policy_nr`: 方针编号（1~19）
 - `tags`: 用于交叉检索
 
+## JARVIS 语义搜索
+
+当快速路由表无法精确匹配用户问题，或需要跨库模糊检索时，调用JARVIS向量搜索：
+
+```bash
+python3 /Users/wangruijun/Documents/Ruijun的知识库/.jarvis/search.py "查询词"
+```
+
+**可选参数**：
+- `--top_k 5` — 返回结果数（默认5）
+- `--type "重点行动计划"` — 按frontmatter type过滤
+- `--tag "投资"` — 按tag过滤
+- `--format detail` — 返回完整snippet（默认brief）
+
+**输出**：JSON数组，含 rank / score / path / title / type / tags / section / snippet
+
+**使用策略**：
+1. 用户问题能匹配上方路由表 → 直接读对应文件（更快）
+2. 问题模糊、跨域、或路由表未覆盖 → 调用JARVIS搜索
+3. 搜索返回后，读取top结果的原文件获取完整内容
+
+**索引更新**：vault有新增/修改笔记后，运行：
+```bash
+python3 /Users/wangruijun/Documents/Ruijun的知识库/.jarvis/indexer.py          # 增量
+python3 /Users/wangruijun/Documents/Ruijun的知识库/.jarvis/indexer.py --force   # 全量重建
+```
+
 ## 操作规范
 
 1. **增量更新**：只改变化的笔记，不重新生成整个知识区

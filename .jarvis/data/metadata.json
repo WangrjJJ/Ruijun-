@@ -1,0 +1,7379 @@
+[
+  {
+    "path": "欢迎.md",
+    "title": "欢迎",
+    "type": "",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/采购优化 MOC.md",
+    "title": "采购优化知识库",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/采购优化 MOC.md",
+    "title": "采购优化知识库",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "知识体系"
+  },
+  {
+    "path": "运筹优化知识库/采购优化 MOC.md",
+    "title": "采购优化知识库",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "📐 核心概念"
+  },
+  {
+    "path": "运筹优化知识库/采购优化 MOC.md",
+    "title": "采购优化知识库",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "🏭 项目实战"
+  },
+  {
+    "path": "运筹优化知识库/采购优化 MOC.md",
+    "title": "采购优化知识库",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "🔗 与理论课程的关联"
+  },
+  {
+    "path": "运筹优化知识库/采购优化 MOC.md",
+    "title": "采购优化知识库",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "🛠️ 技术栈"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/MVP通用采购模型.md",
+    "title": "MVP通用采购模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/项目实战/MVP通用采购模型.md",
+    "title": "MVP通用采购模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "模型规模"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/MVP通用采购模型.md",
+    "title": "MVP通用采购模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "决策变量"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/MVP通用采购模型.md",
+    "title": "MVP通用采购模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "目标函数"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/MVP通用采购模型.md",
+    "title": "MVP通用采购模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键约束"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/MVP通用采购模型.md",
+    "title": "MVP通用采购模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "数据输入"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/MVP通用采购模型.md",
+    "title": "MVP通用采购模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "代码文件"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/MVP通用采购模型.md",
+    "title": "MVP通用采购模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作为模板的价值"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/MVP通用采购模型.md",
+    "title": "MVP通用采购模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "模型规模"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "成品线"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "6 类物料体系"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心建模逻辑"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "输出结构"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "数据输入"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "代码文件"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与其他模型的对比"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/罐箱采购优化模型.md",
+    "title": "罐箱采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "模型规模"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键业务挑战"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "求解结果"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "决策变量与目标"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "模型特色功能"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "数据输入"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "输出报告"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "代码文件"
+  },
+  {
+    "path": "运筹优化知识库/项目实战/钢材采购优化模型.md",
+    "title": "钢材采购优化模型",
+    "type": "项目实战",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/安全库存与采购周期.md",
+    "title": "安全库存与采购周期",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/安全库存与采购周期.md",
+    "title": "安全库存与采购周期",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "库存平衡方程"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/安全库存与采购周期.md",
+    "title": "安全库存与采购周期",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "各类物料采购周期"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/安全库存与采购周期.md",
+    "title": "安全库存与采购周期",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "安全库存的设定"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/安全库存与采购周期.md",
+    "title": "安全库存与采购周期",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "在模型中的约束实现"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/安全库存与采购周期.md",
+    "title": "安全库存与采购周期",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "相关链接"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/采购聚合策略.md",
+    "title": "采购聚合策略",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/采购聚合策略.md",
+    "title": "采购聚合策略",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "问题背景"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/采购聚合策略.md",
+    "title": "采购聚合策略",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "聚合逻辑"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/采购聚合策略.md",
+    "title": "采购聚合策略",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "6 个聚合组案例"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/采购聚合策略.md",
+    "title": "采购聚合策略",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "在模型中的实现"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/采购聚合策略.md",
+    "title": "采购聚合策略",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "聚合策略的价值量化"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/采购聚合策略.md",
+    "title": "采购聚合策略",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "相关链接"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/混合整数线性规划 MILP.md",
+    "title": "混合整数线性规划 MILP",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/混合整数线性规划 MILP.md",
+    "title": "混合整数线性规划 MILP",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "标准形式"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/混合整数线性规划 MILP.md",
+    "title": "混合整数线性规划 MILP",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "为什么用 MILP 而不是普通 LP？"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/混合整数线性规划 MILP.md",
+    "title": "混合整数线性规划 MILP",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "在项目中的应用"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/混合整数线性规划 MILP.md",
+    "title": "混合整数线性规划 MILP",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "相关链接"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/目标函数与约束条件.md",
+    "title": "目标函数与约束条件",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/目标函数与约束条件.md",
+    "title": "目标函数与约束条件",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "目标函数"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/目标函数与约束条件.md",
+    "title": "目标函数与约束条件",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "约束条件分类"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/目标函数与约束条件.md",
+    "title": "目标函数与约束条件",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "约束的业务含义"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/目标函数与约束条件.md",
+    "title": "目标函数与约束条件",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "相关链接"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/损耗率与开料优化.md",
+    "title": "损耗率与开料优化",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/损耗率与开料优化.md",
+    "title": "损耗率与开料优化",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "损耗率公式"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/损耗率与开料优化.md",
+    "title": "损耗率与开料优化",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "标准 vs 非标的经济性抉择"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/损耗率与开料优化.md",
+    "title": "损耗率与开料优化",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "在模型中的实现"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/损耗率与开料优化.md",
+    "title": "损耗率与开料优化",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "钢材品质等级层级"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/损耗率与开料优化.md",
+    "title": "损耗率与开料优化",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "相关链接"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/BOM物料清单爆炸.md",
+    "title": "BOM物料清单爆炸",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/BOM物料清单爆炸.md",
+    "title": "BOM物料清单爆炸",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "BOM 结构示例"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/BOM物料清单爆炸.md",
+    "title": "BOM物料清单爆炸",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "消耗计算公式"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/BOM物料清单爆炸.md",
+    "title": "BOM物料清单爆炸",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "6 类物料分类"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/BOM物料清单爆炸.md",
+    "title": "BOM物料清单爆炸",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "在模型中的实现"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/BOM物料清单爆炸.md",
+    "title": "BOM物料清单爆炸",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "相关链接"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/敏感性分析.md",
+    "title": "敏感性分析",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/敏感性分析.md",
+    "title": "敏感性分析",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "为什么需要敏感性分析？"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/敏感性分析.md",
+    "title": "敏感性分析",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "三维敏感性设计"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/敏感性分析.md",
+    "title": "敏感性分析",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "分析输出指标"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/敏感性分析.md",
+    "title": "敏感性分析",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "在模型中的实现"
+  },
+  {
+    "path": "运筹优化知识库/概念笔记/敏感性分析.md",
+    "title": "敏感性分析",
+    "type": "概念笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "知识图谱"
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "一、运营与供应链"
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "二、数据分析与决策"
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "三、项目与质量管理"
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "四、战略与领导力"
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "五、产品与创新"
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "六、咨询方法论"
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "七、学位论文与实践"
+  },
+  {
+    "path": "CLGO知识库/CLGO知识库 MOC.md",
+    "title": "CLGO知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与26年工作区的知识桥接"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/系统动力学.md",
+    "title": "系统动力学",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/系统动力学.md",
+    "title": "系统动力学",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/系统动力学.md",
+    "title": "系统动力学",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/系统动力学.md",
+    "title": "系统动力学",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/系统动力学.md",
+    "title": "系统动力学",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/系统动力学.md",
+    "title": "系统动力学",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/数据挖掘与商业分析.md",
+    "title": "数据挖掘与商业分析",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/数据挖掘与商业分析.md",
+    "title": "数据挖掘与商业分析",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/数据挖掘与商业分析.md",
+    "title": "数据挖掘与商业分析",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/数据挖掘与商业分析.md",
+    "title": "数据挖掘与商业分析",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/数据挖掘与商业分析.md",
+    "title": "数据挖掘与商业分析",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/数据挖掘与商业分析.md",
+    "title": "数据挖掘与商业分析",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/工程概率与系统优化.md",
+    "title": "工程概率与系统优化",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/工程概率与系统优化.md",
+    "title": "工程概率与系统优化",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工程概率：核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/工程概率与系统优化.md",
+    "title": "工程概率与系统优化",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "系统优化：核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/工程概率与系统优化.md",
+    "title": "工程概率与系统优化",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/工程概率与系统优化.md",
+    "title": "工程概率与系统优化",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/数据分析与决策/工程概率与系统优化.md",
+    "title": "工程概率与系统优化",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/产品与创新/区块链与新技术.md",
+    "title": "区块链与新技术",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/产品与创新/区块链与新技术.md",
+    "title": "区块链与新技术",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/产品与创新/区块链与新技术.md",
+    "title": "区块链与新技术",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/产品与创新/区块链与新技术.md",
+    "title": "区块链与新技术",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/产品与创新/产品设计与开发.md",
+    "title": "产品设计与开发",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/产品与创新/产品设计与开发.md",
+    "title": "产品设计与开发",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/产品与创新/产品设计与开发.md",
+    "title": "产品设计与开发",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/产品与创新/产品设计与开发.md",
+    "title": "产品设计与开发",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/产品与创新/产品设计与开发.md",
+    "title": "产品设计与开发",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/产品与创新/产品设计与开发.md",
+    "title": "产品设计与开发",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/贝恩分析工具集.md",
+    "title": "贝恩分析工具集",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/贝恩分析工具集.md",
+    "title": "贝恩分析工具集",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/贝恩分析工具集.md",
+    "title": "贝恩分析工具集",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法论亮点"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/贝恩分析工具集.md",
+    "title": "贝恩分析工具集",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/贝恩分析工具集.md",
+    "title": "贝恩分析工具集",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/贝恩分析工具集.md",
+    "title": "贝恩分析工具集",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/埃森哲实施方法论.md",
+    "title": "埃森哲实施方法论",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/埃森哲实施方法论.md",
+    "title": "埃森哲实施方法论",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/埃森哲实施方法论.md",
+    "title": "埃森哲实施方法论",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/埃森哲实施方法论.md",
+    "title": "埃森哲实施方法论",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/埃森哲实施方法论.md",
+    "title": "埃森哲实施方法论",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/BCG战略咨询框架.md",
+    "title": "BCG战略咨询框架",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/BCG战略咨询框架.md",
+    "title": "BCG战略咨询框架",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/BCG战略咨询框架.md",
+    "title": "BCG战略咨询框架",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "咨询方法论对比"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/BCG战略咨询框架.md",
+    "title": "BCG战略咨询框架",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "通用咨询框架总结"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/BCG战略咨询框架.md",
+    "title": "BCG战略咨询框架",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/咨询方法论/BCG战略咨询框架.md",
+    "title": "BCG战略咨询框架",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/游学与论坛见闻.md",
+    "title": "游学与论坛见闻",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/游学与论坛见闻.md",
+    "title": "游学与论坛见闻",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "SOIL论坛系列"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/游学与论坛见闻.md",
+    "title": "游学与论坛见闻",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "企业参访"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/游学与论坛见闻.md",
+    "title": "游学与论坛见闻",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键洞察总结"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/游学与论坛见闻.md",
+    "title": "游学与论坛见闻",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/游学与论坛见闻.md",
+    "title": "游学与论坛见闻",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/硕士论文研究.md",
+    "title": "硕士论文研究",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/硕士论文研究.md",
+    "title": "硕士论文研究",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "MBA论文：港铁地铁能源效率优化"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/硕士论文研究.md",
+    "title": "硕士论文研究",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工程管理实践项目"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/硕士论文研究.md",
+    "title": "硕士论文研究",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/硕士论文研究.md",
+    "title": "硕士论文研究",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/学位论文与实践/硕士论文研究.md",
+    "title": "硕士论文研究",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/制造流程控制.md",
+    "title": "制造流程控制",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/制造流程控制.md",
+    "title": "制造流程控制",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/制造流程控制.md",
+    "title": "制造流程控制",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/制造流程控制.md",
+    "title": "制造流程控制",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/制造流程控制.md",
+    "title": "制造流程控制",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/制造流程控制.md",
+    "title": "制造流程控制",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/质量项目管理.md",
+    "title": "质量项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/质量项目管理.md",
+    "title": "质量项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/质量项目管理.md",
+    "title": "质量项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/质量项目管理.md",
+    "title": "质量项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/质量项目管理.md",
+    "title": "质量项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/质量项目管理.md",
+    "title": "质量项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/系统项目管理.md",
+    "title": "系统项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/系统项目管理.md",
+    "title": "系统项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/系统项目管理.md",
+    "title": "系统项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/系统项目管理.md",
+    "title": "系统项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/项目与质量管理/系统项目管理.md",
+    "title": "系统项目管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营管理.md",
+    "title": "运营管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营管理.md",
+    "title": "运营管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营管理.md",
+    "title": "运营管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营管理.md",
+    "title": "运营管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营管理.md",
+    "title": "运营管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营管理.md",
+    "title": "运营管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/制造流程与系统.md",
+    "title": "制造流程与系统",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/制造流程与系统.md",
+    "title": "制造流程与系统",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/制造流程与系统.md",
+    "title": "制造流程与系统",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/制造流程与系统.md",
+    "title": "制造流程与系统",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/制造流程与系统.md",
+    "title": "制造流程与系统",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/制造流程与系统.md",
+    "title": "制造流程与系统",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营战略.md",
+    "title": "运营战略",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营战略.md",
+    "title": "运营战略",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营战略.md",
+    "title": "运营战略",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营战略.md",
+    "title": "运营战略",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营战略.md",
+    "title": "运营战略",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/运营与供应链/运营战略.md",
+    "title": "运营战略",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/战略管理.md",
+    "title": "战略管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/战略管理.md",
+    "title": "战略管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/战略管理.md",
+    "title": "战略管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/战略管理.md",
+    "title": "战略管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/战略管理.md",
+    "title": "战略管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/战略管理.md",
+    "title": "战略管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/营销管理.md",
+    "title": "营销管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/营销管理.md",
+    "title": "营销管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/营销管理.md",
+    "title": "营销管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/营销管理.md",
+    "title": "营销管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/营销管理.md",
+    "title": "营销管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/营销管理.md",
+    "title": "营销管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/领导力与变革管理.md",
+    "title": "领导力与变革管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/领导力与变革管理.md",
+    "title": "领导力与变革管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识框架"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/领导力与变革管理.md",
+    "title": "领导力与变革管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "作业与实践要点"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/领导力与变革管理.md",
+    "title": "领导力与变革管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "关键工具与模型"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/领导力与变革管理.md",
+    "title": "领导力与变革管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与工作实践的关联"
+  },
+  {
+    "path": "CLGO知识库/战略与领导力/领导力与变革管理.md",
+    "title": "领导力与变革管理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理(8) - 预测那些事儿3 - 机器学习结合运筹优化.md",
+    "title": "Rayray课代表的数字化管理(8) - 预测那些事儿3 - 机器学习结合运筹优化",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2023-09-10",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理课(2) - 前言2决策之殇.md",
+    "title": "Rayray课代表的数字化管理课(2) - 前言2决策之殇",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2022-06-07",
+    "status": "",
+    "section": "part 1"
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理课(2) - 前言2决策之殇.md",
+    "title": "Rayray课代表的数字化管理课(2) - 前言2决策之殇",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2022-06-07",
+    "status": "",
+    "section": " (part 2)"
+  },
+  {
+    "path": "瑞俊的数字化管理课/加餐 - 时间序列中的数据科学.md",
+    "title": "加餐 - 时间序列中的数据科学",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2023-09-01",
+    "status": "",
+    "section": "part 1"
+  },
+  {
+    "path": "瑞俊的数字化管理课/加餐 - 时间序列中的数据科学.md",
+    "title": "加餐 - 时间序列中的数据科学",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2023-09-01",
+    "status": "",
+    "section": " (part 2)"
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理课(4) - 透过数据理解真实世界(1) 数据可视化、规范与陷阱.md",
+    "title": "Rayray课代表的数字化管理课(4) - 透过数据理解真实世界(1) 数据可视化、规范与陷阱",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2022-06-19",
+    "status": "",
+    "section": "part 1"
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理课(4) - 透过数据理解真实世界(1) 数据可视化、规范与陷阱.md",
+    "title": "Rayray课代表的数字化管理课(4) - 透过数据理解真实世界(1) 数据可视化、规范与陷阱",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2022-06-19",
+    "status": "",
+    "section": " (part 2)"
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理(7) - 利用机器学习建模进行诊断分析及预测(1).md",
+    "title": "Rayray课代表的数字化管理(7) - 利用机器学习建模进行诊断分析及预测(1)",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2023-07-14",
+    "status": "",
+    "section": "part 1"
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理(7) - 利用机器学习建模进行诊断分析及预测(1).md",
+    "title": "Rayray课代表的数字化管理(7) - 利用机器学习建模进行诊断分析及预测(1)",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2023-07-14",
+    "status": "",
+    "section": " (part 2)"
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理(5) - 透过数据理解真实世界(2) 如何科学得做数据对比.md",
+    "title": "Rayray课代表的数字化管理(5) - 透过数据理解真实世界(2) 如何科学得做数据对比",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2022-07-10",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理(8) - 预测那些事儿1.md",
+    "title": "Rayray课代表的数字化管理(8) - 预测那些事儿1",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2023-07-22",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理(6) - 数据挖掘初体验.md",
+    "title": "Rayray课代表的数字化管理(6) - 数据挖掘初体验",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2023-07-02",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "瑞俊的数字化管理课/瑞俊的数字化管理课 MOC.md",
+    "title": "瑞俊的数字化管理课",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "瑞俊的数字化管理课/瑞俊的数字化管理课 MOC.md",
+    "title": "瑞俊的数字化管理课",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "学习路径"
+  },
+  {
+    "path": "瑞俊的数字化管理课/瑞俊的数字化管理课 MOC.md",
+    "title": "瑞俊的数字化管理课",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "📖 前言篇 — 为什么需要科学决策？"
+  },
+  {
+    "path": "瑞俊的数字化管理课/瑞俊的数字化管理课 MOC.md",
+    "title": "瑞俊的数字化管理课",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "📊 数据理解篇 — 透过数据理解真实世界"
+  },
+  {
+    "path": "瑞俊的数字化管理课/瑞俊的数字化管理课 MOC.md",
+    "title": "瑞俊的数字化管理课",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "🔍 数据挖掘与诊断篇 — 从描述到诊断"
+  },
+  {
+    "path": "瑞俊的数字化管理课/瑞俊的数字化管理课 MOC.md",
+    "title": "瑞俊的数字化管理课",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "🔮 预测与优化篇 — 从预测到最优决策"
+  },
+  {
+    "path": "瑞俊的数字化管理课/瑞俊的数字化管理课 MOC.md",
+    "title": "瑞俊的数字化管理课",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "🎁 加餐篇"
+  },
+  {
+    "path": "瑞俊的数字化管理课/瑞俊的数字化管理课 MOC.md",
+    "title": "瑞俊的数字化管理课",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "🏷️ 关键概念索引"
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理(9) - 预测那些事儿2.md",
+    "title": "Rayray课代表的数字化管理(9) - 预测那些事儿2",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2023-08-27",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理课(3) - 前言3 从数据科学角度看决策优化问题.md",
+    "title": "Rayray课代表的数字化管理课(3) - 前言3 从数据科学角度看决策优化问题",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2022-06-13",
+    "status": "",
+    "section": "part 1"
+  },
+  {
+    "path": "瑞俊的数字化管理课/Rayray课代表的数字化管理课(3) - 前言3 从数据科学角度看决策优化问题.md",
+    "title": "Rayray课代表的数字化管理课(3) - 前言3 从数据科学角度看决策优化问题",
+    "type": "公众号文章",
+    "tags": [
+      ""
+    ],
+    "date": "2022-06-13",
+    "status": "",
+    "section": " (part 2)"
+  },
+  {
+    "path": "个人投资专区/个人投资专区 MOC.md",
+    "title": "个人投资专区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "导航"
+  },
+  {
+    "path": "个人投资专区/个人投资专区 MOC.md",
+    "title": "个人投资专区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "策略概要"
+  },
+  {
+    "path": "个人投资专区/个人投资专区 MOC.md",
+    "title": "个人投资专区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "关键指标速览"
+  },
+  {
+    "path": "个人投资专区/投资策略总览.md",
+    "title": "BTC投资策略总览",
+    "type": "投资策略",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "一、持仓基本面"
+  },
+  {
+    "path": "个人投资专区/投资策略总览.md",
+    "title": "BTC投资策略总览",
+    "type": "投资策略",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "二、三池分层策略"
+  },
+  {
+    "path": "个人投资专区/投资策略总览.md",
+    "title": "BTC投资策略总览",
+    "type": "投资策略",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "三、风险控制矩阵"
+  },
+  {
+    "path": "个人投资专区/投资策略总览.md",
+    "title": "BTC投资策略总览",
+    "type": "投资策略",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "四、操作日历"
+  },
+  {
+    "path": "个人投资专区/投资策略总览.md",
+    "title": "BTC投资策略总览",
+    "type": "投资策略",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "五、年度现金流达标路径"
+  },
+  {
+    "path": "个人投资专区/投资策略总览.md",
+    "title": "BTC投资策略总览",
+    "type": "投资策略",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "六、核心纪律"
+  },
+  {
+    "path": "个人投资专区/策略看板.md",
+    "title": "BTC投资策略看板",
+    "type": "投资看板",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": ""
+  },
+  {
+    "path": "个人投资专区/策略看板.md",
+    "title": "BTC投资策略看板",
+    "type": "投资看板",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "快速操作"
+  },
+  {
+    "path": "个人投资专区/策略看板.md",
+    "title": "BTC投资策略看板",
+    "type": "投资看板",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "数据更新方式"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W14.md",
+    "title": "2026-W14 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-05",
+    "status": "",
+    "section": "市场数据"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W14.md",
+    "title": "2026-W14 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-05",
+    "status": "",
+    "section": "持仓状态"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W14.md",
+    "title": "2026-W14 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-05",
+    "status": "",
+    "section": "三池状态"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W14.md",
+    "title": "2026-W14 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-05",
+    "status": "",
+    "section": "本周操作建议"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W14.md",
+    "title": "2026-W14 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-05",
+    "status": "",
+    "section": "风险信号"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W15.md",
+    "title": "2026-W15 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W15.md",
+    "title": "2026-W15 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "市场数据"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W15.md",
+    "title": "2026-W15 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "当前持仓状态"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W15.md",
+    "title": "2026-W15 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "本周双币决策"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W15.md",
+    "title": "2026-W15 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "ETH/BTC 网格策略（周度更新）"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W15.md",
+    "title": "2026-W15 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "三池策略参数"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W15.md",
+    "title": "2026-W15 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "本周操作清单"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W15.md",
+    "title": "2026-W15 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "风险信号"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W16.md",
+    "title": "2026-W16 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W16.md",
+    "title": "2026-W16 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "市场数据（实时）"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W16.md",
+    "title": "2026-W16 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "当前持仓状态"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W16.md",
+    "title": "2026-W16 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "本周双币理财决策"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W16.md",
+    "title": "2026-W16 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "ETH/BTC现货网格策略分析"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W16.md",
+    "title": "2026-W16 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "本周操作清单"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W16.md",
+    "title": "2026-W16 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "风险信号"
+  },
+  {
+    "path": "个人投资专区/周报归档/2026-W16.md",
+    "title": "2026-W16 投资周报",
+    "type": "投资周报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "Q2走势研判更新"
+  },
+  {
+    "path": "个人投资专区/OPC周报/2026-W15.md",
+    "title": "OPC情报周报 2026-W15",
+    "type": "OPC周报",
+    "tags": [
+      "OPC",
+      "AI工具",
+      "独立变现"
+    ],
+    "date": "2026-04-12",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "个人投资专区/OPC周报/2026-W15.md",
+    "title": "OPC情报周报 2026-W15",
+    "type": "OPC周报",
+    "tags": [
+      "OPC",
+      "AI工具",
+      "独立变现"
+    ],
+    "date": "2026-04-12",
+    "status": "",
+    "section": "本周重点"
+  },
+  {
+    "path": "个人投资专区/OPC周报/2026-W15.md",
+    "title": "OPC情报周报 2026-W15",
+    "type": "OPC周报",
+    "tags": [
+      "OPC",
+      "AI工具",
+      "独立变现"
+    ],
+    "date": "2026-04-12",
+    "status": "",
+    "section": "本周洞察"
+  },
+  {
+    "path": "26年中集环科工作区/26年工作区 MOC.md",
+    "title": "26年工作区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/26年工作区 MOC.md",
+    "title": "26年工作区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "知识体系"
+  },
+  {
+    "path": "26年中集环科工作区/26年工作区 MOC.md",
+    "title": "26年工作区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "战略框架"
+  },
+  {
+    "path": "26年中集环科工作区/26年工作区 MOC.md",
+    "title": "26年工作区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "重点行动计划"
+  },
+  {
+    "path": "26年中集环科工作区/26年工作区 MOC.md",
+    "title": "26年工作区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "经营数据"
+  },
+  {
+    "path": "26年中集环科工作区/26年工作区 MOC.md",
+    "title": "26年工作区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "会议纪要"
+  },
+  {
+    "path": "26年中集环科工作区/26年工作区 MOC.md",
+    "title": "26年工作区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "总裁报告"
+  },
+  {
+    "path": "26年中集环科工作区/26年工作区 MOC.md",
+    "title": "26年工作区 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "与其他知识区的关联"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_policy.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_policy.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "高相关条目（需关注）"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_policy.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "监管政策动态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_policy.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "行业与市场动态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_policy.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "情报源扫描状态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_policy.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "使用说明"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "上游原料价格信号"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "网页扫描高相关条目"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "监管政策动态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "行业与市场动态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "竞争对手动态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "主要客户宏观信号"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "重要会议与展会"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "情报源扫描状态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "使用说明"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_macro.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_macro.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "上游原料价格信号"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_macro.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "网页扫描高相关条目"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_macro.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "监管政策动态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_macro.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "行业与市场动态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_macro.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "情报源扫描状态"
+  },
+  {
+    "path": "26年中集环科工作区/市场情报/市场情报简报_2026-04_macro.md",
+    "title": "市场情报简报 2026-04",
+    "type": "市场情报",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-11",
+    "status": "",
+    "section": "使用说明"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/2026年公司方针总览.md",
+    "title": "2026年公司方针总览",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/2026年公司方针总览.md",
+    "title": "2026年公司方针总览",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "方针全景"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/2026年公司方针总览.md",
+    "title": "2026年公司方针总览",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "增收类方针（#1~#8）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/2026年公司方针总览.md",
+    "title": "2026年公司方针总览",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "减支类方针（#9~#10）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/2026年公司方针总览.md",
+    "title": "2026年公司方针总览",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "固本类方针（#11~#16）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/2026年公司方针总览.md",
+    "title": "2026年公司方针总览",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "培元类方针（#17~#19）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/2026年公司方针总览.md",
+    "title": "2026年公司方针总览",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/2026年公司方针总览.md",
+    "title": "2026年公司方针总览",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "战略主旨"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "财务总目标"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "一、罐箱业务（基石）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "二、医疗业务（成长）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "三、核电业务（未来）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "四、投资规划明细"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "五、组织支持战略"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "与26年行动计划的映射"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/中长期战略规划（2026-2029）.md",
+    "title": "中长期战略规划（2026-2029）",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "考评框架 v3.0"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "五维考核结构（v3.0 双轨制）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "OKR 战略主题分类"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "核心KPI承接关系"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "各部门 KPI 双轨分布总表"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "v3.0 领导第二轮批示要点"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "评分方法体系"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "能力建设考核"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "营销中心年度KPI"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "总部-事业部分层管理对照"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "考核周期"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "MECE合规：重复项消解总表（v2.0 已落地工作底表）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "工作底表与文件"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "版本历程"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/考评体系与绩效合同.md",
+    "title": "考评体系与绩效合同",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/组织架构与职责.md",
+    "title": "组织架构与职责",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/组织架构与职责.md",
+    "title": "组织架构与职责",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "三层架构"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/组织架构与职责.md",
+    "title": "组织架构与职责",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "核心人员-职责映射"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/组织架构与职责.md",
+    "title": "组织架构与职责",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "26年核心能力强化重点"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/组织架构与职责.md",
+    "title": "组织架构与职责",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "医疗事业部（独立经营体）"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/组织架构与职责.md",
+    "title": "组织架构与职责",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/组织架构与职责.md",
+    "title": "组织架构与职责",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/总经理要求与战略目标.md",
+    "title": "总经理要求与战略目标",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/总经理要求与战略目标.md",
+    "title": "总经理要求与战略目标",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "战略框架：\"2+2+N\""
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/总经理要求与战略目标.md",
+    "title": "总经理要求与战略目标",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "增长路线图"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/总经理要求与战略目标.md",
+    "title": "总经理要求与战略目标",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "各业务线要求"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/总经理要求与战略目标.md",
+    "title": "总经理要求与战略目标",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "管理导向"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/总经理要求与战略目标.md",
+    "title": "总经理要求与战略目标",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/战略框架/总经理要求与战略目标.md",
+    "title": "总经理要求与战略目标",
+    "type": "战略框架",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—渗透率提升.md",
+    "title": "增收—渗透率提升",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—渗透率提升.md",
+    "title": "增收—渗透率提升",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#1：巩固罐箱核心客户市场份额"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—渗透率提升.md",
+    "title": "增收—渗透率提升",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#2：稳步提升医疗存量业务"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—渗透率提升.md",
+    "title": "增收—渗透率提升",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—渗透率提升.md",
+    "title": "增收—渗透率提升",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—多元化业务.md",
+    "title": "增收—多元化业务",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—多元化业务.md",
+    "title": "增收—多元化业务",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#6：旧箱回收再利用"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—多元化业务.md",
+    "title": "增收—多元化业务",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#7：后市场布局开拓"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—多元化业务.md",
+    "title": "增收—多元化业务",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#8：创新业务培育"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—多元化业务.md",
+    "title": "增收—多元化业务",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—多元化业务.md",
+    "title": "增收—多元化业务",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/培元—创新与数字化.md",
+    "title": "培元—创新与数字化",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/培元—创新与数字化.md",
+    "title": "培元—创新与数字化",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#17：精益创新"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/培元—创新与数字化.md",
+    "title": "培元—创新与数字化",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#18：智改数转（==王瑞俊主责==） (part 1)"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/培元—创新与数字化.md",
+    "title": "培元—创新与数字化",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#18：智改数转（==王瑞俊主责==） (part 2)"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/培元—创新与数字化.md",
+    "title": "培元—创新与数字化",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#19：长期能力储备（谭彦杰）"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/培元—创新与数字化.md",
+    "title": "培元—创新与数字化",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "Q1 董事会专题：数字化与AI"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/培元—创新与数字化.md",
+    "title": "培元—创新与数字化",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/培元—创新与数字化.md",
+    "title": "培元—创新与数字化",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—新市场新领域.md",
+    "title": "增收—新市场新领域",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—新市场新领域.md",
+    "title": "增收—新市场新领域",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#3：国内罐箱市场开拓"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—新市场新领域.md",
+    "title": "增收—新市场新领域",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#4：开拓新场景领域"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—新市场新领域.md",
+    "title": "增收—新市场新领域",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#5：核磁以外新领域（NMR）"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—新市场新领域.md",
+    "title": "增收—新市场新领域",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/增收—新市场新领域.md",
+    "title": "增收—新市场新领域",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/减支—成本领先.md",
+    "title": "减支—成本领先",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/减支—成本领先.md",
+    "title": "减支—成本领先",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#9：降本增效"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/减支—成本领先.md",
+    "title": "减支—成本领先",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#10：外汇与金融管理"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/减支—成本领先.md",
+    "title": "减支—成本领先",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/减支—成本领先.md",
+    "title": "减支—成本领先",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/固本—制造与HSE.md",
+    "title": "固本—制造与HSE",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/固本—制造与HSE.md",
+    "title": "固本—制造与HSE",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#11：产能建设"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/固本—制造与HSE.md",
+    "title": "固本—制造与HSE",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#12：工艺能力"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/固本—制造与HSE.md",
+    "title": "固本—制造与HSE",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#13：全面质量管理（李世社）"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/固本—制造与HSE.md",
+    "title": "固本—制造与HSE",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#14：后市场运营能力"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/固本—制造与HSE.md",
+    "title": "固本—制造与HSE",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#15：安全风险防控（林爱彬）"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/固本—制造与HSE.md",
+    "title": "固本—制造与HSE",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "方针#16：环保减碳（林爱彬）"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/固本—制造与HSE.md",
+    "title": "固本—制造与HSE",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/重点行动计划/固本—制造与HSE.md",
+    "title": "固本—制造与HSE",
+    "type": "重点行动计划",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/E项目改善跟踪.md",
+    "title": "E项目改善跟踪",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/E项目改善跟踪.md",
+    "title": "E项目改善跟踪",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "预期收益"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/E项目改善跟踪.md",
+    "title": "E项目改善跟踪",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "改善类别"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/E项目改善跟踪.md",
+    "title": "E项目改善跟踪",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "产出物"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/E项目改善跟踪.md",
+    "title": "E项目改善跟踪",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "W13领导指示（2026-03-27）"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/E项目改善跟踪.md",
+    "title": "E项目改善跟踪",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/E项目改善跟踪.md",
+    "title": "E项目改善跟踪",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "执行中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/Q1经营指标.md",
+    "title": "Q1经营指标",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已更新",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/Q1经营指标.md",
+    "title": "Q1经营指标",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已更新",
+    "section": "公司整体"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/Q1经营指标.md",
+    "title": "Q1经营指标",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已更新",
+    "section": "罐箱业务"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/Q1经营指标.md",
+    "title": "Q1经营指标",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已更新",
+    "section": "医疗业务"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/Q1经营指标.md",
+    "title": "Q1经营指标",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已更新",
+    "section": "关键决策点"
+  },
+  {
+    "path": "26年中集环科工作区/经营数据/Q1经营指标.md",
+    "title": "Q1经营指标",
+    "type": "经营数据",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已更新",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "会议议程"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "一、经营数据概览（1-3月）"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "二、成本控制与采购策略"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "三、新业务拓展"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "四、制造能力与数字化转型"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "五、绩效指标承接"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "六、控股领导点评与总结"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "待办事项"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "关键洞察"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/商业计划汇报会议 2026-04-01.md",
+    "title": "商业计划及组织优化交流会 2026-04-01",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-04-01",
+    "status": "执行中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/E项目利润计划周例会 2026-03-27.md",
+    "title": "E项目利润计划周例会 2026-03-27",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-27",
+    "status": "执行中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/E项目利润计划周例会 2026-03-27.md",
+    "title": "E项目利润计划周例会 2026-03-27",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-27",
+    "status": "执行中",
+    "section": "会议议程"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/E项目利润计划周例会 2026-03-27.md",
+    "title": "E项目利润计划周例会 2026-03-27",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-27",
+    "status": "执行中",
+    "section": "一、各项改善举措最新进展"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/E项目利润计划周例会 2026-03-27.md",
+    "title": "E项目利润计划周例会 2026-03-27",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-27",
+    "status": "执行中",
+    "section": "二、管理部领导指示"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/E项目利润计划周例会 2026-03-27.md",
+    "title": "E项目利润计划周例会 2026-03-27",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-27",
+    "status": "执行中",
+    "section": "关键洞察"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/E项目利润计划周例会 2026-03-27.md",
+    "title": "E项目利润计划周例会 2026-03-27",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-27",
+    "status": "执行中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/双碳数字化讨论会 2026-01-07.md",
+    "title": "双碳数字化讨论会 2026-01-07",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-01-07",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/双碳数字化讨论会 2026-01-07.md",
+    "title": "双碳数字化讨论会 2026-01-07",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-01-07",
+    "status": "已完成",
+    "section": "议题一：欧盟CBAM政策影响"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/双碳数字化讨论会 2026-01-07.md",
+    "title": "双碳数字化讨论会 2026-01-07",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-01-07",
+    "status": "已完成",
+    "section": "议题二：双碳二期项目"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/双碳数字化讨论会 2026-01-07.md",
+    "title": "双碳数字化讨论会 2026-01-07",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-01-07",
+    "status": "已完成",
+    "section": "会后跟踪事项"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/双碳数字化讨论会 2026-01-07.md",
+    "title": "双碳数字化讨论会 2026-01-07",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-01-07",
+    "status": "已完成",
+    "section": "与绿色工厂的关联"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/双碳数字化讨论会 2026-01-07.md",
+    "title": "双碳数字化讨论会 2026-01-07",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-01-07",
+    "status": "已完成",
+    "section": "对数字化工作的影响"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/双碳数字化讨论会 2026-01-07.md",
+    "title": "双碳数字化讨论会 2026-01-07",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-01-07",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/方针细化讨论会 2026-03-06.md",
+    "title": "方针细化讨论会 2026-03-06",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-06",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/方针细化讨论会 2026-03-06.md",
+    "title": "方针细化讨论会 2026-03-06",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-06",
+    "status": "已完成",
+    "section": "四大议题"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/方针细化讨论会 2026-03-06.md",
+    "title": "方针细化讨论会 2026-03-06",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-06",
+    "status": "已完成",
+    "section": "总体管理要求"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/方针细化讨论会 2026-03-06.md",
+    "title": "方针细化讨论会 2026-03-06",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-06",
+    "status": "已完成",
+    "section": "对数字化工作的影响"
+  },
+  {
+    "path": "26年中集环科工作区/会议纪要/方针细化讨论会 2026-03-06.md",
+    "title": "方针细化讨论会 2026-03-06",
+    "type": "会议纪要",
+    "tags": [
+      ""
+    ],
+    "date": "2026-03-06",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q4总裁工作报告.md",
+    "title": "2026年Q4总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q4总裁工作报告.md",
+    "title": "2026年Q4总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "一、经营要点"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q4总裁工作报告.md",
+    "title": "2026年Q4总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "二、业务运营（全年回顾）"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q4总裁工作报告.md",
+    "title": "2026年Q4总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "三、战略举措进展（全年总结）"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q4总裁工作报告.md",
+    "title": "2026年Q4总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "四、绩效合同执行（年度评定）"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q4总裁工作报告.md",
+    "title": "2026年Q4总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "五、风险预警与应对"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q4总裁工作报告.md",
+    "title": "2026年Q4总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "六、2027年展望与规划"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q4总裁工作报告.md",
+    "title": "2026年Q4总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "附录"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q3总裁工作报告.md",
+    "title": "2026年Q3总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q3总裁工作报告.md",
+    "title": "2026年Q3总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "一、经营要点"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q3总裁工作报告.md",
+    "title": "2026年Q3总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "二、业务运营"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q3总裁工作报告.md",
+    "title": "2026年Q3总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "三、战略举措进展"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q3总裁工作报告.md",
+    "title": "2026年Q3总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "四、绩效合同执行概览"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q3总裁工作报告.md",
+    "title": "2026年Q3总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "五、风险预警与应对"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q3总裁工作报告.md",
+    "title": "2026年Q3总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "六、下季度重点工作"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q3总裁工作报告.md",
+    "title": "2026年Q3总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "附录：控股领导要求执行追踪"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q2总裁工作报告.md",
+    "title": "2026年Q2总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q2总裁工作报告.md",
+    "title": "2026年Q2总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "一、经营要点"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q2总裁工作报告.md",
+    "title": "2026年Q2总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "二、业务运营"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q2总裁工作报告.md",
+    "title": "2026年Q2总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "三、战略举措进展"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q2总裁工作报告.md",
+    "title": "2026年Q2总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "四、绩效合同执行概览"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q2总裁工作报告.md",
+    "title": "2026年Q2总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "五、风险预警与应对"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q2总裁工作报告.md",
+    "title": "2026年Q2总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "六、下季度重点工作"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q2总裁工作报告.md",
+    "title": "2026年Q2总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "待编制",
+    "section": "附录：控股领导要求执行追踪"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/总裁报告 MOC.md",
+    "title": "总裁报告 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/总裁报告 MOC.md",
+    "title": "总裁报告 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "报告总览"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/总裁报告 MOC.md",
+    "title": "总裁报告 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "报告结构标准"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/总裁报告 MOC.md",
+    "title": "总裁报告 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "编制流程"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/总裁报告 MOC.md",
+    "title": "总裁报告 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "数据来源"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/总裁报告 MOC.md",
+    "title": "总裁报告 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "关键指标追踪"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/总裁报告 MOC.md",
+    "title": "总裁报告 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "参考文件"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/总裁报告 MOC.md",
+    "title": "总裁报告 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "生效中",
+    "section": "相关链接"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q1总裁工作报告.md",
+    "title": "2026年Q1总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "编制中",
+    "section": ""
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q1总裁工作报告.md",
+    "title": "2026年Q1总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "编制中",
+    "section": "一、经营要点"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q1总裁工作报告.md",
+    "title": "2026年Q1总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "编制中",
+    "section": "二、业务运营"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q1总裁工作报告.md",
+    "title": "2026年Q1总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "编制中",
+    "section": "三、战略举措进展"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q1总裁工作报告.md",
+    "title": "2026年Q1总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "编制中",
+    "section": "四、绩效合同执行概览"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q1总裁工作报告.md",
+    "title": "2026年Q1总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "编制中",
+    "section": "五、风险预警与应对"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q1总裁工作报告.md",
+    "title": "2026年Q1总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "编制中",
+    "section": "六、下季度重点工作"
+  },
+  {
+    "path": "26年中集环科工作区/总裁报告/2026年Q1总裁工作报告.md",
+    "title": "2026年Q1总裁工作报告",
+    "type": "总裁报告",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "编制中",
+    "section": "附录：控股领导七项要求执行追踪"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "知识图谱"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "一、数据科学基础"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "二、数据工程与处理"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "三、数据可视化与沟通"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "四、机器学习与深度学习"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "五、因果推断与实验"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "六、高级分析与应用"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "课程全景表（26门）"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "与其他知识库的桥接"
+  },
+  {
+    "path": "Michigan MADS知识库/Michigan MADS知识库 MOC.md",
+    "title": "Michigan MADS知识库 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "源文件位置"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识一：线性代数基础"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识二：奇异值分解 (SVD)"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识三：梯度下降"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识四：马尔科夫链"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识五：信息论基础"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识六：数据科学伦理框架"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/数据科学基础/数学方法与DS伦理.md",
+    "title": "数学方法与DS伦理",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "因果推断部分"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：潜在结果框架 (Potential Outcomes)"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：匹配方法"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：控制回归与遗漏变量偏差"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实验设计部分"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：实验设计原则"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：假设检验"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：A/B 测试与效力分析"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/因果推断与实验/因果推断与实验设计.md",
+    "title": "因果推断与实验设计",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：回归模型"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：分类模型"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：模型评估"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：交叉验证与超参数调优"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/监督学习.md",
+    "title": "监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "深度学习部分"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：神经网络基础"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：卷积神经网络 (CNN)"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：循环神经网络 (RNN)"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "强化学习部分"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：马尔可夫决策过程 (MDP)"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：无模型方法"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：函数近似与策略梯度"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/深度学习与强化学习.md",
+    "title": "深度学习与强化学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：主成分分析 (PCA)"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：流形学习"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：密度估计与异常检测"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：聚类算法"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/无监督学习.md",
+    "title": "无监督学习",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：N-gram 语言模型"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：隐马尔可夫模型 (HMM)"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：时间序列模式"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识：时间序列相似性"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/机器学习与深度学习/数据挖掘进阶.md",
+    "title": "数据挖掘进阶",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识一：Linux命令行数据处理"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识二：Pandas数据处理优化"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识三：MapReduce与mrjob"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识四：Spark/PySpark"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识五：SQL规范化与数据库设计"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/数据工程与处理/大数据与数据架构.md",
+    "title": "大数据与数据架构",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识一：图论基础与中心性"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识二：网络鲁棒性与节点移除"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识三：节点分类预测"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识四：NLP文本分类流水线"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识五：LIME可解释性"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识六：NLP改进策略"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/网络分析与NLP.md",
+    "title": "网络分析与NLP",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识一：端到端数据分析方法论"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识二：探索性数据分析 (EDA) 模式"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识三：复购预测项目 (Milestone II)"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识四：时间序列处理"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识五：定性研究方法"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识六：项目交付最佳实践"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/高级分析与应用/毕业项目与实践.md",
+    "title": "毕业项目与实践",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": ""
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "覆盖课程"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识一：可视化设计框架"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识二：Altair声明式可视化"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识三：密度图与分布可视化"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识四：不确定性可视化"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识五：Matplotlib模式"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "核心知识六：数据沟通原则"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "方法选择指南"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "工具速查"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "实战洞察"
+  },
+  {
+    "path": "Michigan MADS知识库/数据可视化与沟通/可视化设计与数据沟通.md",
+    "title": "可视化设计与数据沟通",
+    "type": "课程笔记",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已完成",
+    "section": "相关链接"
+  },
+  {
+    "path": "Claude记忆同步/feedback_investment_critical.md",
+    "title": "feedback_investment_critical",
+    "type": "feedback",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "Claude记忆同步/feedback_style.md",
+    "title": "feedback_style",
+    "type": "feedback",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "Claude记忆同步/project_obsidian_vault.md",
+    "title": "project_obsidian_vault",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "Claude记忆同步/user_profile.md",
+    "title": "user_profile",
+    "type": "user",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "Claude记忆同步/project_shenlan_idp.md",
+    "title": "project_shenlan_idp",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "深蓝行动二期班"
+  },
+  {
+    "path": "Claude记忆同步/project_shenlan_idp.md",
+    "title": "project_shenlan_idp",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "挑战性课题（2026年4月修订版）"
+  },
+  {
+    "path": "Claude记忆同步/project_shenlan_idp.md",
+    "title": "project_shenlan_idp",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "三大发展角色（修订后）"
+  },
+  {
+    "path": "Claude记忆同步/project_shenlan_idp.md",
+    "title": "project_shenlan_idp",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "自我认知"
+  },
+  {
+    "path": "Claude记忆同步/project_shenlan_idp.md",
+    "title": "project_shenlan_idp",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "聚焦发展三方面"
+  },
+  {
+    "path": "Claude记忆同步/project_shenlan_idp.md",
+    "title": "project_shenlan_idp",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "180天上岗发展计划"
+  },
+  {
+    "path": "Claude记忆同步/project_shenlan_idp.md",
+    "title": "project_shenlan_idp",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "IDP修订版"
+  },
+  {
+    "path": "Claude记忆同步/MEMORY.md",
+    "title": "MEMORY",
+    "type": "",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "基本信息"
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "投资概要"
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "核心目标"
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "进度计划"
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "投资构成 (合计9,980万元)"
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "建筑面积"
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "产线对比 (搬迁方案 vs 原灯塔方案)"
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "财务测算 (搬迁前后对比)"
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "市场背景"
+  },
+  {
+    "path": "Claude记忆同步/project_tank_relocation.md",
+    "title": "project_tank_relocation",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "关键审批要求"
+  },
+  {
+    "path": "Claude记忆同步/project_procurement_optimization.md",
+    "title": "project_procurement_optimization",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "项目概览"
+  },
+  {
+    "path": "Claude记忆同步/project_procurement_optimization.md",
+    "title": "project_procurement_optimization",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "文件结构 (C:\\Users\\01455310\\)"
+  },
+  {
+    "path": "Claude记忆同步/project_procurement_optimization.md",
+    "title": "project_procurement_optimization",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "钢材模型关键特性"
+  },
+  {
+    "path": "Claude记忆同步/project_procurement_optimization.md",
+    "title": "project_procurement_optimization",
+    "type": "project",
+    "tags": [],
+    "date": "",
+    "status": "",
+    "section": "技术栈"
+  },
+  {
+    "path": "25年中集环科工作区/25年工作信息存留 MOC.md",
+    "title": "25年工作信息存留 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": ""
+  },
+  {
+    "path": "25年中集环科工作区/25年工作信息存留 MOC.md",
+    "title": "25年工作信息存留 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "知识体系"
+  },
+  {
+    "path": "25年中集环科工作区/25年工作信息存留 MOC.md",
+    "title": "25年工作信息存留 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "经营回顾"
+  },
+  {
+    "path": "25年中集环科工作区/25年工作信息存留 MOC.md",
+    "title": "25年工作信息存留 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "战略发展"
+  },
+  {
+    "path": "25年中集环科工作区/25年工作信息存留 MOC.md",
+    "title": "25年工作信息存留 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "能力建设"
+  },
+  {
+    "path": "25年中集环科工作区/25年工作信息存留 MOC.md",
+    "title": "25年工作信息存留 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "关键经验教训（26年参照）"
+  },
+  {
+    "path": "25年中集环科工作区/25年工作信息存留 MOC.md",
+    "title": "25年工作信息存留 MOC",
+    "type": "MOC",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "",
+    "section": "与其他知识区的关联"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/新业务拓展与并购.md",
+    "title": "新业务拓展与并购",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": ""
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/新业务拓展与并购.md",
+    "title": "新业务拓展与并购",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "25年拓展概况"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/新业务拓展与并购.md",
+    "title": "新业务拓展与并购",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "六大赛道布局"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/新业务拓展与并购.md",
+    "title": "新业务拓展与并购",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "25年 → 26年管线传递"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/新业务拓展与并购.md",
+    "title": "新业务拓展与并购",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "关键决策点"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/新业务拓展与并购.md",
+    "title": "新业务拓展与并购",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "相关链接"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/战略规划与投资布局.md",
+    "title": "战略规划与投资布局",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": ""
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/战略规划与投资布局.md",
+    "title": "战略规划与投资布局",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "中长期战略框架"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/战略规划与投资布局.md",
+    "title": "战略规划与投资布局",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "募投项目进展"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/战略规划与投资布局.md",
+    "title": "战略规划与投资布局",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "年度技改投资"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/战略规划与投资布局.md",
+    "title": "战略规划与投资布局",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "2026年组织架构重组"
+  },
+  {
+    "path": "25年中集环科工作区/战略发展/战略规划与投资布局.md",
+    "title": "战略规划与投资布局",
+    "type": "战略发展",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "相关链接"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/数字化与智能制造成果.md",
+    "title": "数字化与智能制造成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": ""
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/数字化与智能制造成果.md",
+    "title": "数字化与智能制造成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "RPA流程自动化"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/数字化与智能制造成果.md",
+    "title": "数字化与智能制造成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "BI与数据分析"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/数字化与智能制造成果.md",
+    "title": "数字化与智能制造成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "智能制造与自动化"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/数字化与智能制造成果.md",
+    "title": "数字化与智能制造成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "数字化关务合规"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/数字化与智能制造成果.md",
+    "title": "数字化与智能制造成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "25年 → 26年能力传递"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/数字化与智能制造成果.md",
+    "title": "数字化与智能制造成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "关键决策点"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/数字化与智能制造成果.md",
+    "title": "数字化与智能制造成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "相关链接"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/供应链与降本成果.md",
+    "title": "供应链与降本成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": ""
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/供应链与降本成果.md",
+    "title": "供应链与降本成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "降本全景"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/供应链与降本成果.md",
+    "title": "供应链与降本成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "采购降本"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/供应链与降本成果.md",
+    "title": "供应链与降本成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "设计降本"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/供应链与降本成果.md",
+    "title": "供应链与降本成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "固定费用压缩"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/供应链与降本成果.md",
+    "title": "供应链与降本成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "供应链管理提升"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/供应链与降本成果.md",
+    "title": "供应链与降本成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "25年 → 26年降本传递"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/供应链与降本成果.md",
+    "title": "供应链与降本成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "关键决策点"
+  },
+  {
+    "path": "25年中集环科工作区/能力建设/供应链与降本成果.md",
+    "title": "供应链与降本成果",
+    "type": "能力建设",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "相关链接"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": ""
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "公司基本信息"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "核心财务指标"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "分业务板块"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "季度经营走势"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "订单情况"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "募投项目进展"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "分红与股东回报"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "费用与研发"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "业绩下滑核心原因（管理层讨论）"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "未来展望（年报披露）"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "与内部数据的交叉验证"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "数据来源"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度年报披露（301559）.md",
+    "title": "2025年度年报披露（301559）",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "相关链接"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度经营总结.md",
+    "title": "2025年度经营总结",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": ""
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度经营总结.md",
+    "title": "2025年度经营总结",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "全年业绩总览"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度经营总结.md",
+    "title": "2025年度经营总结",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "分业务线业绩"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度经营总结.md",
+    "title": "2025年度经营总结",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "季度走势"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度经营总结.md",
+    "title": "2025年度经营总结",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "全年追赶计划执行情况"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度经营总结.md",
+    "title": "2025年度经营总结",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "26年经营目标（对比基线）"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度经营总结.md",
+    "title": "2025年度经营总结",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "关键决策点"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/2025年度经营总结.md",
+    "title": "2025年度经营总结",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "相关链接"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/市场环境与行业分析.md",
+    "title": "市场环境与行业分析",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": ""
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/市场环境与行业分析.md",
+    "title": "市场环境与行业分析",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "宏观经济环境"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/市场环境与行业分析.md",
+    "title": "市场环境与行业分析",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "化工行业态势"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/市场环境与行业分析.md",
+    "title": "市场环境与行业分析",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "罐箱市场分析"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/市场环境与行业分析.md",
+    "title": "市场环境与行业分析",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "对26年的启示"
+  },
+  {
+    "path": "25年中集环科工作区/经营回顾/市场环境与行业分析.md",
+    "title": "市场环境与行业分析",
+    "type": "经营回顾",
+    "tags": [
+      ""
+    ],
+    "date": "",
+    "status": "已归档",
+    "section": "相关链接"
+  }
+]
