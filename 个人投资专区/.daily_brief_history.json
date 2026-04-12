@@ -1,0 +1,132 @@
+{
+  "2026-04-12": {
+    "btc_price": 72752,
+    "fear_greed": 16,
+    "funding_rate": -8.108e-05,
+    "btc_dominance": 57.2,
+    "vol_7d": 35.9,
+    "zjhk_price": 16.5,
+    "zjhk_change": 2.17,
+    "bcti": 2106.0,
+    "steel_avg_trend": -4.4,
+    "opc_items": [
+      {
+        "source": "hn",
+        "title": "Launch HN: Chamber (YC W26) – An AI Teammate for GPU Infrastructure",
+        "summary": "Hey HN, we're Jie Shen, Charles, Andreas, and Shaocheng. We built Chamber ( https://usechamber.io ), an AI agent that ma",
+        "points": 26,
+        "comments": 7,
+        "url": "https://www.usechamber.io/",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Ask HN: How are you orchestrating multi-agent AI workflows in production?",
+        "summary": "I've been building AI agent pipelines for the past year and curious how others handle it. Specifically: - Do you use a f",
+        "points": 8,
+        "comments": 11,
+        "url": "https://news.ycombinator.com/item?id=47660705",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Orca – Executable skills and capabilities for AI agent workflows",
+        "summary": "",
+        "points": 3,
+        "comments": 1,
+        "url": "https://github.com/gfernandf/agent-skills",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Conductor – Multi-agent AI workflows in YAML with parallelism and human gate",
+        "summary": "",
+        "points": 3,
+        "comments": 1,
+        "url": "https://github.com/microsoft/conductor",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Ask HN: I burnt out from software development. What now?",
+        "summary": "When I start to program as a teenager, and it became my job in my early twenties, I was happy over the moon. I never mad",
+        "points": 13,
+        "comments": 12,
+        "url": "https://news.ycombinator.com/item?id=47591929",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Danube – AI Tools Marketplace",
+        "summary": "Hey HN, I built Danube, a marketplace where AI agents can discover and execute tools, and where developers can publish a",
+        "points": 3,
+        "comments": 1,
+        "url": "https://danubeai.com",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "5 App ideas people are asking for on Reddit right now",
+        "summary": "I've been spending the last few months doing something simple — reading Reddit and HN threads where people describe prob",
+        "points": 2,
+        "comments": 2,
+        "url": "https://news.ycombinator.com/item?id=47618992",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: No AI tool could annotate my files and cite text accurately",
+        "summary": "Hi HN Been building this for 2 years w/ my best friend. We find big-name AI tools pretty unusable for serious writing ta",
+        "points": 2,
+        "comments": 0,
+        "url": "https://old.reddit.com/r/LLMDevs/comments/1sbusn8/new_pdfviewer_notes_panel_search_downloader_tool/",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "36kr",
+        "title": "拿下豪华种子轮，一家明星AI公司宣布倒闭",
+        "summary": "作者/吴琼",
+        "url": "https://36kr.com/p/3762088319484419?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "36氪首发 | 深大教授AI芯片项目再融资近亿，主动式散热微系统服务传音",
+        "summary": "作者丨欧雪",
+        "url": "https://36kr.com/p/3761737030894342?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "工业和信息化部将发布一批“人工智能+”高价值场景",
+        "summary": "日前在武汉举行的中国人工智能产业发展联盟第十七次全体会议上，工业和信息化部科技司副司长杜广达表示，工业和信息化部将以制造业为主战场、应用牵引为主线，发布一批“人工智能+”高价值场景，探索一批典型应用，建设一批特色智能体，提供一批新型智能终端",
+        "url": "https://36kr.com/newsflashes/3762215677297158?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "千亿诉讼临近 OpenAI指控马斯克搞“突袭”",
+        "summary": "在美东时间周五晚间提交的法庭文件中，OpenAI表示，马斯克本周早些时候提出的新诉求，显然意在“刁难被告、扰乱庭审程序，同时试图重塑其就本案对外塑造的舆论形象”。马斯克于2024年起诉OpenAI及微软公司，指控这家ChatGPT开发者在从",
+        "url": "https://36kr.com/newsflashes/3762063409234434?f=rss"
+      },
+      {
+        "source": "github",
+        "title": "NousResearch///hermes-agent",
+        "summary": "The agent that grows with you",
+        "stars": "6,438 stars today",
+        "lang": "Python"
+      },
+      {
+        "source": "github",
+        "title": "coleam00///Archon",
+        "summary": "The first open-source harness builder for AI coding. Make AI coding deterministic and repeatable.",
+        "stars": "1,346 stars today",
+        "lang": "TypeScript"
+      },
+      {
+        "source": "github",
+        "title": "forrestchang///andrej-karpathy-skills",
+        "summary": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+        "stars": "1,066 stars today",
+        "lang": ""
+      }
+    ]
+  }
+}
