@@ -128,5 +128,134 @@
         "lang": ""
       }
     ]
+  },
+  "2026-04-13": {
+    "btc_price": 70676,
+    "fear_greed": null,
+    "funding_rate": null,
+    "btc_dominance": 56.9,
+    "vol_7d": 43.1,
+    "zjhk_price": 16.5,
+    "zjhk_change": 2.17,
+    "steel_avg_trend": -4.4,
+    "opc_items": [
+      {
+        "source": "hn",
+        "title": "Launch HN: Chamber (YC W26) – An AI Teammate for GPU Infrastructure",
+        "summary": "Hey HN, we're Jie Shen, Charles, Andreas, and Shaocheng. We built Chamber ( https://usechamber.io ), an AI agent that ma",
+        "points": 26,
+        "comments": 7,
+        "url": "https://www.usechamber.io/",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Ask HN: How are you orchestrating multi-agent AI workflows in production?",
+        "summary": "I've been building AI agent pipelines for the past year and curious how others handle it. Specifically: - Do you use a f",
+        "points": 8,
+        "comments": 11,
+        "url": "https://news.ycombinator.com/item?id=47660705",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Orca – Executable skills and capabilities for AI agent workflows",
+        "summary": "",
+        "points": 3,
+        "comments": 1,
+        "url": "https://github.com/gfernandf/agent-skills",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Conductor – Multi-agent AI workflows in YAML with parallelism and human gate",
+        "summary": "",
+        "points": 3,
+        "comments": 1,
+        "url": "https://github.com/microsoft/conductor",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Ask HN: I burnt out from software development. What now?",
+        "summary": "When I start to program as a teenager, and it became my job in my early twenties, I was happy over the moon. I never mad",
+        "points": 13,
+        "comments": 12,
+        "url": "https://news.ycombinator.com/item?id=47591929",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Arbory – Native iOS dashboard and widgets for Plausible Analytics",
+        "summary": "Hey HN. Long-time lurker (2017) here, but finally something to post about. I've been building an iOS companion app for P",
+        "points": 6,
+        "comments": 0,
+        "url": "https://arbory.io/",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Danube – AI Tools Marketplace",
+        "summary": "Hey HN, I built Danube, a marketplace where AI agents can discover and execute tools, and where developers can publish a",
+        "points": 3,
+        "comments": 1,
+        "url": "https://danubeai.com",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "5 App ideas people are asking for on Reddit right now",
+        "summary": "I've been spending the last few months doing something simple — reading Reddit and HN threads where people describe prob",
+        "points": 2,
+        "comments": 2,
+        "url": "https://news.ycombinator.com/item?id=47618992",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "36kr",
+        "title": "拿下豪华种子轮，一家明星AI公司宣布倒闭",
+        "summary": "作者/吴琼",
+        "url": "https://36kr.com/p/3762088319484419?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "36氪首发 | 深大教授AI芯片项目再融资近亿，主动式散热微系统服务传音",
+        "summary": "作者丨欧雪",
+        "url": "https://36kr.com/p/3761737030894342?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "苹果AI负责人将离职",
+        "summary": "马克 · 古尔曼在其最新一期《Power On》中提到，2018年从谷歌跳槽空降到苹果的前AI负责人约翰 · 詹南德雷亚确认将于本周正式结束其在苹果的“休整期”。古尔曼指出，自2025年3月苹果决定大幅削减其AI职责以来，他的离职就已然注定",
+        "url": "https://36kr.com/newsflashes/3764454058328838?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "英国金融监管机构急于评估Anthropic最新人工智能模型的风险",
+        "summary": "据英国《金融时报》周日报道，英国金融监管机构正在与政府网络安全机构和各大银行举行紧急会谈，以评估Anthropic公司最新的人工智能模型带来的风险。知情人士称，英国主要银行、保险公司和交易所的代表预计将在未来两周与监管机构举行的一次会议上听",
+        "url": "https://36kr.com/newsflashes/3764432164520453?f=rss"
+      },
+      {
+        "source": "github",
+        "title": "NousResearch///hermes-agent",
+        "summary": "The agent that grows with you",
+        "stars": "7,450 stars today",
+        "lang": "Python"
+      },
+      {
+        "source": "github",
+        "title": "forrestchang///andrej-karpathy-skills",
+        "summary": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+        "stars": "2,351 stars today",
+        "lang": ""
+      },
+      {
+        "source": "github",
+        "title": "multica-ai///multica",
+        "summary": "The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills.",
+        "stars": "1,626 stars today",
+        "lang": "TypeScript"
+      }
+    ]
   }
 }

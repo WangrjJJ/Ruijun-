@@ -11,3 +11,8 @@ desktop.ini
 # 临时文件
 *.tmp
 *.bak
+
+# JARVIS SQLite（本地状态，WAL sidecar文件）
+.jarvis/data/jarvis.db
+.jarvis/data/jarvis.db-wal
+.jarvis/data/jarvis.db-shm

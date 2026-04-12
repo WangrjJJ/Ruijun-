@@ -814,6 +814,9 @@ def print_brief():
         print("\n⚡ 信号关联")
         for ins in insights:
             print(f"  {ins}")
+        journal_path = os.path.join(os.path.dirname(SCRIPT_DIR), ".jarvis", "journal.py")
+        print(f"\n  📝 有新信号触发 — 如有操作决策，建议记录:")
+        print(f"     python3 {journal_path} log --domain investment --title \"...\"")
 
     # ── ③ OPC / AI 动态 ─────────────────────────────────────
     print("\n③ OPC机会 & AI动态")

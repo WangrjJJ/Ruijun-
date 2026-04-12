@@ -13,6 +13,7 @@ JARVIS Search — Obsidian vault语义搜索
 import os
 import sys
 import json
+import sqlite3
 import argparse
 import numpy as np
 import requests
@@ -20,6 +21,7 @@ import requests
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_FILE = os.path.join(SCRIPT_DIR, "config.json")
 DATA_DIR = os.path.join(SCRIPT_DIR, "data")
+DB_PATH = os.path.join(DATA_DIR, "jarvis.db")
 
 
 def load_config():
@@ -134,6 +136,39 @@ def search(query: str, top_k: int = 5, type_filter: str = None,
     return results
 
 
+def search_decisions(query, top_k=5):
+    """在决策日志中搜索（LIKE关键词匹配）"""
+    if not os.path.exists(DB_PATH):
+        return []
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    pattern = f"%{query}%"
+    rows = conn.execute(
+        """SELECT id, domain, title, context, chosen, rationale, tags,
+                  confidence, status, created_at
+           FROM decisions
+           WHERE title LIKE ? OR context LIKE ? OR rationale LIKE ? OR tags LIKE ?
+           ORDER BY created_at DESC LIMIT ?""",
+        (pattern, pattern, pattern, pattern, top_k)
+    ).fetchall()
+    conn.close()
+    results = []
+    for rank, row in enumerate(rows, 1):
+        results.append({
+            "rank": rank,
+            "source": "decision",
+            "id": row["id"],
+            "domain": row["domain"],
+            "title": row["title"],
+            "context": row["context"][:200] if row["context"] else "",
+            "chosen": row["chosen"],
+            "tags": row["tags"],
+            "status": row["status"],
+            "created_at": row["created_at"],
+        })
+    return results
+
+
 def main():
     parser = argparse.ArgumentParser(description="JARVIS 语义搜索")
     parser.add_argument("query", help="搜索查询文本")
@@ -142,9 +177,16 @@ def main():
     parser.add_argument("--tag", dest="tag_filter", help="按tag过滤（如: 投资）")
     parser.add_argument("--format", dest="fmt", choices=["brief", "detail"],
                         default="brief", help="输出格式")
+    parser.add_argument("--source", choices=["vault", "decisions", "all"],
+                        default="vault", help="搜索源（默认vault）")
     args = parser.parse_args()
 
-    results = search(args.query, args.top_k, args.type_filter, args.tag_filter, args.fmt)
+    results = []
+    if args.source in ("vault", "all"):
+        results.extend(search(args.query, args.top_k, args.type_filter,
+                              args.tag_filter, args.fmt))
+    if args.source in ("decisions", "all"):
+        results.extend(search_decisions(args.query, args.top_k))
     print(json.dumps(results, ensure_ascii=False, indent=2))
 
 

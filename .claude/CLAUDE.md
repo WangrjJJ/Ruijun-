@@ -166,6 +166,52 @@ python3 /Users/wangruijun/Documents/Ruijun的知识库/.jarvis/indexer.py       
 python3 /Users/wangruijun/Documents/Ruijun的知识库/.jarvis/indexer.py --force   # 全量重建
 ```
 
+**跨源搜索**：同时搜索vault和决策日志：
+```bash
+python3 /Users/wangruijun/Documents/Ruijun的知识库/.jarvis/search.py "关键词" --source all
+python3 /Users/wangruijun/Documents/Ruijun的知识库/.jarvis/search.py "关键词" --source decisions
+```
+
+## JARVIS 决策日志
+
+记录、查询、复盘个人决策（工作/投资），跨会话结构化记忆。数据存储在 `.jarvis/data/jarvis.db`（SQLite）。
+
+```bash
+JARVIS="/Users/wangruijun/Documents/Ruijun的知识库/.jarvis/journal.py"
+
+# 记录决策
+python3 $JARVIS log --domain work --title "QMS选型" --context "背景" --chosen "方案A" --rationale "理由" --tags "QMS,数字化" --confidence 4
+python3 $JARVIS log --domain investment --title "BTC操作" --tags "BTC,双币"
+
+# 查询
+python3 $JARVIS list                          # 最近20条
+python3 $JARVIS list --domain investment      # 按域过滤
+python3 $JARVIS list --tag "BTC" --days 30    # 按标签+时间
+python3 $JARVIS show --id 1                   # 详情+复盘历史
+
+# 复盘
+python3 $JARVIS review --id 1 --score 4 --result "实际结果" --lesson "经验"
+
+# 统计
+python3 $JARVIS stats                         # 全局统计
+python3 $JARVIS stats --domain investment     # 投资域统计
+
+# KV记忆（跨会话短期状态）
+python3 $JARVIS memory set btc_bias "震荡偏空" --category investment
+python3 $JARVIS memory get btc_bias
+python3 $JARVIS memory list --category work
+python3 $JARVIS memory delete btc_bias
+```
+
+**使用策略**：
+1. 用户讨论决策点（方案选择、投资操作、战略判断）→ 主动建议 `journal.py log` 记录
+2. 引用历史决策 → 先 `journal.py list` + `show` 获取上下文
+3. 定期提醒复盘 open 状态决策 → `journal.py stats` 查看 stale_open
+4. **记忆边界**：
+   - `memory_kv` → 短期跨会话状态（当前市场判断、进行中blocker）
+   - Obsidian笔记 → 长期知识沉淀
+   - 决策日志 → 决策过程+结果追踪
+
 ## 操作规范
 
 1. **增量更新**：只改变化的笔记，不重新生成整个知识区
