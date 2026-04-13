@@ -168,5 +168,106 @@
         "category": "OPC·独立变现"
       }
     ]
+  },
+  "2026-04-14": {
+    "btc_price": 74705,
+    "fear_greed": 12,
+    "funding_rate": null,
+    "btc_dominance": null,
+    "vol_7d": 58.6,
+    "zjhk_price": 16.28,
+    "zjhk_change": -1.33,
+    "steel_avg_trend": -4.2,
+    "hashrate_eh": 965.6,
+    "difficulty_change": -3.74,
+    "fee_rate": 1,
+    "etf_daily_net_m": 140.6,
+    "etf_7d_net_m": 636.1,
+    "mstr_total_btc": 766970,
+    "mstr_avg_cost": 75644,
+    "oi_btc": null,
+    "opc_items": [
+      {
+        "source": "hn",
+        "title": "Ask HN: I burnt out from software development. What now?",
+        "summary": "When I start to program as a teenager, and it became my job in my early twenties, I was happy over the moon. I never mad",
+        "points": 13,
+        "comments": 12,
+        "url": "https://news.ycombinator.com/item?id=47591929",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Arbory – Native iOS dashboard and widgets for Plausible Analytics",
+        "summary": "Hey HN. Long-time lurker (2017) here, but finally something to post about. I've been building an iOS companion app for P",
+        "points": 6,
+        "comments": 0,
+        "url": "https://arbory.io/",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Danube – AI Tools Marketplace",
+        "summary": "Hey HN, I built Danube, a marketplace where AI agents can discover and execute tools, and where developers can publish a",
+        "points": 3,
+        "comments": 1,
+        "url": "https://danubeai.com",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "5 App ideas people are asking for on Reddit right now",
+        "summary": "I've been spending the last few months doing something simple — reading Reddit and HN threads where people describe prob",
+        "points": 2,
+        "comments": 2,
+        "url": "https://news.ycombinator.com/item?id=47618992",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "36kr",
+        "title": "荣耀做了个“养虾本”，预制5大主虾，要重新定义AI PC｜最前线",
+        "summary": "4月13日，荣耀正式发布自研终端侧“龙虾”AI智能体YOYO Claw，并宣布其将首发搭载于被称作“养虾本”的荣耀MagicBook系列轻薄本中。",
+        "url": "https://36kr.com/p/3765331768967686?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "氪星晚报｜“马斯克版微信”或在本周五上线；Meta押注AI数字人，正打造AI版扎克伯格；AI潮玩品牌“MOMOTOY”完成数千万元融资",
+        "summary": "金山办公：一季度净利同比预增402%-473%",
+        "url": "https://36kr.com/p/3765146768376326?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "这届留学生，用AI看病省出一辆特斯拉",
+        "summary": "回国做完四颗牙的根管治疗后，英国留学生土土盯着一万多的账单算了算，发现自己回国这一趟，竟然省下了一辆二手“特斯拉”。",
+        "url": "https://36kr.com/p/3764892434711049?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "早期项目 | 前大疆工程师创业陪伴机器人，李泽湘连投三轮，产品即将登陆众筹",
+        "summary": "作者 | 乔钰杰",
+        "url": "https://36kr.com/p/3764777930621705?f=rss"
+      },
+      {
+        "source": "github",
+        "title": "forrestchang///andrej-karpathy-skills",
+        "summary": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+        "stars": "5,828 stars today",
+        "lang": ""
+      },
+      {
+        "source": "github",
+        "title": "NousResearch///hermes-agent",
+        "summary": "The agent that grows with you",
+        "stars": "11,297 stars today",
+        "lang": "Python"
+      },
+      {
+        "source": "github",
+        "title": "thedotmack///claude-mem",
+        "summary": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.",
+        "stars": "3,185 stars today",
+        "lang": "TypeScript"
+      }
+    ]
   }
 }
