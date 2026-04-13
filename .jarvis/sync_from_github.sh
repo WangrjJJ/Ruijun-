@@ -3,7 +3,7 @@
 # Runs daily at 7:03 and 22:03 via launchd
 
 VAULT="/Users/wangruijun/Documents/Ruijun的知识库"
-LOG="$VAULT/.jarvis/data/sync.log"
+LOG="/Users/wangruijun/.jarvis/logs/sync.log"
 INDEXER="$VAULT/.jarvis/indexer.py"
 PYTHON="/usr/local/bin/python3"
 
@@ -15,45 +15,30 @@ if [ ! -x "$PYTHON" ]; then
     PYTHON="$(which python3 2>/dev/null)"
 fi
 
+mkdir -p "$(dirname "$LOG")"
 echo "=== $(date '+%Y-%m-%d %H:%M:%S') sync start ===" >> "$LOG"
 
 cd "$VAULT" || { echo "ERROR: cannot cd to $VAULT" >> "$LOG"; exit 1; }
 
-# Only stash tracked file modifications (not untracked files like logs/scripts)
-TRACKED_DIRTY=$(git diff --name-only 2>/dev/null)
-STAGED_DIRTY=$(git diff --cached --name-only 2>/dev/null)
-if [ -n "$TRACKED_DIRTY" ] || [ -n "$STAGED_DIRTY" ]; then
-    echo "  stashing tracked changes..." >> "$LOG"
-    git stash push --no-include-untracked -m "jarvis-sync-autostash" >> "$LOG" 2>&1
-    STASHED=1
-else
-    STASHED=0
-fi
-
-# Pull with rebase to keep history clean
-echo "  git pull --rebase origin master..." >> "$LOG"
-PULL_OUTPUT=$(git pull --rebase origin master 2>&1)
+# Pull with autostash (git handles stash/unstash of tracked changes)
+echo "  git pull --rebase --autostash..." >> "$LOG"
+PULL_OUTPUT=$(git pull --rebase --autostash origin master 2>&1)
 PULL_STATUS=$?
 echo "$PULL_OUTPUT" >> "$LOG"
 
-# Restore stashed changes
-if [ "$STASHED" -eq 1 ]; then
-    echo "  restoring stashed changes..." >> "$LOG"
-    git stash pop >> "$LOG" 2>&1
-fi
-
-# Check if new files were pulled
+# Update index if new content was pulled
 if echo "$PULL_OUTPUT" | grep -q "Already up to date"; then
     echo "  no changes, skipping index update" >> "$LOG"
+elif [ $PULL_STATUS -eq 0 ]; then
+    echo "  new changes pulled, updating index..." >> "$LOG"
+    "$PYTHON" "$INDEXER" >> "$LOG" 2>&1
+    echo "  index updated" >> "$LOG"
 else
-    if [ $PULL_STATUS -eq 0 ]; then
-        echo "  new changes pulled, updating index..." >> "$LOG"
-        "$PYTHON" "$INDEXER" >> "$LOG" 2>&1
-        echo "  index updated" >> "$LOG"
-    else
-        echo "  ERROR: git pull failed (status=$PULL_STATUS), will retry next run" >> "$LOG"
-    fi
+    echo "  ERROR: git pull failed (status=$PULL_STATUS), will retry next run" >> "$LOG"
 fi
 
 echo "=== $(date '+%Y-%m-%d %H:%M:%S') sync done ===" >> "$LOG"
 echo "" >> "$LOG"
+
+# Keep log file under 1000 lines
+tail -500 "$LOG" > "$LOG.tmp" && mv "$LOG.tmp" "$LOG"
