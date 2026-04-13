@@ -41,7 +41,7 @@ tags:
 - ETF 7天累计 >$500M + 恐贪 <25 → 机构逆势吸筹 (中期看多)
 - ETF 日净流出 >$200M 连续3天 → ETF赎回潮 (短期卖压)
 
-**更新方式**: 手动更新 `.etf_flows.json`，每个交易日收盘后30秒
+**更新方式**: 自动采集 [bitbo.io](https://bitbo.io/treasuries/etf-flows/) 页面数据(curl解析JS)，`.etf_flows.json` 作为回退缓存
 
 ### 2. Strategy/MSTR持仓（周频）
 
@@ -59,7 +59,7 @@ tags:
 - 本周新增 >5,000 BTC → 飞轮活跃，短期价格支撑增强
 - BTC现价 < MSTR均价 → NAV折价，ATM飞轮承压 (边际买盘减弱风险)
 
-**更新方式**: 手动更新 `.mstr_holdings.json`，每周一查看8-K
+**更新方式**: 自动采集 [SEC EDGAR](https://data.sec.gov/submissions/CIK0001050446.json) 8-K filing(curl解析)，`.mstr_holdings.json` 作为回退缓存
 
 ### 3. 矿工经济（自动/日频）
 
@@ -117,52 +117,34 @@ tags:
 
 ```
 structural_intel.py
-├── fetch_miner_stats()     ← mempool.space (自动, 日频)
-├── fetch_onchain_supply()  ← blockchain.info (自动, 日频)
-├── fetch_exchange_proxy()  ← Binance OI (自动, 日频)
-├── fetch_etf_flows()       ← .etf_flows.json (手动, 日频)
-├── fetch_mstr_holdings()   ← .mstr_holdings.json (手动, 周频)
+├── fetch_miner_stats()     ← mempool.space API (自动, 日频)
+├── fetch_onchain_supply()  ← blockchain.info API (自动, 日频)
+├── fetch_exchange_proxy()  ← Binance OI API (自动, 日频)
+├── fetch_etf_flows()       ← bitbo.io curl自动采集 → .etf_flows.json 回退
+├── fetch_mstr_holdings()   ← SEC EDGAR curl自动采集 → .mstr_holdings.json 回退
+├── _auto_fetch_etf()       ← 解析 bitbo.io JS 数据数组
+├── _auto_fetch_mstr()      ← 解析 SEC EDGAR 8-K filing HTML
+├── _curl_text/_curl_json() ← subprocess curl (绕过 Python 3.9 SSL)
 └── fetch_all()             → 并行采集 → 日报⑤板块 + 周报
 ```
 
-## 手动数据更新指南
+## 数据采集方式
 
-### ETF资金流 (每个交易日)
+### ETF资金流 — 全自动 (bitbo.io)
 
-1. 打开 [Farside Investors](https://farside.co.uk/btc/)
-2. 记录当日 Total、IBIT、FBTC、GBTC 列
-3. 更新 `个人投资专区/.etf_flows.json`:
+自动从 [bitbo.io/treasuries/etf-flows/](https://bitbo.io/treasuries/etf-flows/) 抓取页面内嵌JS数据数组 (`historyBtc`, `aum_etf_blackrock` 等)，包含每日BTC/USD净流、IBIT/FBTC/GBTC分项、累计持仓。
 
-```json
-{
-  "date": "2026-04-11",
-  "daily_net_m": 240.5,
-  "ibit_net": 180.2,
-  "fbtc_net": 45.3,
-  "gbtc_net": -12.0,
-  "cumulative_btc": 721090,
-  "7d_net_m": 850.0
-}
-```
+采集成功后自动更新 `.etf_flows.json` 作为缓存。如 bitbo.io 不可用，回退读取缓存。
 
-### MSTR持仓 (每周一)
+### MSTR持仓 — 全自动 (SEC EDGAR)
 
-1. 打开 [strategy.com/purchases](https://www.strategy.com/purchases)
-2. 查看最新8-K
-3. 更新 `个人投资专区/.mstr_holdings.json`:
+自动从 SEC EDGAR 获取 Strategy Inc (CIK 0001050446) 最新 8-K filing，解析 "BTC Updates" 表格提取：持仓总量、均价、总成本、最近买入数据。
 
-```json
-{
-  "updated": "2026-04-07",
-  "total_btc": 766970,
-  "avg_cost": 75644,
-  "total_cost_usd": 58020000000,
-  "pct_supply": 3.6,
-  "last_purchase_btc": 4871,
-  "last_purchase_date": "2026-04-05",
-  "last_purchase_price": 67718
-}
-```
+采集成功后自动更新 `.mstr_holdings.json` 作为缓存。如 EDGAR 不可用，回退读取缓存。
+
+### 技术说明
+
+由于 Mac Python 3.9 存在 SSL 兼容性问题，所有自动采集通过 `subprocess.run(["curl", ...])` 实现，绕过 Python SSL 栈。所有 API 调用（mempool/blockchain/binance）也增加了 curl 回退。
 
 ## 交叉信号总表
 

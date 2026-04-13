@@ -257,40 +257,23 @@ def _auto_fetch_mstr():
 
     section = text[btc_idx:btc_idx + 2000]
 
-    # Parse "As of {date}" blocks — take the LAST one (most recent)
-    as_of_blocks = list(re.finditer(
-        r'As of (\w+ \d+, \d{4})\s+'
-        r'(?:BTC Acquired.*?Average Purchase Price.*?)?'  # skip headers
-        r'Aggregate BTC Holdings\s+'
-        r'Aggregate Purchase Price.*?Average Purchase Price.*?'
-        r'([\d,]+)\s*\$\s*([\d.]+)\s*\$\s*([\d,]+)',
+    # Parse number triplets: "{int} $ {float} $ {int}" (using [$] for Python 3.9 compat)
+    nums = re.findall(
+        r'([\d,]+)\s+[$]\s+([\d.]+)\s+[$]\s+([\d,]+)',
         section,
-    ))
+    )
+    # Filing has pairs: (purchase row, totals row) per period.
+    # Last triplet is the most recent "As of" totals: total_btc $ cost_B $ avg_price
+    if len(nums) >= 2:
+        total_btc_s, cost_b_s, avg_s = nums[-1]
+        result["total_btc"] = int(total_btc_s.replace(",", ""))
+        result["total_cost_usd"] = int(float(cost_b_s) * 1e9)
+        result["avg_cost"] = int(avg_s.replace(",", ""))
 
-    if not as_of_blocks:
-        # Simpler pattern: look for numbers after "As of" blocks
-        # Format: "{total_btc} $ {cost_b} $ {avg_price}"
-        nums = re.findall(
-            r'([\d,]+)\s+\$\s+([\d.]+)\s+\$\s+([\d,]+)',
-            section,
-        )
-        if len(nums) >= 2:
-            # Last set of 3 numbers is the most recent "As of" data
-            total_btc_s, cost_b_s, avg_s = nums[-1]
-            result["total_btc"] = int(total_btc_s.replace(",", ""))
-            result["total_cost_usd"] = int(float(cost_b_s) * 1e9)
-            result["avg_cost"] = int(avg_s.replace(",", ""))
-
-    else:
-        last_block = as_of_blocks[-1]
-        result["total_btc"] = int(last_block.group(2).replace(",", ""))
-        result["total_cost_usd"] = int(float(last_block.group(3)) * 1e9)
-        result["avg_cost"] = int(last_block.group(4).replace(",", ""))
-
-    # Parse latest purchase: "During Period ... BTC Acquired ... {btc} $ {cost_m} $ {price}"
+    # Parse latest purchase: "During Period {start} to {end}" then number triplet
     purchase_blocks = re.findall(
         r'During Period\s+(\w+ \d+, \d{4})\s+to\s+(\w+ \d+, \d{4})\s+.*?'
-        r'([\d,]+)\s+\$\s+([\d.]+)\s+\$\s+([\d,]+)',
+        r'([\d,]+)\s+[$]\s+([\d.]+)\s+[$]\s+([\d,]+)',
         section,
     )
     if purchase_blocks:
@@ -670,7 +653,8 @@ def format_section(struct_data, history=None):
         stale = _stale_tag(mstr)
         total = _fmt_num(mstr["total_btc"])
         cost_b = round(mstr.get("total_cost_usd", 0) / 1e9, 1)
-        avg = _fmt_num(mstr.get("avg_cost"), "$", 0)
+        avg_raw = mstr.get("avg_cost", 0)
+        avg = f"${avg_raw:,}"
         pct = mstr.get("pct_supply", 0)
 
         lines.append(f"  🏦 MSTR  持仓 {total} BTC (${cost_b}B)  均价 {avg}  占供应 {pct}%{stale}")

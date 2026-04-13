@@ -1,12 +1,10 @@
 {
-  "updated": "2026-04-07",
+  "updated": "2026-04-06",
   "total_btc": 766970,
-  "avg_cost": 75644,
   "total_cost_usd": 58020000000,
-  "pct_supply": 3.6,
+  "avg_cost": 75644,
   "last_purchase_btc": 4871,
-  "last_purchase_date": "2026-04-05",
   "last_purchase_price": 67718,
-  "_comment": "周频更新: 从 https://www.strategy.com/purchases 或 https://bitcointreasuries.net 摘录",
-  "_update_guide": "MSTR通常周一发布8-K, 更新 updated/total_btc/avg_cost/last_purchase_* 字段"
+  "last_purchase_date": "2026-04-05",
+  "pct_supply": 3.65
 }
