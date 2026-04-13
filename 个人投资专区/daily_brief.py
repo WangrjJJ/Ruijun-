@@ -39,6 +39,12 @@ except ImportError:
     sys.exit(1)
 
 try:
+    import structural_intel
+    HAS_STRUCTURAL = True
+except ImportError:
+    HAS_STRUCTURAL = False
+
+try:
     from bs4 import BeautifulSoup
     HAS_BS4 = True
 except ImportError:
@@ -808,8 +814,35 @@ def print_brief():
         print(f"                         {steel['detail']}")
     snapshot["steel_avg_trend"] = steel.get("avg_trend", 0)
 
+    # ── ⑤ 结构性情报 ──────────────────────────────────────
+    struct_data = None
+    if HAS_STRUCTURAL:
+        try:
+            struct_data = structural_intel.fetch_all()
+            # Get yesterday's data for trend comparison
+            yesterday = (now - timedelta(days=1)).strftime("%Y-%m-%d")
+            prev_snapshot = history.get(yesterday, {})
+            print(structural_intel.format_section(struct_data, history=prev_snapshot))
+            # Merge structural fields into snapshot
+            snapshot.update(structural_intel.to_snapshot_fields(struct_data))
+        except Exception as e:
+            print(f"\n⑤ 结构性情报\n  ⚠️  采集失败: {e}")
+
     # ── ⚡ 跨信号洞察 ───────────────────────────────────────
     insights = generate_insights(crypto, company, history)
+
+    # Append structural insights
+    if HAS_STRUCTURAL and struct_data:
+        try:
+            yesterday = (now - timedelta(days=1)).strftime("%Y-%m-%d")
+            prev_snapshot = history.get(yesterday, {})
+            struct_insights = structural_intel.generate_structural_insights(
+                struct_data, crypto_data=crypto, history=prev_snapshot
+            )
+            insights.extend(struct_insights)
+        except Exception:
+            pass
+
     if insights:
         print("\n⚡ 信号关联")
         for ins in insights:
@@ -886,7 +919,10 @@ def print_brief():
 
     print()
     print("─" * W)
-    print(f"  {now.strftime('%H:%M:%S')} | CoinGecko · Binance · akshare · HN · 36kr · GitHub")
+    sources = "CoinGecko · Binance · akshare · HN · 36kr · GitHub"
+    if HAS_STRUCTURAL:
+        sources += " · mempool.space · blockchain.info"
+    print(f"  {now.strftime('%H:%M:%S')} | {sources}")
     print("=" * W)
     print()
 

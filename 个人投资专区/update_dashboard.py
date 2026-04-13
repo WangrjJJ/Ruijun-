@@ -22,6 +22,12 @@ try:
 except ImportError:
     SSL_CONTEXT = ssl._create_unverified_context()
 
+try:
+    import structural_intel
+    HAS_STRUCTURAL = True
+except ImportError:
+    HAS_STRUCTURAL = False
+
 # ========== 路径配置（Mac） ==========
 VAULT_DIR = os.path.expanduser('~/Documents/Ruijun的知识库')
 INVEST_DIR = os.path.join(VAULT_DIR, '个人投资专区')
@@ -605,6 +611,17 @@ def generate_weekly_report(data_json):
 {triggers_md}
 """
 
+    # ── 结构性情报 ─────────────────────────────────────────
+    structural_section = ''
+    if HAS_STRUCTURAL:
+        try:
+            struct_data = structural_intel.fetch_all()
+            structural_section = structural_intel.format_weekly_section(
+                struct_data, btc_price=d['btc_price_usd']
+            )
+        except Exception:
+            pass
+
     # ── 操作清单 ──────────────────────────────────────────
     checklist = ''
     if bl:
@@ -657,6 +674,7 @@ tags:
 | C池储备 | {d['pools']['C']['btc']} BTC | 冷存储不动 |
 | 年度已提现 | ¥{YTD_WITHDRAWN_CNY:,} | 目标¥{ANNUAL_TARGET_CNY:,} |
 {bl_section}{sh_section}{grid_section}
+{structural_section}
 ## 三池策略参数
 
 | 池子 | BTC | 建议行权价 | 预估APY |
