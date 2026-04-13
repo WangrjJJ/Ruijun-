@@ -14,6 +14,8 @@ BTC 结构性情报采集模块
 
 import json
 import os
+import re
+import subprocess
 import time
 import ssl
 import urllib.request
@@ -38,24 +40,24 @@ TIMEOUT = 15  # seconds per request
 # ─── 通用工具 ────────────────────────────────────────────────────────────
 
 def _fetch_json(url, timeout=TIMEOUT):
-    """GET JSON with SSL fallback, returns dict/list or None on failure."""
+    """GET JSON with SSL fallback + curl fallback, returns dict/list or None."""
     try:
         ctx = ssl.create_default_context()
         req = urllib.request.Request(url, headers={"User-Agent": "JARVIS/1.0"})
         with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
             return json.loads(resp.read().decode())
     except Exception:
-        # Retry without SSL verification (some China networks need this)
         try:
             ctx = ssl._create_unverified_context()
             with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
                 return json.loads(resp.read().decode())
         except Exception:
-            return None
+            # Final fallback: curl subprocess (handles Python 3.9 SSL bugs)
+            return _curl_json(url, timeout)
 
 
 def _fetch_text(url, timeout=TIMEOUT):
-    """GET raw text, returns str or None."""
+    """GET raw text with SSL fallback + curl fallback, returns str or None."""
     try:
         ctx = ssl.create_default_context()
         req = urllib.request.Request(url, headers={"User-Agent": "JARVIS/1.0"})
@@ -67,7 +69,9 @@ def _fetch_text(url, timeout=TIMEOUT):
             with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
                 return resp.read().decode().strip()
         except Exception:
-            return None
+            # Final fallback: curl subprocess
+            result = _curl_text(url, timeout)
+            return result.strip() if result else None
 
 
 def _load_json_file(path):
@@ -86,6 +90,230 @@ def _save_json_file(path, data):
             json.dump(data, f, ensure_ascii=False, indent=2)
     except Exception:
         pass
+
+
+# ─── curl subprocess (绕过 Python 3.9 SSL 问题) ────────────────────────────
+
+def _curl_text(url, timeout=TIMEOUT):
+    """Use system curl to fetch URL, bypassing Python SSL issues."""
+    try:
+        r = subprocess.run(
+            ["curl", "-s", "-L", "--max-time", str(timeout),
+             "-H", "User-Agent: JARVIS/1.0 wangruijun@example.com", url],
+            capture_output=True, text=True, timeout=timeout + 5,
+        )
+        if r.returncode == 0 and r.stdout:
+            return r.stdout
+    except Exception:
+        pass
+    return None
+
+
+def _curl_json(url, timeout=TIMEOUT):
+    """Fetch JSON via curl subprocess."""
+    text = _curl_text(url, timeout)
+    if text:
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            pass
+    return None
+
+
+# ─── bitbo.io ETF 自动采集 ──────────────────────────────────────────────────
+
+BITBO_ETF_URL = "https://bitbo.io/treasuries/etf-flows/"
+
+def _auto_fetch_etf():
+    """
+    从 bitbo.io 抓取 ETF 每日资金流数据。
+    返回 dict 兼容 .etf_flows.json 格式，或 None 失败。
+    """
+    html = _curl_text(BITBO_ETF_URL, timeout=20)
+    if not html:
+        return None
+
+    def _parse_array(name):
+        """Parse a JS array like: const name = [ [getPreviousBusinessDay(ts), truncate(val * price, 2)], ... ];"""
+        pat = re.escape(name) + r'\s*=\s*\[(.*?)\];'
+        m = re.search(pat, html, re.DOTALL)
+        if not m:
+            return []
+        raw = m.group(1)
+        return re.findall(
+            r'getPreviousBusinessDay\((\d+)\),\s*truncate\(([-\d.]+)\s*\*\s*([-\d.]+)',
+            raw,
+        )
+
+    hist_btc = _parse_array('historyBtc')
+    if not hist_btc:
+        return None
+
+    # Latest entry
+    ts_ms, btc_str, price_str = hist_btc[-1]
+    latest_date = datetime.fromtimestamp(int(ts_ms) / 1000)
+    daily_btc = float(btc_str)
+    ref_price = float(price_str)
+    daily_usd_m = round(daily_btc * ref_price / 1e6, 1)
+
+    # 7-day sum
+    last7 = hist_btc[-7:] if len(hist_btc) >= 7 else hist_btc
+    sum_7d_btc = sum(float(e[1]) for e in last7)
+    sum_7d_usd_m = round(sum_7d_btc * ref_price / 1e6, 1)
+
+    # Cumulative BTC (all-time sum)
+    cumulative_btc = int(sum(float(e[1]) for e in hist_btc))
+
+    # Per-ETF latest
+    etf_map = {
+        "aum_etf_blackrock": "ibit_net",
+        "aum_etf_fidelity": "fbtc_net",
+        "aum_etf_grayscale": "gbtc_net",
+    }
+    result = {
+        "date": latest_date.strftime("%Y-%m-%d"),
+        "daily_net_m": daily_usd_m,
+        "daily_net_btc": int(daily_btc),
+        "7d_net_m": sum_7d_usd_m,
+        "7d_net_btc": int(sum_7d_btc),
+        "cumulative_btc": cumulative_btc,
+        "source": "bitbo.io",
+    }
+
+    for js_name, key in etf_map.items():
+        entries = _parse_array(js_name)
+        if entries:
+            val = float(entries[-1][1])
+            result[key] = round(val * ref_price / 1e6, 1)  # $M
+
+    return result
+
+
+# ─── SEC EDGAR MSTR 自动采集 ────────────────────────────────────────────────
+
+EDGAR_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK0001050446.json"
+EDGAR_FILING_BASE = "https://www.sec.gov/Archives/edgar/data/1050446"
+
+def _auto_fetch_mstr():
+    """
+    从 SEC EDGAR 获取最新 Strategy/MSTR 8-K filing，解析 BTC 持仓数据。
+    返回 dict 兼容 .mstr_holdings.json 格式，或 None 失败。
+    """
+    # Step 1: Get filing list
+    subs = _curl_json(EDGAR_SUBMISSIONS_URL)
+    if not subs:
+        return None
+
+    recent = subs.get("filings", {}).get("recent", {})
+    forms = recent.get("form", [])
+    dates = recent.get("filingDate", [])
+    accns = recent.get("accessionNumber", [])
+    docs = recent.get("primaryDocument", [])
+
+    # Find latest 8-K with items 7.01/8.01 (BTC purchase announcements)
+    target_accn = None
+    target_doc = None
+    target_date = None
+    items_list = recent.get("items", [])
+    for i, f in enumerate(forms):
+        if f == "8-K" and i < len(items_list):
+            items = items_list[i]
+            if "8.01" in items or "7.01" in items:
+                target_accn = accns[i]
+                target_doc = docs[i]
+                target_date = dates[i]
+                break
+
+    if not target_accn:
+        return None
+
+    # Step 2: Fetch filing HTML
+    accn_nd = target_accn.replace("-", "")
+    url = f"{EDGAR_FILING_BASE}/{accn_nd}/{target_doc}"
+    html = _curl_text(url, timeout=20)
+    if not html:
+        return None
+
+    # Strip HTML tags
+    text = re.sub(r'<[^>]+>', ' ', html)
+    try:
+        import html as html_mod
+        text = html_mod.unescape(text)
+    except Exception:
+        pass
+    text = re.sub(r'\s+', ' ', text).strip()
+
+    # Step 3: Parse BTC purchase data
+    # Look for "As of {date}" section with: Aggregate BTC Holdings / Purchase Price / Average Price
+    # Pattern: "As of {date} ... {total_btc} $ {total_cost_b} $ {avg_price}"
+    result = {"updated": target_date, "source": "sec_edgar"}
+
+    # Find "BTC Updates" section
+    btc_idx = text.find("BTC Updates")
+    if btc_idx < 0:
+        btc_idx = text.find("Bitcoin Updates")
+    if btc_idx < 0:
+        return None
+
+    section = text[btc_idx:btc_idx + 2000]
+
+    # Parse "As of {date}" blocks — take the LAST one (most recent)
+    as_of_blocks = list(re.finditer(
+        r'As of (\w+ \d+, \d{4})\s+'
+        r'(?:BTC Acquired.*?Average Purchase Price.*?)?'  # skip headers
+        r'Aggregate BTC Holdings\s+'
+        r'Aggregate Purchase Price.*?Average Purchase Price.*?'
+        r'([\d,]+)\s*\$\s*([\d.]+)\s*\$\s*([\d,]+)',
+        section,
+    ))
+
+    if not as_of_blocks:
+        # Simpler pattern: look for numbers after "As of" blocks
+        # Format: "{total_btc} $ {cost_b} $ {avg_price}"
+        nums = re.findall(
+            r'([\d,]+)\s+\$\s+([\d.]+)\s+\$\s+([\d,]+)',
+            section,
+        )
+        if len(nums) >= 2:
+            # Last set of 3 numbers is the most recent "As of" data
+            total_btc_s, cost_b_s, avg_s = nums[-1]
+            result["total_btc"] = int(total_btc_s.replace(",", ""))
+            result["total_cost_usd"] = int(float(cost_b_s) * 1e9)
+            result["avg_cost"] = int(avg_s.replace(",", ""))
+
+    else:
+        last_block = as_of_blocks[-1]
+        result["total_btc"] = int(last_block.group(2).replace(",", ""))
+        result["total_cost_usd"] = int(float(last_block.group(3)) * 1e9)
+        result["avg_cost"] = int(last_block.group(4).replace(",", ""))
+
+    # Parse latest purchase: "During Period ... BTC Acquired ... {btc} $ {cost_m} $ {price}"
+    purchase_blocks = re.findall(
+        r'During Period\s+(\w+ \d+, \d{4})\s+to\s+(\w+ \d+, \d{4})\s+.*?'
+        r'([\d,]+)\s+\$\s+([\d.]+)\s+\$\s+([\d,]+)',
+        section,
+    )
+    if purchase_blocks:
+        # Last non-zero purchase
+        for pb in reversed(purchase_blocks):
+            btc_bought = int(pb[2].replace(",", ""))
+            if btc_bought > 0:
+                result["last_purchase_btc"] = btc_bought
+                result["last_purchase_price"] = int(pb[4].replace(",", ""))
+                # Parse end date
+                try:
+                    end_date = datetime.strptime(pb[1], "%B %d, %Y")
+                    result["last_purchase_date"] = end_date.strftime("%Y-%m-%d")
+                except Exception:
+                    result["last_purchase_date"] = pb[1]
+                break
+
+    # Supply percentage
+    if result.get("total_btc"):
+        result["pct_supply"] = round(result["total_btc"] / 21_000_000 * 100, 2)
+
+    # Validate: must have total_btc
+    return result if result.get("total_btc") else None
 
 
 _mem_cache = {}
@@ -206,11 +434,12 @@ def fetch_onchain_supply():
     return _cached_fetch("onchain_supply", _fetch) or {}
 
 
-# ─── 3. ETF 资金流 (手动JSON回退) ────────────────────────────────────────
+# ─── 3. ETF 资金流 (自动采集 → 手动JSON回退) ────────────────────────────────
 
 def fetch_etf_flows():
     """
-    优先读取本地 .etf_flows.json (用户手动更新或自动脚本写入)。
+    主路径: 自动从 bitbo.io 抓取 ETF 每日资金流。
+    回退: 本地 .etf_flows.json (用户手动更新)。
     返回:
     {
         "date": str,                   # 数据日期
@@ -221,29 +450,39 @@ def fetch_etf_flows():
         "cumulative_btc": int,         # ETF累计持仓 BTC
         "7d_net_m": float,             # 7天累计 $M
         "stale": bool,                 # 数据是否过期(>1天)
-        "source": "local_json"
+        "source": str                  # "bitbo.io" or "local_json"
     }
     """
-    data = _load_json_file(ETF_FILE)
-    if not data:
-        return {}
+    def _fetch():
+        # Primary: auto-fetch from bitbo.io
+        data = _auto_fetch_etf()
+        if data:
+            # Auto-save to local JSON as cache
+            _save_json_file(ETF_FILE, {k: v for k, v in data.items() if k != "source"})
+            data["stale"] = False
+            return data
 
-    data["source"] = "local_json"
-    # Check staleness
-    try:
-        data_date = datetime.strptime(data.get("date", ""), "%Y-%m-%d")
-        data["stale"] = (datetime.now() - data_date).days > 1
-    except Exception:
-        data["stale"] = True
+        # Fallback: local JSON
+        data = _load_json_file(ETF_FILE)
+        if not data:
+            return None
+        data["source"] = "local_json"
+        try:
+            data_date = datetime.strptime(data.get("date", ""), "%Y-%m-%d")
+            data["stale"] = (datetime.now() - data_date).days > 1
+        except Exception:
+            data["stale"] = True
+        return data
 
-    return data
+    return _cached_fetch("etf_flows", _fetch, ttl=3600) or {}
 
 
-# ─── 4. Strategy/MSTR 持仓 (缓存JSON) ───────────────────────────────────
+# ─── 4. Strategy/MSTR 持仓 (自动采集 → 缓存JSON回退) ────────────────────
 
 def fetch_mstr_holdings():
     """
-    读取本地 .mstr_holdings.json (7天TTL, 用户手动更新)。
+    主路径: 自动从 SEC EDGAR 解析最新 8-K filing。
+    回退: 本地 .mstr_holdings.json (用户手动更新)。
     返回:
     {
         "updated": str,                # 更新日期
@@ -255,21 +494,31 @@ def fetch_mstr_holdings():
         "last_purchase_date": str,     # 最近一次买入日期
         "last_purchase_price": float,  # 最近一次买入均价
         "stale": bool,                 # 数据>7天
-        "source": "local_json"
+        "source": str                  # "sec_edgar" or "local_json"
     }
     """
-    data = _load_json_file(MSTR_FILE)
-    if not data:
-        return {}
+    def _fetch():
+        # Primary: auto-fetch from SEC EDGAR
+        data = _auto_fetch_mstr()
+        if data and data.get("total_btc"):
+            # Auto-save to local JSON as cache
+            _save_json_file(MSTR_FILE, {k: v for k, v in data.items() if k != "source"})
+            data["stale"] = False
+            return data
 
-    data["source"] = "local_json"
-    try:
-        updated = datetime.strptime(data.get("updated", ""), "%Y-%m-%d")
-        data["stale"] = (datetime.now() - updated).days > 7
-    except Exception:
-        data["stale"] = True
+        # Fallback: local JSON
+        data = _load_json_file(MSTR_FILE)
+        if not data:
+            return None
+        data["source"] = "local_json"
+        try:
+            updated = datetime.strptime(data.get("updated", ""), "%Y-%m-%d")
+            data["stale"] = (datetime.now() - updated).days > 7
+        except Exception:
+            data["stale"] = True
+        return data
 
-    return data
+    return _cached_fetch("mstr_holdings", _fetch, ttl=86400) or {}
 
 
 # ─── 5. 交易所流向代理 (Binance OI) ──────────────────────────────────────
