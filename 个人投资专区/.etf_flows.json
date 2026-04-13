@@ -1,0 +1,11 @@
+{
+  "date": "2026-04-11",
+  "daily_net_m": 240.5,
+  "ibit_net": 180.2,
+  "fbtc_net": 45.3,
+  "gbtc_net": -12.0,
+  "cumulative_btc": 721090,
+  "7d_net_m": 850.0,
+  "_comment": "手动更新: 从 https://farside.co.uk/btc/ 或 https://sosovalue.com/assets/etf/us-btc-spot 摘录",
+  "_update_guide": "每个交易日收盘后更新 date + daily_net_m + 各ETF净流入; 7d_net_m 为最近5个交易日累计"
+}
