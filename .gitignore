@@ -16,3 +16,14 @@ desktop.ini
 .jarvis/data/jarvis.db
 .jarvis/data/jarvis.db-wal
 .jarvis/data/jarvis.db-shm
+
+# JARVIS 日志（本地运行产生）
+.jarvis/data/*.log
+.jarvis/data/launchd-sync.*
+
+# 投资区本地缓存（各设备独立）
+个人投资专区/.etf_flows.json
+个人投资专区/.mstr_holdings.json
+个人投资专区/.structural_cache.json
+个人投资专区/.price_cache.json
+个人投资专区/.daily_brief_history.json
