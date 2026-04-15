@@ -269,5 +269,121 @@
         "lang": "TypeScript"
       }
     ]
+  },
+  "2026-04-15": {
+    "btc_price": 74126,
+    "fear_greed": 21,
+    "funding_rate": null,
+    "btc_dominance": 57.3,
+    "vol_7d": 46.9,
+    "zjhk_price": 16.44,
+    "zjhk_change": 0.98,
+    "steel_avg_trend": 0,
+    "hashrate_eh": 993.9,
+    "difficulty_change": -2.36,
+    "fee_rate": 1,
+    "etf_daily_net_m": 35.3,
+    "etf_7d_net_m": 653.8,
+    "mstr_total_btc": 766970,
+    "mstr_avg_cost": 75644,
+    "oi_btc": null,
+    "opc_items": [
+      {
+        "source": "hn",
+        "title": "Launch HN: Chamber (YC W26) – An AI Teammate for GPU Infrastructure",
+        "summary": "Hey HN, we're Jie Shen, Charles, Andreas, and Shaocheng. We built Chamber ( https://usechamber.io ), an AI agent that ma",
+        "points": 26,
+        "comments": 7,
+        "url": "https://www.usechamber.io/",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Ask HN: How are you orchestrating multi-agent AI workflows in production?",
+        "summary": "I've been building AI agent pipelines for the past year and curious how others handle it. Specifically: - Do you use a f",
+        "points": 8,
+        "comments": 12,
+        "url": "https://news.ycombinator.com/item?id=47660705",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "SnapState - Persistent state for AI agent workflows",
+        "summary": "",
+        "points": 6,
+        "comments": 0,
+        "url": "https://snapstate.dev",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Orca – Executable skills and capabilities for AI agent workflows",
+        "summary": "",
+        "points": 3,
+        "comments": 1,
+        "url": "https://github.com/gfernandf/agent-skills",
+        "category": "AI工具·颠覆咨询/运营"
+      },
+      {
+        "source": "hn",
+        "title": "Ask HN: I burnt out from software development. What now?",
+        "summary": "When I start to program as a teenager, and it became my job in my early twenties, I was happy over the moon. I never mad",
+        "points": 13,
+        "comments": 12,
+        "url": "https://news.ycombinator.com/item?id=47591929",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Arbory – Native iOS dashboard and widgets for Plausible Analytics",
+        "summary": "Hey HN. Long-time lurker (2017) here, but finally something to post about. I've been building an iOS companion app for P",
+        "points": 6,
+        "comments": 0,
+        "url": "https://arbory.io/",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Danube – AI Tools Marketplace",
+        "summary": "Hey HN, I built Danube, a marketplace where AI agents can discover and execute tools, and where developers can publish a",
+        "points": 3,
+        "comments": 1,
+        "url": "https://danubeai.com",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: No AI tool could annotate my files and cite text accurately",
+        "summary": "Hi HN Been building this for 2 years w/ my best friend. We find big-name AI tools pretty unusable for serious writing ta",
+        "points": 3,
+        "comments": 0,
+        "url": "https://old.reddit.com/r/LLMDevs/comments/1sbusn8/new_pdfviewer_notes_panel_search_downloader_tool/",
+        "category": "OPC·独立变现"
+      },
+      {
+        "source": "36kr",
+        "title": "氪星晚报｜高德首款具身机器人将亮相；日产发布转型计划：削减20%车型，冲刺中美百万销量；随着战略转向，OpenAI的8520亿美元估值遭投资者质疑",
+        "summary": "全球最大零食店“零食王国”将于4月17日开业",
+        "url": "https://36kr.com/p/3766487517594377?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "半年融资近2亿，他要用AI发球机器人解决全球1亿人的训练难题｜硬氪专访",
+        "summary": "How的赛道。",
+        "url": "https://36kr.com/p/3764953900990977?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "荣耀做了个“养虾本”，预制5大主虾，要重新定义AI PC｜最前线",
+        "summary": "4月13日，荣耀正式发布自研终端侧“龙虾”AI智能体YOYO Claw，并宣布其将首发搭载于被称作“养虾本”的荣耀MagicBook系列轻薄本中。",
+        "url": "https://36kr.com/p/3765331768967686?f=rss"
+      },
+      {
+        "source": "36kr",
+        "title": "氪星晚报｜“马斯克版微信”或在本周五上线；Meta押注AI数字人，正打造AI版扎克伯格；AI潮玩品牌“MOMOTOY”完成数千万元融资",
+        "summary": "金山办公：一季度净利同比预增402%-473%",
+        "url": "https://36kr.com/p/3765146768376326?f=rss"
+      }
+    ]
   }
 }
