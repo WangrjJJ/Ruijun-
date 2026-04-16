@@ -385,5 +385,17 @@
         "url": "https://36kr.com/p/3765146768376326?f=rss"
       }
     ]
+  },
+  "2026-04-16": {
+    "steel_avg_trend": 0,
+    "hashrate_eh": null,
+    "difficulty_change": null,
+    "fee_rate": null,
+    "etf_daily_net_m": 35.3,
+    "etf_7d_net_m": 653.8,
+    "mstr_total_btc": 766970,
+    "mstr_avg_cost": 75644,
+    "oi_btc": null,
+    "opc_items": []
   }
 }
