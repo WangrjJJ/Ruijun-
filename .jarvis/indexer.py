@@ -193,7 +193,9 @@ def file_hash(filepath: str) -> str:
 
 def build_index(force=False):
     config = load_config()
-    vault_path = config["vault_path"]
+    vault_path = os.environ.get("VAULT_PATH") or config.get("vault_path") or os.path.dirname(SCRIPT_DIR)
+    if not os.path.isdir(vault_path):
+        vault_path = os.path.dirname(SCRIPT_DIR)
     exclude_dirs = set(config.get("exclude_dirs", []))
 
     print(f"JARVIS Indexer v1.0")
