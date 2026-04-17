@@ -1,11 +1,11 @@
 {
-  "date": "2026-04-15",
-  "daily_net_m": 35.3,
-  "daily_net_btc": 476,
-  "7d_net_m": 653.8,
-  "7d_net_btc": 8810,
-  "cumulative_btc": 1417743,
-  "ibit_net": 35.3,
-  "fbtc_net": -232.7,
-  "gbtc_net": -1.4
+  "date": "2026-04-17",
+  "daily_net_m": 292.5,
+  "daily_net_btc": 3899,
+  "7d_net_m": 977.1,
+  "7d_net_btc": 13026,
+  "cumulative_btc": 1432189,
+  "ibit_net": 292.5,
+  "fbtc_net": -47.4,
+  "gbtc_net": -0.5
 }
