@@ -27,3 +27,10 @@ desktop.ini
 个人投资专区/.structural_cache.json
 个人投资专区/.price_cache.json
 个人投资专区/.daily_brief_history.json
+
+# 个人事务已迁至独立 private 仓库 Ruijun-Personal（~/Documents/个人/）
+# 2026-04-23 起工作电脑不应再同步以下路径
+阿原/
+个人投资专区/
+.jarvis/ayuan.py
+.jarvis/ayuan_prompts.yaml

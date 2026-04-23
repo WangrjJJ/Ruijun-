@@ -21,7 +21,11 @@ import argparse
 from datetime import datetime, timedelta
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(SCRIPT_DIR, "data")
+# jarvis.db 已剥离到用户目录（不随任何 repo 同步）
+DATA_DIR = os.environ.get(
+    "JARVIS_DATA_DIR",
+    os.path.expanduser("~/.jarvis/data")
+)
 DB_PATH = os.path.join(DATA_DIR, "jarvis.db")
 
 SCHEMA_SQL = """

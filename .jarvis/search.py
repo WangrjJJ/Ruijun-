@@ -20,8 +20,13 @@ import requests
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_FILE = os.path.join(SCRIPT_DIR, "config.json")
+# 向量索引留在 repo 内（tracked），决策库 jarvis.db 剥离到用户目录
 DATA_DIR = os.path.join(SCRIPT_DIR, "data")
-DB_PATH = os.path.join(DATA_DIR, "jarvis.db")
+_DB_DIR = os.environ.get(
+    "JARVIS_DATA_DIR",
+    os.path.expanduser("~/.jarvis/data")
+)
+DB_PATH = os.path.join(_DB_DIR, "jarvis.db")
 
 
 def load_config():
