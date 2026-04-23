@@ -30,7 +30,7 @@ PRAGMA foreign_keys=ON;
 
 CREATE TABLE IF NOT EXISTS decisions (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    domain      TEXT NOT NULL CHECK (domain IN ('work', 'investment')),
+    domain      TEXT NOT NULL CHECK (domain IN ('work', 'investment', 'life')),
     title       TEXT NOT NULL,
     context     TEXT DEFAULT '',
     options     TEXT DEFAULT '',
@@ -57,6 +57,26 @@ CREATE TABLE IF NOT EXISTS reviews (
     reviewed_at   TEXT NOT NULL
                   DEFAULT (strftime('%Y-%m-%dT%H:%M:%S','now','localtime'))
 );
+
+CREATE TABLE IF NOT EXISTS life_entries (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    event       TEXT NOT NULL,
+    feeling     TEXT DEFAULT '',
+    body        TEXT DEFAULT '',
+    trigger     TEXT DEFAULT '',
+    anchor_ref  TEXT DEFAULT '',
+    reflection  TEXT DEFAULT '',
+    mode        TEXT NOT NULL DEFAULT '收集'
+                CHECK (mode IN ('收集', '反问', '对照', '复盘')),
+    created_at  TEXT NOT NULL
+                DEFAULT (strftime('%Y-%m-%dT%H:%M:%S','now','localtime')),
+    updated_at  TEXT NOT NULL
+                DEFAULT (strftime('%Y-%m-%dT%H:%M:%S','now','localtime'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_life_trigger  ON life_entries(trigger);
+CREATE INDEX IF NOT EXISTS idx_life_created  ON life_entries(created_at);
+CREATE INDEX IF NOT EXISTS idx_life_mode     ON life_entries(mode);
 
 CREATE TABLE IF NOT EXISTS memory_kv (
     key         TEXT PRIMARY KEY,
@@ -101,6 +121,24 @@ def out(data):
 
 def cmd_log(args):
     conn = init_db()
+
+    if args.domain == "life":
+        # 人生片段 → life_entries 表；--title 复用为 event，其它 life 专属字段通过扩展 args 传入
+        cur = conn.execute(
+            """INSERT INTO life_entries (event, feeling, body, trigger,
+               anchor_ref, reflection, mode)
+               VALUES (?, ?, ?, ?, ?, ?, ?)""",
+            (args.title, args.feeling or "", args.body or "",
+             args.trigger or "", args.anchor_ref or "",
+             args.reflection or "", args.mode or "收集")
+        )
+        conn.commit()
+        row = conn.execute("SELECT * FROM life_entries WHERE id = ?",
+                           (cur.lastrowid,)).fetchone()
+        conn.close()
+        out({"status": "created", "life_entry": row_to_dict(row)})
+        return
+
     cur = conn.execute(
         """INSERT INTO decisions (domain, title, context, options, chosen,
            rationale, risk_notes, tags, confidence)
@@ -379,9 +417,12 @@ def main():
     sub = parser.add_subparsers(dest="command")
 
     # log
-    p_log = sub.add_parser("log", help="记录新决策")
-    p_log.add_argument("--domain", required=True, choices=["work", "investment"])
-    p_log.add_argument("--title", required=True)
+    p_log = sub.add_parser("log", help="记录新决策 / 人生片段")
+    p_log.add_argument("--domain", required=True,
+                       choices=["work", "investment", "life"])
+    p_log.add_argument("--title", required=True,
+                       help="决策标题；domain=life 时视为 event")
+    # work / investment 专属
     p_log.add_argument("--context", help="决策背景")
     p_log.add_argument("--options", help="可选方案")
     p_log.add_argument("--chosen", help="最终选择")
@@ -390,6 +431,15 @@ def main():
     p_log.add_argument("--tags", help="标签（逗号分隔）")
     p_log.add_argument("--confidence", type=int, default=3,
                        choices=[1, 2, 3, 4, 5], help="信心度 1-5（默认3）")
+    # life 专属（阿原）
+    p_log.add_argument("--feeling", help="[life] 情绪关键词")
+    p_log.add_argument("--body", help="[life] 身体感受")
+    p_log.add_argument("--trigger", help="[life] 触发词（离职/分手/父母...）")
+    p_log.add_argument("--anchor-ref", dest="anchor_ref",
+                       help="[life] 对应《我的宪法》章节锚点")
+    p_log.add_argument("--reflection", help="[life] 事后回看")
+    p_log.add_argument("--mode", choices=["收集", "反问", "对照", "复盘"],
+                       help="[life] 记录模式（默认：收集）")
 
     # list
     p_list = sub.add_parser("list", help="查询决策列表")
