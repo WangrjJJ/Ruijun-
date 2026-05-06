@@ -29,19 +29,42 @@ PROCESSED_FILE = os.path.join(DATA_DIR, "processed_files.json")
 # ── 扫描路径配置 ──────────────────────────────────────────────────
 # 默认扫描的目录及其标签
 SCAN_PATHS = [
+    # Obsidian Vault 26年工作区 (markdown notes)
     {
         "path": r"C:\Users\01455310\Documents\Obsidian Vault\26年中集环科工作区",
         "label": "26年工作区",
         "recursive": True,
     },
+    # Desktop 26年工作文件 — 根目录独立文件 (PPTX/XLSX/DOCX)
     {
-        "path": r"C:\Users\01455310\Desktop\26年工作文件\_inbox",
-        "label": "收件箱",
-        "recursive": True,
+        "path": r"C:\Users\01455310\Desktop\26年工作文件",
+        "label": "工作文件根目录",
+        "recursive": False,
     },
+    # Desktop 子目录
     {
         "path": r"C:\Users\01455310\Desktop\26年工作文件\26年季度经营分析会",
         "label": "季度经营分析",
+        "recursive": True,
+    },
+    {
+        "path": r"C:\Users\01455310\Desktop\26年工作文件\26年总裁工作报告",
+        "label": "总裁报告",
+        "recursive": True,
+    },
+    {
+        "path": r"C:\Users\01455310\Desktop\26年工作文件\特罐搬迁项目",
+        "label": "特罐搬迁",
+        "recursive": True,
+    },
+    {
+        "path": r"C:\Users\01455310\Desktop\26年工作文件\绩效考核",
+        "label": "绩效考核",
+        "recursive": True,
+    },
+    {
+        "path": r"C:\Users\01455310\Desktop\26年工作文件\_inbox",
+        "label": "收件箱",
         "recursive": True,
     },
 ]
@@ -52,9 +75,11 @@ SUPPORTED_EXT = {
     ".pptx": "pptx",
     ".xlsx": "xlsx",
     ".docx": "docx",
+    ".doc": "doc",
     ".pdf": "pdf",
     ".txt": "txt",
     ".csv": "csv",
+    ".py": "python",
 }
 
 
@@ -384,14 +409,49 @@ def extract_text_plain(filepath: str) -> str:
     return "[无法解码文件]"
 
 
+def extract_text_doc(filepath: str) -> str:
+    """提取 .doc (旧版Word) 文本 — 通过 win32com 或 python-docx 降级"""
+    # 先尝试 python-docx（某些 .doc 实际上是 docx 格式）
+    try:
+        from docx import Document
+        Document(filepath)
+        # 如果成功打开, 恢复到 docx 解析
+        parts = []
+        doc = Document(filepath)
+        for para in doc.paragraphs:
+            text = para.text.strip()
+            if text:
+                parts.append(text)
+        return "\n\n".join(parts)
+    except Exception:
+        pass
+
+    # 使用 win32com 通过 Word 转换
+    try:
+        import win32com.client
+        word = win32com.client.Dispatch("Word.Application")
+        word.Visible = False
+        doc = word.Documents.Open(filepath, ReadOnly=True)
+        text = doc.Content.Text
+        doc.Close()
+        word.Quit()
+        return text[:20000] if text else ""
+    except ImportError:
+        return "[.doc提取需要: pip install pywin32 并安装 Microsoft Word]"
+    except Exception as e:
+        return f"[.doc提取失败: {e}]"
+
+
 EXTRACTORS = {
     ".md": extract_text_markdown,
     ".pptx": extract_text_pptx,
     ".xlsx": extract_text_xlsx,
     ".docx": extract_text_docx,
+    ".doc": extract_text_doc,
     ".pdf": extract_text_pdf,
     ".txt": extract_text_plain,
     ".csv": extract_text_plain,
+    ".py": extract_text_plain,
 }
 
 
