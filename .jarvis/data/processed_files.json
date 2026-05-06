@@ -700,5 +700,125 @@
     "label": "邮件附件",
     "time": "2026-05-06T11:50:29",
     "file_name": "20260506_115016_4月存货数据-医疗业务.xlsx"
+  },
+  "460732e166aba42e": {
+    "path": "C:\\Users\\01455310\\Documents\\Obsidian Vault\\26年中集环科工作区\\日简报\\明日计划_2026-05-07.md",
+    "label": "26年工作区",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "明日计划_2026-05-07.md"
+  },
+  "119fedc5772306a4": {
+    "path": "C:\\Users\\01455310\\Documents\\Obsidian Vault\\26年中集环科工作区\\日简报\\每日工作简报_2026-05-06.md",
+    "label": "26年工作区",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "每日工作简报_2026-05-06.md"
+  },
+  "30e89f101b6fae19": {
+    "path": "C:\\Users\\01455310\\Documents\\Obsidian Vault\\26年中集环科工作区\\数字化工具\\intel_scanner.py",
+    "label": "26年工作区",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "intel_scanner.py"
+  },
+  "2545a266f9c068ab": {
+    "path": "C:\\Users\\01455310\\Documents\\Obsidian Vault\\26年中集环科工作区\\数字化工具\\steel_advisor.py",
+    "label": "26年工作区",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "steel_advisor.py"
+  },
+  "518482e30b323a30": {
+    "path": "C:\\Users\\01455310\\Documents\\Obsidian Vault\\26年中集环科工作区\\行业研究\\export_pdf.py",
+    "label": "26年工作区",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "export_pdf.py"
+  },
+  "285f0441016b361b": {
+    "path": "C:\\Users\\01455310\\Documents\\Obsidian Vault\\26年中集环科工作区\\行业研究\\export_pdf_v2.py",
+    "label": "26年工作区",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "export_pdf_v2.py"
+  },
+  "d3d0f44bca3baceb": {
+    "path": "C:\\Users\\01455310\\Documents\\Obsidian Vault\\26年中集环科工作区\\行业研究\\gen_five_forces_ppt.py",
+    "label": "26年工作区",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "gen_five_forces_ppt.py"
+  },
+  "2a2ae9daf55aa1ef": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\generate_ppt.py",
+    "label": "工作文件根目录",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "generate_ppt.py"
+  },
+  "d1166c2d7c26b328": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\26年季度经营分析会\\gen_email_word.py",
+    "label": "季度经营分析",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "gen_email_word.py"
+  },
+  "3e1a540818ad7b87": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\26年季度经营分析会\\gen_qiguanbu_ppt.py",
+    "label": "季度经营分析",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "gen_qiguanbu_ppt.py"
+  },
+  "b975e6774bf28f89": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\26年季度经营分析会\\gen_qiguanbu_ppt_偏差版.py",
+    "label": "季度经营分析",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "gen_qiguanbu_ppt_偏差版.py"
+  },
+  "20c0e96902f33552": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\26年季度经营分析会\\gen_qiguanbu_ppt_精简版.py",
+    "label": "季度经营分析",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "gen_qiguanbu_ppt_精简版.py"
+  },
+  "2656f0fa000cba10": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\26年季度经营分析会\\patch_docx.py",
+    "label": "季度经营分析",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "patch_docx.py"
+  },
+  "986b280a71db60ee": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\26年季度经营分析会\\patch_excel_行动计划.py",
+    "label": "季度经营分析",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "patch_excel_行动计划.py"
+  },
+  "0b116800c7e8ad24": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\26年季度经营分析会\\patch_ppt.py",
+    "label": "季度经营分析",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "patch_ppt.py"
+  },
+  "090c858ae9d64e4a": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\26年季度经营分析会\\patch_wangruijun_docx.py",
+    "label": "季度经营分析",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "patch_wangruijun_docx.py"
+  },
+  "67e92dcef01446fb": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\26年总裁工作报告\\gen_ceo_report.py",
+    "label": "总裁报告",
+    "time": "2026-05-06T13:00:00",
+    "file_name": "gen_ceo_report.py"
+  },
+  "fa8e5623dad5107b": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\特罐搬迁项目\\项目推进计划20260430.xlsx",
+    "label": "特罐搬迁",
+    "time": "2026-05-06T13:00:02",
+    "file_name": "项目推进计划20260430.xlsx"
+  },
+  "99f9882bd17c2409": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\绩效考核\\gen_scorecard.py",
+    "label": "绩效考核",
+    "time": "2026-05-06T13:00:03",
+    "file_name": "gen_scorecard.py"
+  },
+  "b2031863a35eda45": {
+    "path": "C:\\Users\\01455310\\Desktop\\26年工作文件\\_inbox\\邮件附件\\20260506_114507_4月存货数据-长账龄.XLSX",
+    "label": "收件箱",
+    "time": "2026-05-06T13:01:38",
+    "file_name": "20260506_114507_4月存货数据-长账龄.XLSX"
   }
 }
