@@ -26,3 +26,8 @@
 2026-05-06 09:51:03,856 [INFO]   Plans generated.
 2026-05-06 09:51:03,856 [INFO] === Daily Brief Pipeline END ===
 2026-05-06 13:00:00,330 [INFO] === Midday Scan ===
+2026-05-06 17:48:05,155 [INFO] === Installing JARVIS scheduled tasks ===
+2026-05-06 17:48:05,224 [INFO]   [OK] JARVIS_IndexUpdate: 07:00 DAILY
+2026-05-06 17:48:05,285 [INFO]   [OK] JARVIS_DailyBrief: 07:15 DAILY
+2026-05-06 17:48:05,337 [INFO]   [OK] JARVIS_MiddayScan: 13:00 DAILY
+2026-05-06 17:48:05,337 [INFO] === Installation complete ===
