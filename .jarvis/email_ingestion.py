@@ -264,9 +264,13 @@ def get_conversation_history(mail, folder, summary_only: bool = False) -> list:
         messages = folder.Items
         messages.Sort("[ReceivedTime]", True)
 
-        count = 0
+        scan_limit = 200  # 只扫描最近200封以提升性能
         for msg in messages:
             try:
+                scan_limit -= 1
+                if scan_limit <= 0:
+                    break
+
                 # 只取比当前邮件早的
                 msg_time = msg.ReceivedTime
                 try:
@@ -274,7 +278,6 @@ def get_conversation_history(mail, folder, summary_only: bool = False) -> list:
                         msg_time = msg_time.replace(tzinfo=None)
                 except Exception:
                     pass
-
                 if msg_time >= current_time:
                     continue
 
@@ -286,10 +289,6 @@ def get_conversation_history(mail, folder, summary_only: bool = False) -> list:
                 msg_subject = msg.Subject or ""
                 if get_thread_key(msg_subject) != thread_key:
                     continue
-
-                count += 1
-                if count > 8:
-                    break
 
                 time_str = msg_time.strftime("%m-%d %H:%M") if hasattr(msg_time, "strftime") else "?"
                 thread_msg = {
