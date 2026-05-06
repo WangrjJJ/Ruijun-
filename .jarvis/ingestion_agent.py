@@ -74,6 +74,7 @@ SUPPORTED_EXT = {
     ".md": "markdown",
     ".pptx": "pptx",
     ".xlsx": "xlsx",
+    ".xls": "xls",
     ".docx": "docx",
     ".doc": "doc",
     ".pdf": "pdf",
@@ -442,10 +443,35 @@ def extract_text_doc(filepath: str) -> str:
         return f"[.doc提取失败: {e}]"
 
 
+def extract_text_xls(filepath: str) -> str:
+    """提取 .xls (旧版 Excel) 文本"""
+    try:
+        import xlrd
+        wb = xlrd.open_workbook(filepath)
+        parts = []
+        for sheet_name in wb.sheet_names():
+            ws = wb.sheet_by_name(sheet_name)
+            rows = []
+            for r in range(min(ws.nrows, 200)):
+                row_vals = [str(ws.cell_value(r, c)) if ws.cell_value(r, c) != "" else ""
+                           for c in range(min(ws.ncols, 10))]
+                row_str = " | ".join(v for v in row_vals if v)
+                if row_str.strip():
+                    rows.append(f"  Row {r}: {row_str}")
+            if rows:
+                parts.append(f"## Sheet: {sheet_name} ({ws.nrows}行 x {ws.ncols}列)\n" + "\n".join(rows[:50]))
+        return "\n\n".join(parts)
+    except ImportError:
+        return "[.xls提取需要xlrd: pip install xlrd]"
+    except Exception as e:
+        return f"[.xls提取失败: {e}]"
+
+
 EXTRACTORS = {
     ".md": extract_text_markdown,
     ".pptx": extract_text_pptx,
     ".xlsx": extract_text_xlsx,
+    ".xls": extract_text_xls,
     ".docx": extract_text_docx,
     ".doc": extract_text_doc,
     ".pdf": extract_text_pdf,

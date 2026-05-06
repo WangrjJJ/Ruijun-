@@ -26,6 +26,13 @@ os.makedirs(DATA_DIR, exist_ok=True)
 EMAIL_EVENTS_FILE = os.path.join(DATA_DIR, "email_events.jsonl")
 EMAIL_PROCESSED_FILE = os.path.join(DATA_DIR, "email_processed.json")
 
+# 邮件附件保存目录（桌面 _inbox 下，自动被摄入代理扫描）
+ATTACHMENT_DIR = os.path.join(
+    os.path.expanduser("~"),
+    r"Desktop\26年工作文件\_inbox\邮件附件"
+)
+os.makedirs(ATTACHMENT_DIR, exist_ok=True)
+
 # 关键联系人/关键词（用于优先级标记）
 PRIORITY_SENDERS = [
     "季国祥", "ji guoxiang", "jiguoxiang",
@@ -126,6 +133,77 @@ def save_processed_emails(registry: dict):
         json.dump(registry, f, ensure_ascii=False, indent=2)
 
 
+def download_and_ingest_attachments(mail, save_dir: str) -> list:
+    """下载邮件附件到指定目录，并调用摄入代理处理。
+    返回附件信息列表。"""
+    attachments_info = []
+    if not mail.Attachments or mail.Attachments.Count == 0:
+        return attachments_info
+
+    for i in range(1, mail.Attachments.Count + 1):
+        try:
+            att = mail.Attachments.Item(i)
+            original_name = att.FileName
+            if not original_name:
+                continue
+
+            # 去重：加时间戳前缀
+            import time as _time
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+            safe_name = f"{ts}_{original_name}"
+            save_path = os.path.join(save_dir, safe_name)
+
+            # 避免重复下载
+            if os.path.exists(save_path):
+                attachments_info.append({
+                    "file_name": original_name,
+                    "saved_as": safe_name,
+                    "size_kb": os.path.getsize(save_path) // 1024,
+                    "status": "already_saved",
+                })
+                continue
+
+            att.SaveAsFile(save_path)
+            size_kb = os.path.getsize(save_path) // 1024 if os.path.exists(save_path) else 0
+
+            info = {
+                "file_name": original_name,
+                "saved_as": safe_name,
+                "size_kb": size_kb,
+                "status": "saved",
+            }
+
+            # 调用摄入代理处理附件
+            try:
+                ingestion_script = os.path.join(SCRIPT_DIR, "ingestion_agent.py")
+                import subprocess
+                r = subprocess.run(
+                    [sys.executable, ingestion_script, "--file", save_path,
+                     "--label", "邮件附件"],
+                    capture_output=True, encoding="utf-8", errors="replace",
+                    timeout=30,
+                )
+                if r.returncode == 0:
+                    info["ingested"] = True
+                else:
+                    info["ingested"] = False
+                    info["ingest_error"] = r.stderr[:200]
+            except Exception as e:
+                info["ingested"] = False
+                info["ingest_error"] = str(e)[:200]
+
+            attachments_info.append(info)
+
+        except Exception as e:
+            attachments_info.append({
+                "file_name": getattr(mail.Attachments.Item(i), 'FileName', f'attachment_{i}'),
+                "status": "failed",
+                "error": str(e)[:200],
+            })
+
+    return attachments_info
+
+
 def assess_priority(sender_name: str, subject: str, body: str) -> str:
     """评估邮件优先级: P0/P1/P2"""
     sender_lower = sender_name.lower()
@@ -155,7 +233,14 @@ def fetch_emails(days: int = 1, folder_name: str = "收件箱",
     messages = folder.Items
     messages.Sort("[ReceivedTime]", True)  # 最新在前
 
-    cutoff = datetime.now() - timedelta(days=days)
+    # 使用带时区的 datetime 与 Outlook 保持一致
+    from datetime import timezone as _tz
+    try:
+        # Python 3.11+
+        cutoff = datetime.now(_tz.utc).astimezone() - timedelta(days=days)
+    except Exception:
+        cutoff = datetime.now() - timedelta(days=days)
+
     registry = load_processed_emails()
     events = []
 
@@ -169,7 +254,15 @@ def fetch_emails(days: int = 1, folder_name: str = "收件箱",
             else:
                 continue
 
-            if received_dt < cutoff:
+            # 统一转为 naive datetime 比较
+            try:
+                if hasattr(received_dt, "tzinfo") and received_dt.tzinfo is not None:
+                    received_dt = received_dt.replace(tzinfo=None)
+            except Exception:
+                pass
+            cutoff_naive = cutoff.replace(tzinfo=None) if hasattr(cutoff, "tzinfo") and cutoff.tzinfo is not None else cutoff
+
+            if received_dt < cutoff_naive:
                 break  # 已到截止时间，停止
 
             count += 1
@@ -193,6 +286,16 @@ def fetch_emails(days: int = 1, folder_name: str = "收件箱",
             priority = assess_priority(sender_name, subject, "")
             body = "" if summary_only else extract_email_body(mail)
 
+            # 下载并摄入附件（始终执行，不依赖 summary 模式）
+            has_att = bool(mail.Attachments.Count) if mail.Attachments.Count else False
+            attachments_info = []
+            if has_att:
+                attachments_info = download_and_ingest_attachments(mail, ATTACHMENT_DIR)
+                ingested_count = sum(1 for a in attachments_info if a.get("ingested"))
+                if ingested_count > 0:
+                    print(f"  [ATTACH] {ingested_count}/{len(attachments_info)} attachments ingested from: {subject[:40]}",
+                          file=sys.stderr)
+
             event = {
                 "timestamp": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
                 "email_received": received_str,
@@ -202,7 +305,8 @@ def fetch_emails(days: int = 1, folder_name: str = "收件箱",
                 "sender_email": mail.SenderEmailAddress or "",
                 "subject": subject,
                 "priority": priority,
-                "has_attachments": bool(mail.Attachments.Count) if mail.Attachments.Count else False,
+                "has_attachments": has_att,
+                "attachments": attachments_info,
                 "unread": bool(mail.Unread),
                 "body_length": len(body),
                 "body": body,
@@ -236,8 +340,15 @@ def fetch_emails(days: int = 1, folder_name: str = "收件箱",
     for e in events:
         with open(EMAIL_EVENTS_FILE, "a", encoding="utf-8") as f:
             # 存储时移除 body（太大），改为 body_length
-            store = {k: v for k, v in e.items() if k != "body"}
+            store = {k: v for k, v in e.items() if k not in ("body", "attachments")}
             store["body_preview"] = e["body"][:200] if e.get("body") else ""
+            # 附件摘要（不含完整路径）
+            if e.get("attachments"):
+                store["attachments"] = [
+                    {"file_name": a["file_name"], "size_kb": a.get("size_kb", 0),
+                     "ingested": a.get("ingested", False)}
+                    for a in e["attachments"]
+                ]
             f.write(json.dumps(store, ensure_ascii=False) + "\n")
 
     return events
@@ -262,13 +373,25 @@ def cmd_summary(events: list):
     if p0:
         print("=== P0 紧急 ===")
         for e in p0:
-            print(f"  [{e['email_received'][:10]}] {e['sender_name']}: {e['subject']}")
+            att_str = ""
+            if e.get("attachments"):
+                ingested = [a for a in e["attachments"] if a.get("ingested")]
+                if ingested:
+                    att_str = f" [附件: {len(ingested)}个已摄入]"
+                elif e.get("has_attachments"):
+                    att_str = f" [附件: {len(e['attachments'])}个]"
+            print(f"  [{e['email_received'][:10]}] {e['sender_name']}: {e['subject']}{att_str}")
         print()
 
     if p1:
         print("=== P1 重要 ===")
         for e in p1[:10]:
-            print(f"  [{e['email_received'][:10]}] {e['sender_name']}: {e['subject']}")
+            att_str = ""
+            if e.get("attachments"):
+                ingested = [a for a in e["attachments"] if a.get("ingested")]
+                if ingested:
+                    att_str = f" [附件: {len(ingested)}个已摄入]"
+            print(f"  [{e['email_received'][:10]}] {e['sender_name']}: {e['subject']}{att_str}")
         if len(p1) > 10:
             print(f"  ... 还有 {len(p1) - 10} 封")
         print()

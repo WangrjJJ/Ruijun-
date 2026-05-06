@@ -348,12 +348,27 @@ def generate_brief(date_str: str = None) -> str:
 
     # ── 0b. 邮件摘要 ──
     if email_events:
+        total_attachments_ingested = 0
+        for e in email_events:
+            if e.get("attachments"):
+                total_attachments_ingested += sum(1 for a in e["attachments"] if a.get("ingested"))
+
+        if total_attachments_ingested > 0:
+            lines.append(f"> 今日从邮件自动摄入 **{total_attachments_ingested}** 个附件，已存入 `_inbox/邮件附件/`")
+
         if new_emails_p0:
+            lines.append("")
             lines.append("### 紧急邮件")
             for e in new_emails_p0:
-                lines.append(f"- [P0] **{e.get('sender_name', '?')}**: {e.get('subject', '')}")
-                if e.get("has_attachments"):
-                    lines[-1] += " [含附件]"
+                att = e.get("attachments", [])
+                att_str = ""
+                if att:
+                    ingested = [a for a in att if a.get("ingested")]
+                    if ingested:
+                        att_str = f" [附件: {', '.join(a['file_name'] for a in ingested)}]"
+                    else:
+                        att_str = " [含附件]"
+                lines.append(f"- [P0] **{e.get('sender_name', '?')}**: {e.get('subject', '')}{att_str}")
             lines.append("")
         if new_emails_p1:
             lines.append("### 重要邮件")
