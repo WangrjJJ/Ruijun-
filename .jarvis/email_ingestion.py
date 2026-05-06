@@ -224,6 +224,98 @@ def assess_priority(sender_name: str, subject: str, body: str) -> str:
     return "P2"
 
 
+def get_thread_key(subject: str) -> str:
+    """提取线程匹配键：去掉 RE:/FW:/答复:/转发: 前缀，归一化空白"""
+    if not subject:
+        return ""
+    import re
+    # 去掉回复/转发前缀
+    cleaned = re.sub(
+        r'^(Re:|FW:|Fwd:|答复:|转发:|回复:)\s*', '',
+        subject, flags=re.IGNORECASE
+    )
+    # 再去掉可能嵌套的多层前缀
+    for _ in range(3):
+        cleaned = re.sub(
+            r'^(Re:|FW:|Fwd:|答复:|转发:|回复:)\s*', '',
+            cleaned, flags=re.IGNORECASE
+        )
+    return cleaned.strip().lower()
+
+
+def get_conversation_history(mail, folder, summary_only: bool = False) -> list:
+    """获取同一会话线程的往期邮件（仅正文，不含附件）。
+    使用清理后的主题做线程匹配，按时间升序，最多取 8 封。"""
+    thread_messages = []
+    try:
+        subject = mail.Subject or ""
+        thread_key = get_thread_key(subject)
+        if len(thread_key) < 3:
+            return thread_messages
+
+        current_time = mail.ReceivedTime
+        # 处理时区
+        try:
+            if hasattr(current_time, "tzinfo") and current_time.tzinfo is not None:
+                current_time = current_time.replace(tzinfo=None)
+        except Exception:
+            pass
+
+        messages = folder.Items
+        messages.Sort("[ReceivedTime]", True)
+
+        count = 0
+        for msg in messages:
+            try:
+                # 只取比当前邮件早的
+                msg_time = msg.ReceivedTime
+                try:
+                    if hasattr(msg_time, "tzinfo") and msg_time.tzinfo is not None:
+                        msg_time = msg_time.replace(tzinfo=None)
+                except Exception:
+                    pass
+
+                if msg_time >= current_time:
+                    continue
+
+                # 跳过自身
+                if msg.EntryID == mail.EntryID:
+                    continue
+
+                # 主题线程匹配
+                msg_subject = msg.Subject or ""
+                if get_thread_key(msg_subject) != thread_key:
+                    continue
+
+                count += 1
+                if count > 8:
+                    break
+
+                time_str = msg_time.strftime("%m-%d %H:%M") if hasattr(msg_time, "strftime") else "?"
+                thread_msg = {
+                    "sender": msg.SenderName or "?",
+                    "time": time_str,
+                    "subject": msg_subject,
+                }
+
+                # 提取正文（往期邮件不下载附件）
+                if not summary_only:
+                    body = extract_email_body(msg)
+                    thread_msg["body_preview"] = body[:300] if body else ""
+                else:
+                    thread_msg["body_preview"] = ""
+
+                thread_messages.append(thread_msg)
+            except Exception:
+                continue
+    except Exception:
+        pass
+
+    # 按时间升序（最早的在前面）
+    thread_messages.reverse()
+    return thread_messages
+
+
 def fetch_emails(days: int = 1, folder_name: str = "收件箱",
                  unread_only: bool = False, sender_filter: str = "",
                  summary_only: bool = False) -> list:
@@ -286,6 +378,9 @@ def fetch_emails(days: int = 1, folder_name: str = "收件箱",
             priority = assess_priority(sender_name, subject, "")
             body = "" if summary_only else extract_email_body(mail)
 
+            # 获取对话历史（往期邮件正文，不含附件）
+            thread_history = get_conversation_history(mail, folder, summary_only)
+
             # 下载并摄入附件（始终执行，不依赖 summary 模式）
             has_att = bool(mail.Attachments.Count) if mail.Attachments.Count else False
             attachments_info = []
@@ -307,6 +402,7 @@ def fetch_emails(days: int = 1, folder_name: str = "收件箱",
                 "priority": priority,
                 "has_attachments": has_att,
                 "attachments": attachments_info,
+                "thread_history": thread_history,
                 "unread": bool(mail.Unread),
                 "body_length": len(body),
                 "body": body,
@@ -340,7 +436,7 @@ def fetch_emails(days: int = 1, folder_name: str = "收件箱",
     for e in events:
         with open(EMAIL_EVENTS_FILE, "a", encoding="utf-8") as f:
             # 存储时移除 body（太大），改为 body_length
-            store = {k: v for k, v in e.items() if k not in ("body", "attachments")}
+            store = {k: v for k, v in e.items() if k not in ("body", "attachments", "thread_history")}
             store["body_preview"] = e["body"][:200] if e.get("body") else ""
             # 附件摘要（不含完整路径）
             if e.get("attachments"):
