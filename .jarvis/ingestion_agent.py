@@ -575,33 +575,47 @@ def ingest_file(filepath: str, label: str = "", force: bool = False) -> dict | N
     return event
 
 
-def scan_directory(dir_path: str, label: str = "", recursive: bool = True) -> list:
-    """扫描目录下所有支持的文件，返回摄入事件列表"""
+def scan_directory(dir_path: str, label: str = "", recursive: bool = True,
+                   max_files: int = 0) -> list:
+    """扫描目录下所有支持的文件，返回摄入事件列表。
+    max_files: 每个目录最多摄入文件数，0=不限制。"""
     if not os.path.isdir(dir_path):
         return []
     events = []
+    count = 0
     pattern = "*" if not recursive else "**/*"
     for ext in SUPPORTED_EXT:
         for filepath in Path(dir_path).glob(f"{pattern}{ext}"):
+            if max_files > 0 and count >= max_files:
+                print(f"  → 已达上限({max_files}文件)，跳过剩余", file=sys.stderr)
+                return events
             try:
                 event = ingest_file(str(filepath), label)
                 if event:
                     events.append(event)
+                    count += 1
             except Exception as e:
                 print(f"  [WARN] {filepath}: {e}", file=sys.stderr)
     return events
 
 
-def cmd_scan(args=None):
-    """全量扫描所有已配置路径"""
+def cmd_scan(max_files: int = 0, skip_inbox_attachments: bool = False):
+    """全量扫描所有已配置路径
+    max_files: 每个目录最多摄入文件数，0=不限制。
+    skip_inbox_attachments: 跳过 _inbox/邮件附件/ 目录（邮件摄入时已处理）。"""
     all_events = []
     for cfg in SCAN_PATHS:
         path = cfg["path"]
         if not os.path.exists(path):
             print(f"  [SKIP] 不存在: {path}", file=sys.stderr)
             continue
+        # 跳过邮件附件目录（已被 email_ingestion.py 在摄入时处理）
+        if skip_inbox_attachments and "邮件附件" in path:
+            print(f"  [SKIP] 邮件附件目录（已由邮件摄入处理）: {path}", file=sys.stderr)
+            continue
         print(f"[SCAN] {cfg['label']}: {path}", file=sys.stderr)
-        events = scan_directory(path, cfg["label"], cfg.get("recursive", True))
+        events = scan_directory(path, cfg["label"], cfg.get("recursive", True),
+                                max_files=max_files)
         all_events.extend(events)
         print(f"  → {len(events)} 新文件", file=sys.stderr)
     return all_events
@@ -716,6 +730,10 @@ def main():
     parser.add_argument("--label", default="", help="来源标签")
     parser.add_argument("--interval", type=int, default=300,
                        help="监听间隔秒数（默认300）")
+    parser.add_argument("--max-files", type=int, default=0,
+                       help="每个目录最多摄入文件数（0=不限制，默认0）")
+    parser.add_argument("--skip-inbox-attachments", action="store_true",
+                       help="跳过 _inbox/邮件附件/ 目录（邮件摄入已处理）")
     args = parser.parse_args()
 
     if args.stats:
@@ -733,12 +751,13 @@ def main():
     elif args.watch:
         cmd_watch(args.interval)
     elif args.scan:
-        events = cmd_scan()
+        events = cmd_scan(max_files=args.max_files,
+                         skip_inbox_attachments=args.skip_inbox_attachments)
         print(f"\n总计摄入: {len(events)} 个新文件", file=sys.stderr)
     else:
-        # 默认：快速扫描（检查已知路径的新文件）
-        print("快速扫描模式...", file=sys.stderr)
-        events = cmd_scan()
+        # 默认：快速扫描（跳过邮件附件，限制文件数）
+        print("快速扫描模式（跳过邮件附件，每目录最多20文件）...", file=sys.stderr)
+        events = cmd_scan(max_files=20, skip_inbox_attachments=True)
         print(f"完成: {len(events)} 个新文件", file=sys.stderr)
 
 

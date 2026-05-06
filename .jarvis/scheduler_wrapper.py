@@ -179,43 +179,66 @@ def run_daily_brief_pipeline():
     plan_script = os.path.join(SCRIPT_DIR, "plan_generator.py")
     email_script = os.path.join(SCRIPT_DIR, "email_ingestion.py")
 
-    # Step 1: 文件摄入扫描
-    log.info("Step 1/4: File ingestion scan...")
-    r1 = subprocess.run([PYTHON_EXE, ingestion_script, "--scan"], cwd=VAULT_ROOT,
-                        capture_output=True, encoding="utf-8", errors="replace", timeout=120)
-    if r1.returncode == 0:
-        log.info("  File ingestion complete.")
-    else:
-        log.warning(f"  File ingestion warning: {r1.stderr[:200]}")
+    # 编码环境变量：防止 Windows GBK 覆盖 subprocess utf-8
+    utf8_env = {**os.environ, "PYTHONIOENCODING": "utf-8",
+                "PYTHONUTF8": "1"}
+
+    # Step 1: 文件摄入扫描（限流+跳过邮件附件，容忍超时）
+    log.info("Step 1/4: File ingestion scan (max 20/dir, skip inbox)...")
+    try:
+        r1 = subprocess.run(
+            [PYTHON_EXE, ingestion_script, "--scan",
+             "--max-files", "20", "--skip-inbox-attachments"],
+            cwd=VAULT_ROOT, env=utf8_env,
+            capture_output=True, encoding="utf-8", errors="replace", timeout=90)
+        if r1.returncode == 0:
+            log.info("  File ingestion complete.")
+        else:
+            log.warning(f"  File ingestion warning: {r1.stderr[:200]}")
+    except subprocess.TimeoutExpired:
+        log.warning("  File ingestion timed out (90s), continuing pipeline.")
+    except Exception as e:
+        log.warning(f"  File ingestion error: {e}")
 
     # Step 1b: 邮件摄入
     log.info("Step 2/4: Email ingestion...")
-    r1b = subprocess.run([PYTHON_EXE, email_script, "--days", "1", "--summary"],
-                         cwd=VAULT_ROOT,
-                         capture_output=True, encoding="utf-8", errors="replace", timeout=60)
-    if r1b.returncode == 0:
-        log.info("  Email ingestion complete.")
-    else:
-        log.warning(f"  Email warning: {r1b.stderr[:200]}")
+    try:
+        r1b = subprocess.run([PYTHON_EXE, email_script, "--days", "1", "--summary"],
+                             cwd=VAULT_ROOT, env=utf8_env,
+                             capture_output=True, encoding="utf-8", errors="replace", timeout=60)
+        if r1b.returncode == 0:
+            log.info("  Email ingestion complete.")
+        else:
+            log.warning(f"  Email warning: {r1b.stderr[:200]}")
+    except subprocess.TimeoutExpired:
+        log.warning("  Email ingestion timed out (60s), continuing pipeline.")
+    except Exception as e:
+        log.warning(f"  Email ingestion error: {e}")
 
     # Step 2: 日报生成
     log.info("Step 3/4: Daily brief generation...")
-    r2 = subprocess.run([PYTHON_EXE, brief_script], cwd=VAULT_ROOT,
-                        capture_output=True, encoding="utf-8", errors="replace", timeout=60)
-    if r2.returncode == 0:
-        brief_output = r2.stdout.strip() if r2.stdout else ""
-        log.info(f"  Brief generated: {brief_output[-100:]}")
-    else:
-        log.error(f"  Brief failed: {r2.stderr[:200]}")
+    try:
+        r2 = subprocess.run([PYTHON_EXE, brief_script], cwd=VAULT_ROOT, env=utf8_env,
+                            capture_output=True, encoding="utf-8", errors="replace", timeout=60)
+        if r2.returncode == 0:
+            brief_output = r2.stdout.strip() if r2.stdout else ""
+            log.info(f"  Brief generated: {brief_output[-100:]}")
+        else:
+            log.error(f"  Brief failed: {r2.stderr[:200]}")
+    except Exception as e:
+        log.error(f"  Brief exception: {e}")
 
     # Step 3: 计划生成
     log.info("Step 4/4: Plan generation...")
-    r3 = subprocess.run([PYTHON_EXE, plan_script], cwd=VAULT_ROOT,
-                        capture_output=True, encoding="utf-8", errors="replace", timeout=60)
-    if r3.returncode == 0:
-        log.info("  Plans generated.")
-    else:
-        log.error(f"  Plan failed: {r3.stderr[:200]}")
+    try:
+        r3 = subprocess.run([PYTHON_EXE, plan_script], cwd=VAULT_ROOT, env=utf8_env,
+                            capture_output=True, encoding="utf-8", errors="replace", timeout=60)
+        if r3.returncode == 0:
+            log.info("  Plans generated.")
+        else:
+            log.error(f"  Plan failed: {r3.stderr[:200]}")
+    except Exception as e:
+        log.error(f"  Plan exception: {e}")
 
     log.info("=== Daily Brief Pipeline END ===")
 
@@ -227,20 +250,35 @@ def run_ingestion_scan():
     ingestion_script = os.path.join(SCRIPT_DIR, "ingestion_agent.py")
     email_script = os.path.join(SCRIPT_DIR, "email_ingestion.py")
 
-    r = subprocess.run([PYTHON_EXE, ingestion_script], cwd=VAULT_ROOT,
-                       capture_output=True, encoding="utf-8", errors="replace", timeout=120)
-    if r.returncode == 0:
-        log.info("  File scan complete.")
-    else:
-        log.warning(f"  File scan warning: {r.stderr[:200]}")
+    utf8_env = {**os.environ, "PYTHONIOENCODING": "utf-8",
+                "PYTHONUTF8": "1"}
 
-    r2 = subprocess.run([PYTHON_EXE, email_script, "--days", "1", "--summary"],
-                        cwd=VAULT_ROOT,
-                        capture_output=True, encoding="utf-8", errors="replace", timeout=60)
-    if r2.returncode == 0:
-        log.info("  Email check complete.")
-    else:
-        log.warning(f"  Email warning: {r2.stderr[:200]}")
+    # 默认快速扫描（跳过邮件附件，限制文件数）
+    try:
+        r = subprocess.run([PYTHON_EXE, ingestion_script], cwd=VAULT_ROOT,
+                           env=utf8_env,
+                           capture_output=True, encoding="utf-8", errors="replace", timeout=90)
+        if r.returncode == 0:
+            log.info("  File scan complete.")
+        else:
+            log.warning(f"  File scan warning: {r.stderr[:200]}")
+    except subprocess.TimeoutExpired:
+        log.warning("  File scan timed out (90s), continuing.")
+    except Exception as e:
+        log.warning(f"  File scan error: {e}")
+
+    try:
+        r2 = subprocess.run([PYTHON_EXE, email_script, "--days", "1", "--summary"],
+                            cwd=VAULT_ROOT, env=utf8_env,
+                            capture_output=True, encoding="utf-8", errors="replace", timeout=60)
+        if r2.returncode == 0:
+            log.info("  Email check complete.")
+        else:
+            log.warning(f"  Email warning: {r2.stderr[:200]}")
+    except subprocess.TimeoutExpired:
+        log.warning("  Email check timed out (60s), continuing.")
+    except Exception as e:
+        log.warning(f"  Email check error: {e}")
 
     log.info("=== Midday Scan END ===")
 
