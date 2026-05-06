@@ -2,6 +2,6 @@
   "api_key": "sk-iiyhmyvttogwnznsqksvbwpfwlzkixoiipvlzkgsselnvsvd",
   "api_base": "https://api.siliconflow.cn/v1",
   "embedding_model": "BAAI/bge-m3",
-  "vault_path": "/Users/wangruijun/Documents/Ruijun的知识库",
+  "vault_path": "C:/Users/01455310/Documents/Obsidian Vault",
   "exclude_dirs": [".obsidian", ".git", ".jarvis", ".claude", "node_modules", "__pycache__"]
 }
