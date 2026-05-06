@@ -92,56 +92,236 @@ def extract_text_markdown(filepath: str) -> str:
 
 
 def extract_text_pptx(filepath: str) -> str:
-    """提取 PPTX 文本内容"""
+    """深度提取 PPTX 文本 + 表格结构 + 备注"""
     try:
         from pptx import Presentation
+        from pptx.util import Inches, Pt
+
         prs = Presentation(filepath)
         parts = []
+
+        # 元数据
+        props = prs.core_properties
+        meta_parts = []
+        if props.title:
+            meta_parts.append(f"标题: {props.title}")
+        if props.author:
+            meta_parts.append(f"作者: {props.author}")
+        if props.last_modified_by:
+            meta_parts.append(f"最后修改: {props.last_modified_by}")
+        if props.subject:
+            meta_parts.append(f"主题: {props.subject}")
+        if meta_parts:
+            parts.append("## 文档信息\n" + "\n".join(meta_parts))
+
+        # 全局指标收集
+        all_metrics = []
+        all_tables = []
+
         for i, slide in enumerate(prs.slides, 1):
+            slide_num = 0
+            # 跳过隐藏幻灯片
+            try:
+                if slide.slide_layout and "hidden" in slide.slide_layout.name.lower():
+                    continue
+            except Exception:
+                pass
+
             slide_text = []
+            slide_metrics = []
+
             for shape in slide.shapes:
+                # 文本提取
                 if shape.has_text_frame:
                     for para in shape.text_frame.paragraphs:
                         text = para.text.strip()
-                        if text:
-                            slide_text.append(text)
+                        if not text:
+                            continue
+                        slide_text.append(text)
+                        # 识别关键指标: 含数字+单位/百分比
+                        if any(kw in text for kw in ["%", "亿", "万", "同比", "环比",
+                                                       "完成率", "渗透率", "IRR", "NPV",
+                                                       "收入", "利润", "毛利", "产能",
+                                                       "人效", "KPI", "偏差"]):
+                            if any(c.isdigit() for c in text):
+                                slide_metrics.append({
+                                    "slide": i,
+                                    "text": text,
+                                    "context": slide_text[-2] if len(slide_text) > 1 else "",
+                                })
+                                all_metrics.append(slide_metrics[-1])
+
+                # 表格深度提取
                 if shape.has_table:
                     table = shape.table
+                    table_data = []
                     for row in table.rows:
-                        row_text = " | ".join(
-                            cell.text.strip() for cell in row.cells
-                        )
-                        if row_text.strip():
-                            slide_text.append(row_text)
+                        row_cells = [cell.text.strip() for cell in row.cells]
+                        table_data.append(row_cells)
+
+                    if table_data:
+                        all_tables.append({
+                            "slide": i,
+                            "rows": len(table_data),
+                            "cols": len(table_data[0]) if table_data else 0,
+                            "data": table_data,
+                        })
+                        # 渲染为 markdown 表格
+                        header = table_data[0]
+                        sep = ["---"] * len(header)
+                        md_table = [f"| {' | '.join(header)} |"]
+                        md_table.append(f"| {' | '.join(sep)} |")
+                        for row in table_data[1:]:
+                            padded = row + [""] * (len(header) - len(row))
+                            md_table.append(f"| {' | '.join(padded[:len(header)])} |")
+                        slide_text.append("\n" + "\n".join(md_table[:15]))  # 最多15行
+
+                # 图表数据（通过 chart 对象）
+                if shape.has_chart:
+                    try:
+                        chart = shape.chart
+                        slide_text.append(f"[图表: {chart.chart_type} — {chart.has_legend and '含图例' or ''}]")
+                    except Exception:
+                        slide_text.append("[图表]")
+
+            # 提取备注
+            if slide.has_notes_slide and slide.notes_slide.notes_text_frame:
+                notes = slide.notes_slide.notes_text_frame.text.strip()
+                if notes:
+                    slide_text.append(f"[备注] {notes}")
+
             if slide_text:
-                parts.append(f"## Slide {i}\n" + "\n".join(slide_text))
-        return "\n\n".join(parts)
+                header = f"## Slide {i}"
+                if slide_metrics:
+                    header += f" (含{len(slide_metrics)}项指标)"
+                parts.append(header + "\n" + "\n".join(slide_text[:50]))  # 每slide最多50行
+
+        # 汇总
+        summary_parts = []
+        if all_metrics:
+            summary_parts.append(f"\n## 关键指标汇总 (共{len(all_metrics)}项)")
+            for m in all_metrics[:15]:
+                summary_parts.append(f"- [Slide {m['slide']}] {m['text']}")
+
+        if all_tables:
+            summary_parts.append(f"\n## 表格汇总 (共{len(all_tables)}个)")
+            for t in all_tables:
+                summary_parts.append(f"- Slide {t['slide']}: {t['rows']}行 × {t['cols']}列")
+                if t["data"]:
+                    summary_parts.append(f"  表头: {' | '.join(t['data'][0][:5])}")
+
+        return "\n\n".join(parts + summary_parts)
+    except ImportError:
+        return "[PPTX提取需要python-pptx]"
     except Exception as e:
         return f"[PPTX提取失败: {e}]"
 
 
 def extract_text_xlsx(filepath: str) -> str:
-    """提取 XLSX 文本"""
+    """深度提取 XLSX — 识别关键指标、表格结构、数据趋势"""
     try:
         import openpyxl
-        wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+        from openpyxl.utils import get_column_letter
+
+        wb = openpyxl.load_workbook(filepath, data_only=True)
         parts = []
+
+        # 文档属性
+        props = wb.properties
+        meta_parts = []
+        if props.title:
+            meta_parts.append(f"标题: {props.title}")
+        if props.creator:
+            meta_parts.append(f"创建者: {props.creator}")
+        if props.lastModifiedBy:
+            meta_parts.append(f"最后修改: {props.lastModifiedBy}")
+        if meta_parts:
+            parts.append("## 文档信息\n" + "\n".join(meta_parts))
+
+        all_metrics = []
+
         for sheet_name in wb.sheetnames:
             ws = wb[sheet_name]
-            rows = []
-            for i, row in enumerate(ws.iter_rows(values_only=True)):
-                if any(cell is not None for cell in row):
-                    row_text = " | ".join(
-                        str(cell) if cell is not None else "" for cell in row
-                    )
-                    rows.append(row_text)
-                if i > 500:  # 限制每 sheet 行数
-                    rows.append("... (truncated)")
+            if ws.max_row == 1 and ws.max_column == 1 and ws["A1"].value is None:
+                continue  # 跳过空 sheet
+
+            sheet_parts = [f"## Sheet: {sheet_name} ({ws.max_row}行 × {ws.max_column}列)"]
+
+            # 提取表头行（前5行中找有内容的）
+            header_row = 0
+            for r in range(1, min(6, ws.max_row + 1)):
+                filled = sum(1 for c in range(1, ws.max_column + 1)
+                            if ws.cell(row=r, column=c).value is not None)
+                if filled >= 2:
+                    header_row = r
                     break
-            if rows:
-                parts.append(f"## Sheet: {sheet_name}\n" + "\n".join(rows[:100]))
+
+            # 提取表格结构
+            if header_row:
+                headers = []
+                for c in range(1, ws.max_column + 1):
+                    val = ws.cell(row=header_row, column=c).value
+                    headers.append(str(val)[:30] if val is not None else "")
+                sheet_parts.append(f"表头: {' | '.join(headers[:8])}")
+
+            # 扫描指标行
+            metric_rows = []
+            for r in range(1, ws.max_row + 1):
+                row_values = []
+                for c in range(1, ws.max_column + 1):
+                    val = ws.cell(row=r, column=c).value
+                    if val is not None:
+                        row_values.append(str(val))
+                row_str = " ".join(row_values)
+
+                # 识别含关键指标的行
+                is_metric = any(kw in row_str for kw in [
+                    "%", "亿", "万", "同比", "环比", "完成率", "渗透率",
+                    "收入", "利润", "毛利", "产能", "人效", "KPI",
+                    "偏差", "预算", "实际", "目标", "同比增长", "环比增长",
+                    "营业收入", "净利润", "人均产值", "毛利率", "净利率",
+                ])
+                if is_metric and any(c.isdigit() for c in row_str):
+                    cells = [str(ws.cell(row=r, column=c).value or "")
+                            for c in range(1, min(ws.max_column + 1, 9))]
+                    metric_rows.append({
+                        "row": r,
+                        "cells": " | ".join(cells),
+                        "sheet": sheet_name,
+                    })
+                    all_metrics.append(metric_rows[-1])
+
+            # 输出表头 + 指标行
+            if metric_rows:
+                sheet_parts.append(f"\n关键指标行 ({len(metric_rows)}项):")
+                for m in metric_rows[:20]:
+                    sheet_parts.append(f"  Row {m['row']}: {m['cells'][:120]}")
+            else:
+                # 无指标匹配时输出前20行数据
+                sample_rows = []
+                for r in range(1, min(21, ws.max_row + 1)):
+                    cell_vals = [str(ws.cell(row=r, column=c).value or "")
+                                for c in range(1, min(ws.max_column + 1, 6))]
+                    row_str = " | ".join(cell_vals)
+                    if row_str.replace(" | ", "").strip():
+                        sample_rows.append(f"  Row {r}: {row_str}")
+                if sample_rows:
+                    sheet_parts.append("\n数据预览:")
+                    sheet_parts.extend(sample_rows[:10])
+
+            parts.append("\n".join(sheet_parts))
+
         wb.close()
+
+        # 全局指标汇总
+        if all_metrics:
+            parts.append(f"\n\n## 指标汇总 ({len(all_metrics)}项)")
+            for m in all_metrics[:20]:
+                parts.append(f"- [{m['sheet']}] Row {m['row']}: {m['cells'][:100]}")
+
         return "\n\n".join(parts)
+    except ImportError:
+        return "[XLSX提取需要openpyxl]"
     except Exception as e:
         return f"[XLSX提取失败: {e}]"
 
@@ -408,6 +588,35 @@ def cmd_recent(hours: int = 24) -> list:
     return events
 
 
+def cmd_watch(interval: int = 300):
+    """持续监听模式 — 每 N 秒扫描一次已知目录的新文件"""
+    import time
+    print(f"JARVIS 文件监听已启动 · 间隔 {interval}s · Ctrl+C 停止", file=sys.stderr)
+    print(f"监听目录:", file=sys.stderr)
+    for cfg in SCAN_PATHS:
+        exists = os.path.exists(cfg["path"])
+        status = "✓" if exists else "✗ (不存在)"
+        print(f"  {status} {cfg['path']}", file=sys.stderr)
+    print("", file=sys.stderr)
+
+    iteration = 0
+    try:
+        while True:
+            iteration += 1
+            ts = datetime.now().strftime("%H:%M:%S")
+            print(f"[{ts}] 扫描 # {iteration}...", file=sys.stderr)
+            events = cmd_scan()
+            if events:
+                print(f"  → {len(events)} 个新文件摄入", file=sys.stderr)
+                for e in events:
+                    print(f"    [{e['file_type']}] {e['file_name']}", file=sys.stderr)
+            else:
+                print(f"  → 无新文件", file=sys.stderr)
+            time.sleep(interval)
+    except KeyboardInterrupt:
+        print(f"\n监听已停止 · 共扫描 {iteration} 次", file=sys.stderr)
+
+
 def main():
     parser = argparse.ArgumentParser(description="JARVIS 摄入代理")
     group = parser.add_mutually_exclusive_group()
@@ -416,8 +625,11 @@ def main():
     group.add_argument("--scan", action="store_true", help="全量扫描所有已知路径")
     group.add_argument("--stats", action="store_true", help="显示摄入统计")
     group.add_argument("--recent", type=int, metavar="HOURS", help="获取最近N小时事件(JSON输出)")
+    group.add_argument("--watch", action="store_true", help="持续监听模式")
     parser.add_argument("--force", action="store_true", help="强制重新摄入（忽略去重）")
     parser.add_argument("--label", default="", help="来源标签")
+    parser.add_argument("--interval", type=int, default=300,
+                       help="监听间隔秒数（默认300）")
     args = parser.parse_args()
 
     if args.stats:
@@ -432,6 +644,8 @@ def main():
         print(f"摄入完成: {len(events)} 个新文件", file=sys.stderr)
         for e in events:
             print(f"  [{e['file_type']}] {e['file_name']}", file=sys.stderr)
+    elif args.watch:
+        cmd_watch(args.interval)
     elif args.scan:
         events = cmd_scan()
         print(f"\n总计摄入: {len(events)} 个新文件", file=sys.stderr)

@@ -29,6 +29,7 @@ _DB_DIR = os.environ.get(
 )
 DB_PATH = os.path.join(_DB_DIR, "jarvis.db")
 EVENTS_FILE = os.path.join(DATA_DIR, "ingestion_events.jsonl")
+EMAIL_EVENTS_FILE = os.path.join(DATA_DIR, "email_events.jsonl")
 
 OUTPUT_DIR = os.path.join(VAULT_ROOT, "26年中集环科工作区", "日简报")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -53,6 +54,24 @@ def get_ingestion_events(hours: int = 24) -> list:
                 event = json.loads(line)
                 if event["timestamp"] >= cutoff:
                     events.append(event)
+    return events
+
+
+def get_email_events(hours: int = 24) -> list:
+    """获取最近N小时的邮件摄入事件"""
+    if not os.path.exists(EMAIL_EVENTS_FILE):
+        return []
+    cutoff = (datetime.now() - timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%S")
+    events = []
+    with open(EMAIL_EVENTS_FILE, "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                try:
+                    event = json.loads(line)
+                    if event.get("timestamp", "") >= cutoff:
+                        events.append(event)
+                except json.JSONDecodeError:
+                    continue
     return events
 
 
@@ -273,12 +292,26 @@ def generate_brief(date_str: str = None) -> str:
 
     # 收集数据
     ingestion_events = get_ingestion_events(24)
+    email_events = get_email_events(24)
     recent_decisions = get_recent_decisions(24)
     stale_decisions = get_stale_decisions(14)
     git_changes = get_git_changes(24)
     vault_notes = get_recent_vault_notes(24)
     action_items = get_p0_action_items()
     work_memories = get_kv_memories("work")
+
+    # 快览数据
+    total_p0_tasks = sum(len(a["open_tasks"]) for a in action_items if a["priority"] == "P0")
+    total_p1_tasks = sum(len(a["open_tasks"]) for a in action_items if a["priority"] == "P1")
+    meetings_today = [n for n in vault_notes if n["type"] == "会议纪要"]
+    new_emails_p0 = [e for e in email_events if e.get("priority") == "P0"]
+    new_emails_p1 = [e for e in email_events if e.get("priority") == "P1"]
+
+    # 判断是否有实质性更新
+    has_activity = bool(
+        vault_notes or ingestion_events or email_events or
+        recent_decisions or git_changes
+    )
 
     # ── 组装 Markdown ──
     lines = []
@@ -294,8 +327,39 @@ def generate_brief(date_str: str = None) -> str:
     lines.append("---")
     lines.append("")
     lines.append(f"# 每日工作简报 {date_str}")
-    lines.append(f"")
+    lines.append("")
     lines.append(f"> 自动生成于 {now.strftime('%Y-%m-%d %H:%M')} · 周{weekday_cn}")
+
+    # ── 0. 快览仪表板 ──
+    lines.append("")
+    lines.append("## 快览")
+    lines.append("")
+    lines.append(f"| 指标 | 数量 |")
+    lines.append(f"|------|------|")
+    lines.append(f"| P0 待办行动项 | **{total_p0_tasks}** |")
+    lines.append(f"| P1 待办行动项 | {total_p1_tasks} |")
+    lines.append(f"| 今日会议记录 | {len(meetings_today)} |")
+    lines.append(f"| 新摄入文件 | {len(ingestion_events)} |")
+    lines.append(f"| 新邮件 (P0/P1/总计) | {len(new_emails_p0)} / {len(new_emails_p1)} / {len(email_events)} |")
+    lines.append(f"| 待关闭决策 (>14天) | {len(stale_decisions)} |")
+    if not has_activity:
+        lines.append(f"| 状态 | 今日暂无活动更新 |")
+    lines.append("")
+
+    # ── 0b. 邮件摘要 ──
+    if email_events:
+        if new_emails_p0:
+            lines.append("### 紧急邮件")
+            for e in new_emails_p0:
+                lines.append(f"- [P0] **{e.get('sender_name', '?')}**: {e.get('subject', '')}")
+                if e.get("has_attachments"):
+                    lines[-1] += " [含附件]"
+            lines.append("")
+        if new_emails_p1:
+            lines.append("### 重要邮件")
+            for e in new_emails_p1[:5]:
+                lines.append(f"- [P1] **{e.get('sender_name', '?')}**: {e.get('subject', '')}")
+            lines.append("")
 
     # ── 1. 今日关键活动 ──
     lines.append("")
@@ -371,19 +435,59 @@ def generate_brief(date_str: str = None) -> str:
     # ── 3. 行动项追踪 ──
     lines.append("## 3. 行动项追踪")
     lines.append("")
-    lines.append("| 行动项 | 来源 | 状态 | 优先级 |")
-    lines.append("|--------|------|------|--------|")
+
+    # 辅助：判断任务是否过期
+    def is_overdue(task_text: str) -> bool:
+        """检查任务截止日期是否已过"""
+        import re
+        # 匹配 【3月】【4月10日】【5月30日】 等格式
+        month_map = {
+            "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+            "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12,
+        }
+        match = re.findall(r'【(\d+)月(\d+)?日?】', task_text)
+        for m in match:
+            month = month_map.get(m[0], 0)
+            day = int(m[1]) if m[1] else 1
+            if month == 0:
+                continue
+            deadline = datetime(today.year, month, min(day, 28))
+            if deadline < today.replace(hour=0, minute=0, second=0):
+                return True
+        # 也匹配单独的月份标记如【12月】
+        match_month = re.findall(r'【(\d+)月】', task_text)
+        for m in match_month:
+            month = month_map.get(m, 0)
+            if month and month < today.month:
+                return True
+        return False
+
+    lines.append("| 行动项 | 来源 | 负责人 | 状态 | 优先级 |")
+    lines.append("|--------|------|--------|------|--------|")
 
     # 从重点行动计划中提取开放任务
     open_task_count = 0
+    overdue_count = 0
     for item in action_items[:8]:
         for task in item["open_tasks"][:2]:
             priority = item["priority"] or "P1"
-            lines.append(f"| {task[:50]} | [[{item['file']}]] |  待办 | {priority} |")
+            owner = item.get("owner", "") or "-"
+            overdue = is_overdue(task)
+            if overdue:
+                status_text = "过期"
+                overdue_count += 1
+            else:
+                status_text = "待办"
+            lines.append(f"| {task[:50]} | [[{item['file']}]] | {owner} | {status_text} | {priority} |")
             open_task_count += 1
 
     if open_task_count == 0:
-        lines.append("| 暂无待办行动项 | - | - | - |")
+        lines.append("| 暂无待办行动项 | - | - | - | - |")
+
+    if overdue_count > 0:
+        lines.append("")
+        lines.append(f"> 其中 **{overdue_count}** 项已过原定截止时间，请确认是否需要更新或关闭。")
+
     lines.append("")
 
     # ── 4. KPI与数据变更 ──
