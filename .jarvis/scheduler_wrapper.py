@@ -46,7 +46,7 @@ TASKS = {
             f'--run daily-brief'
         ),
         "work_dir": VAULT_ROOT,
-        "description": "Daily brief + plan generation (daily 7:15 AM)",
+        "description": "Daily brief + plan + health + archive (daily 7:15 AM)",
     },
     "JARVIS_MiddayScan": {
         "schedule": "DAILY",
@@ -56,7 +56,17 @@ TASKS = {
             f'--run ingest'
         ),
         "work_dir": VAULT_ROOT,
-        "description": "Mid-day file scan for new inbox items (daily 1:00 PM)",
+        "description": "Mid-day file scan + email check (daily 1:00 PM)",
+    },
+    "JARVIS_WeeklyReport": {
+        "schedule": "WEEKLY",
+        "start_time": "16:00",
+        "command": (
+            f'"{PYTHON_EXE}" "{os.path.join(SCRIPT_DIR, "scheduler_wrapper.py")}" '
+            f'--run weekly-report'
+        ),
+        "work_dir": VAULT_ROOT,
+        "description": "Weekly report generation (Fri 4:00 PM)",
     },
 }
 
@@ -170,7 +180,7 @@ def list_tasks():
 
 
 def run_daily_brief_pipeline():
-    """执行日报+计划生成管线"""
+    """执行日报+计划生成管线（含健康检查 + 归档）"""
     log = setup_logging()
     log.info("=== Daily Brief Pipeline START ===")
 
@@ -179,12 +189,21 @@ def run_daily_brief_pipeline():
     plan_script = os.path.join(SCRIPT_DIR, "plan_generator.py")
     email_script = os.path.join(SCRIPT_DIR, "email_ingestion.py")
 
-    # 编码环境变量：防止 Windows GBK 覆盖 subprocess utf-8
-    utf8_env = {**os.environ, "PYTHONIOENCODING": "utf-8",
-                "PYTHONUTF8": "1"}
+    # 编码环境变量 + API keys（Windows Task Scheduler 不继承 Claude 的 env）
+    utf8_env = {
+        **os.environ,
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "1",
+    }
+    # 从 Claude settings 继承 API keys（如果存在）
+    for key in ["SILICONFLOW_API_KEY", "JARVIS_API_KEY",
+                "ANTHROPIC_AUTH_TOKEN", "DEEPSEEK_API_KEY",
+                "ANTHROPIC_BASE_URL", "ANTHROPIC_DEFAULT_SONNET_MODEL"]:
+        if key in os.environ:
+            utf8_env[key] = os.environ[key]
 
     # Step 1: 文件摄入扫描（限流+跳过邮件附件，容忍超时）
-    log.info("Step 1/4: File ingestion scan (max 20/dir, skip inbox)...")
+    log.info("Step 1/5: File ingestion scan (max 20/dir, skip inbox)...")
     try:
         r1 = subprocess.run(
             [PYTHON_EXE, ingestion_script, "--scan",
@@ -200,45 +219,64 @@ def run_daily_brief_pipeline():
     except Exception as e:
         log.warning(f"  File ingestion error: {e}")
 
-    # Step 1b: 邮件摄入
-    log.info("Step 2/4: Email ingestion...")
+    # Step 2: 邮件摄入
+    log.info("Step 2/5: Email ingestion...")
     try:
-        r1b = subprocess.run([PYTHON_EXE, email_script, "--days", "1", "--summary"],
+        r2 = subprocess.run([PYTHON_EXE, email_script, "--days", "1", "--summary"],
                              cwd=VAULT_ROOT, env=utf8_env,
                              capture_output=True, encoding="utf-8", errors="replace", timeout=60)
-        if r1b.returncode == 0:
+        if r2.returncode == 0:
             log.info("  Email ingestion complete.")
         else:
-            log.warning(f"  Email warning: {r1b.stderr[:200]}")
+            log.warning(f"  Email warning: {r2.stderr[:200]}")
     except subprocess.TimeoutExpired:
         log.warning("  Email ingestion timed out (60s), continuing pipeline.")
     except Exception as e:
         log.warning(f"  Email ingestion error: {e}")
 
-    # Step 2: 日报生成
-    log.info("Step 3/4: Daily brief generation...")
+    # Step 3: 日报生成（含AI摘要 + 归档）
+    log.info("Step 3/5: Daily brief generation...")
     try:
-        r2 = subprocess.run([PYTHON_EXE, brief_script], cwd=VAULT_ROOT, env=utf8_env,
-                            capture_output=True, encoding="utf-8", errors="replace", timeout=60)
-        if r2.returncode == 0:
-            brief_output = r2.stdout.strip() if r2.stdout else ""
+        r3 = subprocess.run([PYTHON_EXE, brief_script], cwd=VAULT_ROOT, env=utf8_env,
+                            capture_output=True, encoding="utf-8", errors="replace", timeout=120)
+        if r3.returncode == 0:
+            brief_output = r3.stdout.strip() if r3.stdout else ""
             log.info(f"  Brief generated: {brief_output[-100:]}")
         else:
-            log.error(f"  Brief failed: {r2.stderr[:200]}")
+            log.error(f"  Brief failed: {r3.stderr[:200]}")
     except Exception as e:
         log.error(f"  Brief exception: {e}")
 
-    # Step 3: 计划生成
-    log.info("Step 4/4: Plan generation...")
+    # Step 4: 计划生成
+    log.info("Step 4/5: Plan generation...")
     try:
-        r3 = subprocess.run([PYTHON_EXE, plan_script], cwd=VAULT_ROOT, env=utf8_env,
+        r4 = subprocess.run([PYTHON_EXE, plan_script], cwd=VAULT_ROOT, env=utf8_env,
                             capture_output=True, encoding="utf-8", errors="replace", timeout=60)
-        if r3.returncode == 0:
+        if r4.returncode == 0:
             log.info("  Plans generated.")
         else:
-            log.error(f"  Plan failed: {r3.stderr[:200]}")
+            log.error(f"  Plan failed: {r4.stderr[:200]}")
     except Exception as e:
         log.error(f"  Plan exception: {e}")
+
+    # Step 5: 健康检查（快速模式）
+    log.info("Step 5/5: Health check (quick)...")
+    try:
+        health_script = os.path.join(SCRIPT_DIR, "health_check.py")
+        r5 = subprocess.run([PYTHON_EXE, health_script, "--quick", "--json"],
+                           cwd=VAULT_ROOT, env=utf8_env,
+                           capture_output=True, encoding="utf-8", errors="replace", timeout=30)
+        if r5.returncode == 0:
+            result = json.loads(r5.stdout)
+            healthy = result.get("summary", {}).get("healthy", False)
+            if not healthy:
+                log.warning(f"  Health issues: {result['summary'].get('errors_detail', {})}")
+            else:
+                log.info("  Health check OK.")
+        else:
+            log.warning(f"  Health check failed: {r5.stderr[:100]}")
+    except Exception as e:
+        log.warning(f"  Health check error: {e}")
 
     log.info("=== Daily Brief Pipeline END ===")
 
@@ -283,6 +321,32 @@ def run_ingestion_scan():
     log.info("=== Midday Scan END ===")
 
 
+def run_weekly_report():
+    """执行周报生成"""
+    log = setup_logging()
+    log.info("=== Weekly Report START ===")
+    weekly_script = os.path.join(SCRIPT_DIR, "weekly_report_gen.py")
+
+    utf8_env = {**os.environ, "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
+    for key in ["SILICONFLOW_API_KEY", "JARVIS_API_KEY",
+                "ANTHROPIC_AUTH_TOKEN", "DEEPSEEK_API_KEY",
+                "ANTHROPIC_BASE_URL", "ANTHROPIC_DEFAULT_SONNET_MODEL"]:
+        if key in os.environ:
+            utf8_env[key] = os.environ[key]
+
+    try:
+        r = subprocess.run([PYTHON_EXE, weekly_script], cwd=VAULT_ROOT, env=utf8_env,
+                          capture_output=True, encoding="utf-8", errors="replace", timeout=120)
+        if r.returncode == 0:
+            log.info(f"  Weekly report generated: {r.stdout.strip()[-100:]}")
+        else:
+            log.error(f"  Weekly report failed: {r.stderr[:200]}")
+    except Exception as e:
+        log.error(f"  Weekly report exception: {e}")
+
+    log.info("=== Weekly Report END ===")
+
+
 def cmd_status():
     """显示所有任务状态"""
     log = setup_logging()
@@ -319,7 +383,7 @@ def main():
     group.add_argument("--uninstall", action="store_true", help="删除所有计划任务")
     group.add_argument("--list", action="store_true", help="列出当前任务")
     group.add_argument("--status", action="store_true", help="查看任务状态和最近日志")
-    group.add_argument("--run", choices=["daily-brief", "ingest"],
+    group.add_argument("--run", choices=["daily-brief", "ingest", "weekly-report"],
                        help="手动触发任务")
     args = parser.parse_args()
 
@@ -335,6 +399,8 @@ def main():
         run_daily_brief_pipeline()
     elif args.run == "ingest":
         run_ingestion_scan()
+    elif args.run == "weekly-report":
+        run_weekly_report()
     else:
         parser.print_help()
 

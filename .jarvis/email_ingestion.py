@@ -431,11 +431,11 @@ def fetch_emails(days: int = 1, folder_name: str = "收件箱",
 
     save_processed_emails(registry)
 
-    # 写入 JSONL
+    # 写入 JSONL（保留完整正文 + 线程历史，供日报和搜索使用）
     for e in events:
         with open(EMAIL_EVENTS_FILE, "a", encoding="utf-8") as f:
-            # 存储时移除 body（太大），改为 body_length
-            store = {k: v for k, v in e.items() if k not in ("body", "attachments", "thread_history")}
+            store = {k: v for k, v in e.items() if k != "attachments"}
+            # 正文已在 event 中，额外加 body_preview 作为快览
             store["body_preview"] = e["body"][:200] if e.get("body") else ""
             # 附件摘要（不含完整路径）
             if e.get("attachments"):

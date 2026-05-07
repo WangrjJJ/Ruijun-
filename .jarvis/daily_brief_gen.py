@@ -2,12 +2,13 @@
 """
 JARVIS Daily Brief Generator — 每日工作简报生成器
 从摄入事件、决策日志、Git历史、Vault变更中汇聚信息，生成五段式Markdown日报。
+含 AI 摘要 + 健康检查状态。
 
 用法:
   python3 daily_brief_gen.py                      # 生成今天日报
   python3 daily_brief_gen.py --date 2026-05-06     # 指定日期
-  python3 daily_brief_gen.py --output <path>       # 指定输出路径
   python3 daily_brief_gen.py --print               # 输出到stdout而非文件
+  python3 daily_brief_gen.py --no-ai               # 跳过AI摘要（快速模式）
 """
 
 import os
@@ -15,129 +16,133 @@ import sys
 import json
 import argparse
 import subprocess
-import sqlite3
 from datetime import datetime, timedelta
-from pathlib import Path
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 VAULT_ROOT = os.path.dirname(SCRIPT_DIR)
-CONFIG_FILE = os.path.join(SCRIPT_DIR, "config.json")
 DATA_DIR = os.path.join(SCRIPT_DIR, "data")
-_DB_DIR = os.environ.get(
-    "JARVIS_DATA_DIR",
-    os.path.expanduser("~/.jarvis/data")
+
+sys.path.insert(0, SCRIPT_DIR)
+from jarvis_common import (
+    load_config, get_ingestion_events, get_email_events,
+    get_email_full_bodies, get_recent_decisions, get_stale_decisions,
+    get_kv_memories, get_recent_vault_notes, get_p0_action_items,
+    call_llm, archive_jsonl, OUTPUT_DIR_DAILY,
 )
-DB_PATH = os.path.join(_DB_DIR, "jarvis.db")
-EVENTS_FILE = os.path.join(DATA_DIR, "ingestion_events.jsonl")
-EMAIL_EVENTS_FILE = os.path.join(DATA_DIR, "email_events.jsonl")
 
-OUTPUT_DIR = os.path.join(VAULT_ROOT, "26年中集环科工作区", "日简报")
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+os.makedirs(OUTPUT_DIR_DAILY, exist_ok=True)
 
 
-def load_config():
-    with open(CONFIG_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+# ── 健康检查 ──────────────────────────────────────────────────────
 
-
-# ── 数据采集 ──────────────────────────────────────────────────────
-
-def get_ingestion_events(hours: int = 24) -> list:
-    """获取最近N小时的摄入事件"""
-    if not os.path.exists(EVENTS_FILE):
-        return []
-    cutoff = (datetime.now() - timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%S")
-    events = []
-    with open(EVENTS_FILE, "r", encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
-                event = json.loads(line)
-                if event["timestamp"] >= cutoff:
-                    events.append(event)
-    return events
-
-
-def get_email_events(hours: int = 24) -> list:
-    """获取最近N小时的邮件摄入事件"""
-    if not os.path.exists(EMAIL_EVENTS_FILE):
-        return []
-    cutoff = (datetime.now() - timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%S")
-    events = []
-    with open(EMAIL_EVENTS_FILE, "r", encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
-                try:
-                    event = json.loads(line)
-                    if event.get("timestamp", "") >= cutoff:
-                        events.append(event)
-                except json.JSONDecodeError:
-                    continue
-    return events
-
-
-def get_recent_decisions(hours: int = 24) -> list:
-    """获取最近N小时的决策"""
-    if not os.path.exists(DB_PATH):
-        return []
+def health_check() -> dict:
+    """检查各子系统状态，返回状态字典"""
+    status = {
+        "outlook": "unknown",
+        "siliconflow_api": "unknown",
+        "deepseek_api": "unknown",
+        "index": "unknown",
+        "db": "unknown",
+        "disk_free_gb": 0,
+    }
+    # 磁盘空间
     try:
-        conn = sqlite3.connect(DB_PATH)
-        conn.row_factory = sqlite3.Row
-        cutoff = (datetime.now() - timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%S")
-        rows = conn.execute(
-            """SELECT id, domain, title, context, chosen, rationale, tags,
-                      confidence, status, created_at
-               FROM decisions
-               WHERE created_at >= ?
-               ORDER BY created_at DESC""",
-            (cutoff,)
-        ).fetchall()
-        conn.close()
-        return [dict(r) for r in rows]
-    except sqlite3.OperationalError:
-        return []
+        import shutil
+        free = shutil.disk_usage(VAULT_ROOT).free
+        status["disk_free_gb"] = round(free / (1024**3), 1)
+    except Exception:
+        pass
 
+    # 索引完整性
+    emb_path = os.path.join(DATA_DIR, "embeddings.npy")
+    meta_path = os.path.join(DATA_DIR, "metadata.json")
+    info_path = os.path.join(DATA_DIR, "index_info.json")
+    if all(os.path.exists(p) for p in [emb_path, meta_path, info_path]):
+        try:
+            with open(info_path, "r") as f:
+                info = json.load(f)
+            age_hours = (datetime.now() - datetime.fromisoformat(info.get("indexed_at", "2000-01-01T00:00:00"))).total_seconds() / 3600
+            status["index"] = f"OK ({info.get('total_chunks', 0)} chunks, {age_hours:.0f}h ago)"
+        except Exception:
+            status["index"] = "corrupt"
+    else:
+        status["index"] = "missing"
 
-def get_stale_decisions(days: int = 14) -> list:
-    """获取超过N天未关闭的决策"""
-    if not os.path.exists(DB_PATH):
-        return []
+    # DB
+    from jarvis_common import DB_PATH
+    if os.path.exists(DB_PATH):
+        status["db"] = f"OK ({os.path.getsize(DB_PATH)//1024}KB)"
+    else:
+        status["db"] = "missing"
+
+    # API
+    cfg = load_config()
     try:
-        conn = sqlite3.connect(DB_PATH)
-        conn.row_factory = sqlite3.Row
-        cutoff = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%S")
-        rows = conn.execute(
-            """SELECT id, domain, title, context, chosen, tags, confidence,
-                      created_at, status
-               FROM decisions
-               WHERE status = 'open' AND created_at < ?
-               ORDER BY created_at ASC""",
-            (cutoff,)
-        ).fetchall()
-        conn.close()
-        return [dict(r) for r in rows]
-    except sqlite3.OperationalError:
-        return []
+        import requests
+        r = requests.post(
+            f"{cfg['api_base']}/embeddings",
+            headers={"Authorization": f"Bearer {cfg['api_key']}"},
+            json={"model": cfg["embedding_model"], "input": "ping"},
+            timeout=10,
+        )
+        status["siliconflow_api"] = "OK" if r.status_code == 200 else f"HTTP {r.status_code}"
+    except Exception as e:
+        status["siliconflow_api"] = f"down ({str(e)[:50]})"
 
-
-def get_kv_memories(category: str = "work") -> list:
-    """获取指定类别的KV记忆"""
-    if not os.path.exists(DB_PATH):
-        return []
+    # DeepSeek
     try:
-        conn = sqlite3.connect(DB_PATH)
-        conn.row_factory = sqlite3.Row
-        rows = conn.execute(
-            "SELECT key, value, updated_at FROM memory_kv WHERE category = ? ORDER BY updated_at DESC",
-            (category,)
-        ).fetchall()
-        conn.close()
-        return [dict(r) for r in rows]
-    except sqlite3.OperationalError:
-        return []
+        result = call_llm("ping", system="回复OK", max_tokens=10)
+        status["deepseek_api"] = "OK" if "error" not in result.lower() and result else "unexpected"
+    except Exception as e:
+        status["deepseek_api"] = f"down ({str(e)[:50]})"
 
+    return status
+
+
+# ── AI 摘要 ────────────────────────────────────────────────────────
+
+def generate_ai_summary(date_str: str, ingestion_events: list,
+                        email_events: list, vault_notes: list,
+                        decisions: list) -> str:
+    """调用 LLM 生成当日工作智能摘要"""
+    # 收集素材
+    parts = [f"今天是{date_str}。请根据以下信息生成一份简洁的工作日报摘要（200字以内），用中文。"]
+    parts.append("请突出：最重要的1-2件事、需要关注的风险/阻塞、明天的优先级建议。")
+
+    if email_events:
+        p0_emails = [e for e in email_events if e.get("priority") == "P0"]
+        p1_emails = [e for e in email_events if e.get("priority") == "P1"]
+        parts.append(f"\n【邮件】共{len(email_events)}封新邮件，其中P0紧急{len(p0_emails)}封，P1重要{len(p1_emails)}封。")
+        for e in p0_emails[:3]:
+            parts.append(f"- P0: {e.get('sender_name', '?')} — {e.get('subject', '')}")
+        for e in p1_emails[:3]:
+            parts.append(f"- P1: {e.get('sender_name', '?')} — {e.get('subject', '')}")
+
+    if ingestion_events:
+        parts.append(f"\n【文件摄入】共{len(ingestion_events)}个新文件。")
+        for e in ingestion_events[:5]:
+            parts.append(f"- [{e.get('file_type', '')}] {e.get('file_name', '')}: {e.get('summary', '')[:80]}")
+
+    if vault_notes:
+        parts.append(f"\n【笔记变更】共{len(vault_notes)}个笔记更新。")
+        for n in vault_notes[:5]:
+            parts.append(f"- {n['title']} ({n.get('type', '')}) [{n.get('status', '')}]")
+
+    if decisions:
+        parts.append(f"\n【决策】今日{len(decisions)}条新决策。")
+        for d in decisions[:3]:
+            parts.append(f"- {d['title']} ({d.get('domain', '')})")
+
+    if len(parts) <= 2:
+        return "今日暂无足够活动数据供AI摘要。"
+
+    prompt = "\n".join(parts)
+    return call_llm(prompt, system="你是中集环科企管部副总经理的工作助理。用简洁中文输出日报摘要，不超过200字。", max_tokens=300)
+
+
+# ── Git 变更 ──────────────────────────────────────────────────────
 
 def get_git_changes(hours: int = 24) -> list:
-    """获取 vault 的 git 变更记录"""
     try:
         result = subprocess.run(
             ["git", "log", f"--since={hours}.hours.ago",
@@ -167,120 +172,9 @@ def get_git_changes(hours: int = 24) -> list:
         return []
 
 
-def get_recent_vault_notes(hours: int = 24) -> list:
-    """扫描 vault 中最近修改的笔记（排除非工作区）"""
-    cutoff = datetime.now() - timedelta(hours=hours)
-    notes = []
-    work_dir = os.path.join(VAULT_ROOT, "26年中集环科工作区")
-
-    for root, dirs, files in os.walk(work_dir):
-        # 跳过日简报和 . 开头的目录
-        dirs[:] = [d for d in dirs if not d.startswith(".")]
-        for f in files:
-            if not f.endswith(".md"):
-                continue
-            filepath = os.path.join(root, f)
-            try:
-                mtime = datetime.fromtimestamp(os.path.getmtime(filepath))
-                if mtime >= cutoff:
-                    # 提取 frontmatter
-                    title = f.replace(".md", "")
-                    note_type = ""
-                    status = ""
-                    priority = ""
-                    with open(filepath, "r", encoding="utf-8") as fh:
-                        content = fh.read(2000)
-                        if content.startswith("---"):
-                            end = content.find("---", 3)
-                            if end > 0:
-                                fm = content[3:end]
-                                for line in fm.split("\n"):
-                                    parts = line.split(":", 1)
-                                    if len(parts) == 2:
-                                        key = parts[0].strip()
-                                        val = parts[1].strip().strip('"').strip("'")
-                                        if key == "title":
-                                            title = val
-                                        elif key == "type":
-                                            note_type = val
-                                        elif key == "status":
-                                            status = val
-                                        elif key == "priority":
-                                            priority = val
-                    rel_path = os.path.relpath(filepath, work_dir)
-                    notes.append({
-                        "path": rel_path,
-                        "title": title,
-                        "type": note_type,
-                        "status": status,
-                        "priority": priority,
-                        "mtime": mtime.strftime("%Y-%m-%dT%H:%M:%S"),
-                    })
-            except (OSError, UnicodeDecodeError):
-                pass
-
-    notes.sort(key=lambda x: x["mtime"], reverse=True)
-    return notes
-
-
-def get_p0_action_items() -> list:
-    """从重点行动计划中提取 P0 事项"""
-    actions_dir = os.path.join(VAULT_ROOT, "26年中集环科工作区", "重点行动计划")
-    if not os.path.isdir(actions_dir):
-        return []
-
-    items = []
-    for root, dirs, files in os.walk(actions_dir):
-        for f in files:
-            if not f.endswith(".md"):
-                continue
-            filepath = os.path.join(root, f)
-            try:
-                with open(filepath, "r", encoding="utf-8") as fh:
-                    content = fh.read()
-                    has_p0 = False
-                    title = f.replace(".md", "")
-                    owner = ""
-
-                    if content.startswith("---"):
-                        end = content.find("---", 3)
-                        if end > 0:
-                            fm = content[3:end]
-                            for line in fm.split("\n"):
-                                parts = line.split(":", 1)
-                                if len(parts) == 2:
-                                    key = parts[0].strip()
-                                    val = parts[1].strip().strip('"').strip("'")
-                                    if key == "title":
-                                        title = val
-                                    elif key == "priority" and val == "P0":
-                                        has_p0 = True
-                                    elif key == "owner":
-                                        owner = val
-
-                    # 提取未完成的任务
-                    tasks = []
-                    for line in content.split("\n"):
-                        stripped = line.strip()
-                        if stripped.startswith("- [ ]"):
-                            tasks.append(stripped[6:].strip())
-
-                    items.append({
-                        "file": f,
-                        "title": title,
-                        "owner": owner,
-                        "priority": "P0" if has_p0 else "",
-                        "open_tasks": tasks,
-                    })
-            except (OSError, UnicodeDecodeError):
-                pass
-    return items
-
-
 # ── 日报组装 ──────────────────────────────────────────────────────
 
-def generate_brief(date_str: str = None) -> str:
-    """生成完整日报 Markdown"""
+def generate_brief(date_str: str = None, use_ai: bool = True) -> str:
     now = datetime.now()
     if date_str is None:
         today = now
@@ -300,18 +194,26 @@ def generate_brief(date_str: str = None) -> str:
     action_items = get_p0_action_items()
     work_memories = get_kv_memories("work")
 
+    # 健康检查
+    health = health_check()
+    health_ok = all(
+        v in ("OK", "unknown") or (isinstance(v, str) and v.startswith("OK"))
+        for v in health.values() if v not in (0, 0.0, "unknown")
+    )
+
+    # AI 摘要
+    ai_summary = ""
+    if use_ai and (vault_notes or email_events or ingestion_events or recent_decisions):
+        ai_summary = generate_ai_summary(date_str, ingestion_events, email_events,
+                                          vault_notes, recent_decisions)
+
     # 快览数据
     total_p0_tasks = sum(len(a["open_tasks"]) for a in action_items if a["priority"] == "P0")
     total_p1_tasks = sum(len(a["open_tasks"]) for a in action_items if a["priority"] == "P1")
     meetings_today = [n for n in vault_notes if n["type"] == "会议纪要"]
     new_emails_p0 = [e for e in email_events if e.get("priority") == "P0"]
     new_emails_p1 = [e for e in email_events if e.get("priority") == "P1"]
-
-    # 判断是否有实质性更新
-    has_activity = bool(
-        vault_notes or ingestion_events or email_events or
-        recent_decisions or git_changes
-    )
+    has_activity = bool(vault_notes or ingestion_events or email_events or recent_decisions or git_changes)
 
     # ── 组装 Markdown ──
     lines = []
@@ -322,40 +224,51 @@ def generate_brief(date_str: str = None) -> str:
     lines.append("status: 自动生成")
     lines.append("priority: P1")
     lines.append(f"date: {date_str}")
-    lines.append("aliases:")
-    lines.append(f'  - "Daily Brief {date_str}"')
     lines.append("---")
     lines.append("")
     lines.append(f"# 每日工作简报 {date_str}")
     lines.append("")
     lines.append(f"> 自动生成于 {now.strftime('%Y-%m-%d %H:%M')} · 周{weekday_cn}")
 
-    # ── 0. 快览仪表板 ──
+    # ── 0. 健康状态 ──
+    health_icon = "✓" if health_ok else "⚠"
+    lines.append(f"> 系统状态: {health_icon} "
+                 f"API(SiliconFlow:{health['siliconflow_api']}, DeepSeek:{health['deepseek_api']}) "
+                 f"| 索引:{health['index']} | DB:{health['db']} "
+                 f"| 磁盘空闲:{health['disk_free_gb']}GB")
     lines.append("")
+
+    # ── 0b. AI 摘要 ──
+    if ai_summary and not ai_summary.startswith("["):
+        lines.append("## 🤖 AI 摘要")
+        lines.append("")
+        lines.append(f"> {ai_summary}")
+        lines.append("")
+
+    # ── 1. 快览仪表板 ──
     lines.append("## 快览")
     lines.append("")
-    lines.append(f"| 指标 | 数量 |")
-    lines.append(f"|------|------|")
+    lines.append("| 指标 | 数量 |")
+    lines.append("|------|------|")
     lines.append(f"| P0 待办行动项 | **{total_p0_tasks}** |")
     lines.append(f"| P1 待办行动项 | {total_p1_tasks} |")
     lines.append(f"| 今日会议记录 | {len(meetings_today)} |")
     lines.append(f"| 新摄入文件 | {len(ingestion_events)} |")
     lines.append(f"| 新邮件 (P0/P1/总计) | {len(new_emails_p0)} / {len(new_emails_p1)} / {len(email_events)} |")
     lines.append(f"| 待关闭决策 (>14天) | {len(stale_decisions)} |")
+    lines.append(f"| 系统健康 | {'正常' if health_ok else '异常'} |")
     if not has_activity:
-        lines.append(f"| 状态 | 今日暂无活动更新 |")
+        lines.append("| 状态 | 今日暂无活动更新 |")
     lines.append("")
 
-    # ── 0b. 邮件摘要 ──
+    # ── 2. 邮件摘要 ──
     if email_events:
-        total_attachments_ingested = 0
+        total_attachments = 0
         for e in email_events:
             if e.get("attachments"):
-                total_attachments_ingested += sum(1 for a in e["attachments"] if a.get("ingested"))
-
-        if total_attachments_ingested > 0:
-            lines.append(f"> 今日从邮件自动摄入 **{total_attachments_ingested}** 个附件，已存入 `_inbox/邮件附件/`")
-
+                total_attachments += sum(1 for a in e["attachments"] if a.get("ingested"))
+        if total_attachments > 0:
+            lines.append(f"> 今日从邮件自动摄入 **{total_attachments}** 个附件，已存入 `_inbox/邮件附件/`")
         if new_emails_p0:
             lines.append("")
             lines.append("### 紧急邮件")
@@ -376,35 +289,30 @@ def generate_brief(date_str: str = None) -> str:
                 lines.append(f"- [P1] **{e.get('sender_name', '?')}**: {e.get('subject', '')}")
             lines.append("")
 
-    # ── 1. 今日关键活动 ──
+    # ── 3. 今日关键活动 ──
     lines.append("")
     lines.append("## 1. 今日关键活动")
     lines.append("")
     if vault_notes:
-        # 按类型分组
         meetings = [n for n in vault_notes if n["type"] == "会议纪要"]
         action_updates = [n for n in vault_notes if n["type"] == "重点行动计划"]
         data_updates = [n for n in vault_notes if n["type"] == "经营数据"]
         others = [n for n in vault_notes if n["type"] not in ("会议纪要", "重点行动计划", "经营数据")]
-
         if meetings:
             lines.append("### 会议")
             for m in meetings[:5]:
                 lines.append(f"- **{m['title']}** `{m['status']}` — [[{m['path']}]]")
             lines.append("")
-
         if action_updates:
             lines.append("### 行动计划更新")
             for a in action_updates[:5]:
                 lines.append(f"- **{a['title']}** `{a['priority']}` — [[{a['path']}]]")
             lines.append("")
-
         if data_updates:
             lines.append("### 数据更新")
             for d in data_updates[:3]:
                 lines.append(f"- **{d['title']}** — [[{d['path']}]]")
             lines.append("")
-
         if others:
             lines.append("### 其他更新")
             for o in others[:5]:
@@ -414,7 +322,7 @@ def generate_brief(date_str: str = None) -> str:
         lines.append("今日无 vault 变更记录。")
         lines.append("")
 
-    # ── 2. 会议摘要 ──
+    # ── 4. 会议摘要 ──
     lines.append("## 2. 会议摘要")
     lines.append("")
     meetings = [n for n in vault_notes if n["type"] == "会议纪要"]
@@ -423,14 +331,10 @@ def generate_brief(date_str: str = None) -> str:
             lines.append(f"### {m['title']}")
             lines.append("")
             lines.append(f"- **状态**: {m['status']}")
-            lines.append(f"- **时间**: {m.get('date', '未记录')}")
-            # 尝试读取会议纪要的关键内容
             filepath = os.path.join(VAULT_ROOT, "26年中集环科工作区", m["path"])
             try:
                 with open(filepath, "r", encoding="utf-8") as f:
                     content = f.read()
-                    # 提取行动项
-                    in_tasks = False
                     tasks = []
                     for line in content.split("\n"):
                         if line.strip().startswith("- [ ]") or line.strip().startswith("- [x]"):
@@ -447,29 +351,21 @@ def generate_brief(date_str: str = None) -> str:
         lines.append("今日无会议记录。")
         lines.append("")
 
-    # ── 3. 行动项追踪 ──
+    # ── 5. 行动项追踪 ──
     lines.append("## 3. 行动项追踪")
     lines.append("")
 
-    # 辅助：判断任务是否过期
     def is_overdue(task_text: str) -> bool:
-        """检查任务截止日期是否已过"""
         import re
-        # 匹配 【3月】【4月10日】【5月30日】 等格式
-        month_map = {
-            "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
-            "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12,
-        }
+        month_map = {"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"10":10,"11":11,"12":12}
         match = re.findall(r'【(\d+)月(\d+)?日?】', task_text)
         for m in match:
             month = month_map.get(m[0], 0)
             day = int(m[1]) if m[1] else 1
-            if month == 0:
-                continue
+            if month == 0: continue
             deadline = datetime(today.year, month, min(day, 28))
             if deadline < today.replace(hour=0, minute=0, second=0):
                 return True
-        # 也匹配单独的月份标记如【12月】
         match_month = re.findall(r'【(\d+)月】', task_text)
         for m in match_month:
             month = month_map.get(m, 0)
@@ -479,8 +375,6 @@ def generate_brief(date_str: str = None) -> str:
 
     lines.append("| 行动项 | 来源 | 负责人 | 状态 | 优先级 |")
     lines.append("|--------|------|--------|------|--------|")
-
-    # 从重点行动计划中提取开放任务
     open_task_count = 0
     overdue_count = 0
     for item in action_items[:8]:
@@ -488,24 +382,18 @@ def generate_brief(date_str: str = None) -> str:
             priority = item["priority"] or "P1"
             owner = item.get("owner", "") or "-"
             overdue = is_overdue(task)
-            if overdue:
-                status_text = "过期"
-                overdue_count += 1
-            else:
-                status_text = "待办"
+            status_text = "过期" if overdue else "待办"
+            if overdue: overdue_count += 1
             lines.append(f"| {task[:50]} | [[{item['file']}]] | {owner} | {status_text} | {priority} |")
             open_task_count += 1
-
     if open_task_count == 0:
         lines.append("| 暂无待办行动项 | - | - | - | - |")
-
     if overdue_count > 0:
         lines.append("")
-        lines.append(f"> 其中 **{overdue_count}** 项已过原定截止时间，请确认是否需要更新或关闭。")
-
+        lines.append(f"> 其中 **{overdue_count}** 项已过原定截止时间。")
     lines.append("")
 
-    # ── 4. KPI与数据变更 ──
+    # ── 6. KPI与数据变更 ──
     lines.append("## 4. KPI与数据变更")
     lines.append("")
     data_notes = [n for n in vault_notes if n["type"] == "经营数据"]
@@ -516,46 +404,42 @@ def generate_brief(date_str: str = None) -> str:
             try:
                 with open(filepath, "r", encoding="utf-8") as f:
                     content = f.read()
-                    # 提取关键数字
                     for line in content.split("\n")[:50]:
                         if any(kw in line for kw in ["%", "亿", "万", "同比", "环比", "完成率"]):
                             lines.append(f"  - {line.strip()}")
-                        if len(lines) > 20:
-                            break
+                        if len(lines) > 20: break
             except Exception:
                 pass
     else:
         lines.append("今日无经营数据变更。")
     lines.append("")
 
-    # ── 5. 市场与行业动态 ──
+    # ── 7. 市场与行业动态 ──
     lines.append("## 5. 市场与行业动态")
     lines.append("")
     market_notes = []
-    for root, dirs, files in os.walk(
-        os.path.join(VAULT_ROOT, "26年中集环科工作区", "市场情报")
-    ):
-        for f in files:
-            if f.endswith(".md"):
-                mtime = datetime.fromtimestamp(os.path.getmtime(os.path.join(root, f)))
-                if mtime >= today.replace(hour=0, minute=0, second=0):
-                    market_notes.append(f)
-
+    market_dir = os.path.join(VAULT_ROOT, "26年中集环科工作区", "市场情报")
+    if os.path.isdir(market_dir):
+        for root, dirs, files in os.walk(market_dir):
+            for f in files:
+                if f.endswith(".md"):
+                    mtime = datetime.fromtimestamp(os.path.getmtime(os.path.join(root, f)))
+                    if mtime >= today.replace(hour=0, minute=0, second=0):
+                        market_notes.append(f)
     industry_notes = []
-    for root, dirs, files in os.walk(
-        os.path.join(VAULT_ROOT, "26年中集环科工作区", "行业研究")
-    ):
-        for f in files:
-            if f.endswith(".md"):
-                mtime = datetime.fromtimestamp(os.path.getmtime(os.path.join(root, f)))
-                if mtime >= today.replace(hour=0, minute=0, second=0):
-                    industry_notes.append(f)
-
+    industry_dir = os.path.join(VAULT_ROOT, "26年中集环科工作区", "行业研究")
+    if os.path.isdir(industry_dir):
+        for root, dirs, files in os.walk(industry_dir):
+            for f in files:
+                if f.endswith(".md"):
+                    mtime = datetime.fromtimestamp(os.path.getmtime(os.path.join(root, f)))
+                    if mtime >= today.replace(hour=0, minute=0, second=0):
+                        industry_notes.append(f)
     if market_notes or industry_notes:
         for m in market_notes:
-            lines.append(f"- 📈 市场情报更新: [[市场情报/{m}]]")
+            lines.append(f"- 市场情报更新: [[市场情报/{m}]]")
         for i in industry_notes:
-            lines.append(f"- 📚 行业研究更新: [[行业研究/{i}]]")
+            lines.append(f"- 行业研究更新: [[行业研究/{i}]]")
     else:
         lines.append("今日无市场/行业动态更新。")
     lines.append("")
@@ -588,9 +472,8 @@ def generate_brief(date_str: str = None) -> str:
 
 
 def write_brief(content: str, date_str: str):
-    """写入日报文件"""
     filename = f"每日工作简报_{date_str}.md"
-    filepath = os.path.join(OUTPUT_DIR, filename)
+    filepath = os.path.join(OUTPUT_DIR_DAILY, filename)
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
     return filepath
@@ -598,7 +481,6 @@ def write_brief(content: str, date_str: str):
 
 def main():
     import io
-    # Fix Windows GBK encoding for stdout
     if hasattr(sys.stdout, "reconfigure"):
         try:
             sys.stdout.reconfigure(encoding="utf-8")
@@ -608,12 +490,12 @@ def main():
 
     parser = argparse.ArgumentParser(description="JARVIS 日报生成器")
     parser.add_argument("--date", help="日期 (YYYY-MM-DD), 默认今天")
-    parser.add_argument("--output", help="输出路径")
     parser.add_argument("--print", action="store_true", help="输出到stdout而非文件")
+    parser.add_argument("--no-ai", action="store_true", help="跳过AI摘要")
     args = parser.parse_args()
 
     date_str = args.date or datetime.now().strftime("%Y-%m-%d")
-    content = generate_brief(date_str)
+    content = generate_brief(date_str, use_ai=not args.no_ai)
 
     if args.print:
         print(content)
@@ -621,6 +503,13 @@ def main():
         filepath = write_brief(content, date_str)
         sys.stderr.write(f"日报已生成: {filepath}\n")
         print(filepath)
+
+    # 归档旧事件
+    from jarvis_common import EVENTS_FILE, EMAIL_EVENTS_FILE
+    for fp in [EVENTS_FILE, EMAIL_EVENTS_FILE]:
+        n = archive_jsonl(fp, max_days=30)
+        if n:
+            sys.stderr.write(f"归档 {os.path.basename(fp)}: {n} 条\n")
 
 
 if __name__ == "__main__":
