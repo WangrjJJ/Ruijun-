@@ -23,7 +23,7 @@ FILES = [
     "09_罐箱产业波特五力分析.md",
 ]
 
-OUTPUT = BASE / "中集环科行业研究报告_2026_v3.pdf"
+OUTPUT = BASE / "中集环科行业研究报告_2026_v4.pdf"
 
 def strip_frontmatter(text):
     if text.startswith("---"):
