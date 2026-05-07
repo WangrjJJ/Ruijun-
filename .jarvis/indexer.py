@@ -20,14 +20,11 @@ import requests
 from datetime import datetime
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-CONFIG_FILE = os.path.join(SCRIPT_DIR, "config.json")
 DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 
-# ── 配置加载 ───────────────────────────────────────────────
-
-def load_config():
-    with open(CONFIG_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+# 使用公共模块的配置加载（自动从环境变量读取 api_key）
+sys.path.insert(0, SCRIPT_DIR)
+from jarvis_common import load_config
 
 # ── Frontmatter解析 ────────────────────────────────────────
 

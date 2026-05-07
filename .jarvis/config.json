@@ -1,5 +1,6 @@
 {
-  "api_key": "sk-iiyhmyvttogwnznsqksvbwpfwlzkixoiipvlzkgsselnvsvd",
+  "api_key": "",
+  "_comment_api_key": "Set JARVIS_API_KEY or SILICONFLOW_API_KEY env var instead of hardcoding here.",
   "api_base": "https://api.siliconflow.cn/v1",
   "embedding_model": "BAAI/bge-m3",
   "vault_path": "C:/Users/01455310/Documents/Obsidian Vault",
