@@ -26,3 +26,7 @@
 2026-05-07 07:47:20,599 [INFO] Step 4/4: Plan generation...
 2026-05-07 07:47:20,896 [INFO]   Plans generated.
 2026-05-07 07:47:20,897 [INFO] === Daily Brief Pipeline END ===
+2026-05-07 13:00:00,329 [INFO] === Midday Scan ===
+2026-05-07 13:01:30,370 [WARNING]   File scan timed out (90s), continuing.
+2026-05-07 13:01:38,633 [INFO]   Email check complete.
+2026-05-07 13:01:38,634 [INFO] === Midday Scan END ===
