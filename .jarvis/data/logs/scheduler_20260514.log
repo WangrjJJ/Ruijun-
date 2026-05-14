@@ -22,3 +22,6 @@
 2026-05-14 07:46:44,242 [INFO] Step 5/5: Health check (quick)...
 2026-05-14 07:46:44,617 [INFO]   Health check OK.
 2026-05-14 07:46:44,617 [INFO] === Daily Brief Pipeline END ===
+2026-05-14 16:12:46,765 [INFO] === Weekly Report START ===
+2026-05-14 16:12:48,762 [INFO]   Weekly report generated: C:\Users\01455310\Documents\Obsidian Vault\26年中集环科工作区\周计划\周报_W20.md
+2026-05-14 16:12:48,766 [INFO] === Weekly Report END ===
