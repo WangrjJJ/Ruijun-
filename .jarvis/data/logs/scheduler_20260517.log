@@ -1,1 +1,4 @@
 2026-05-17 13:00:02,244 [INFO] === Midday Scan ===
+2026-05-17 16:54:45,123 [WARNING]   File scan timed out (90s), continuing.
+2026-05-17 16:54:48,808 [INFO]   Email check complete.
+2026-05-17 16:54:48,808 [INFO] === Midday Scan END ===
