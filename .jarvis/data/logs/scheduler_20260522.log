@@ -1,0 +1,6 @@
+2026-05-22 07:15:19,398 [INFO] === Daily Brief Pipeline START ===
+2026-05-22 07:15:19,399 [INFO] Step 1/5: File ingestion scan (max 20/dir, skip inbox)...
+2026-05-22 13:42:41,363 [INFO] === Midday Scan ===
+2026-05-22 13:44:11,454 [WARNING]   File scan timed out (90s), continuing.
+2026-05-22 13:44:16,125 [INFO]   Email check complete.
+2026-05-22 13:44:16,130 [INFO] === Midday Scan END ===
