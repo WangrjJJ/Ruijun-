@@ -1,0 +1,12 @@
+2026-05-29 07:15:02,495 [INFO] === Daily Brief Pipeline START ===
+2026-05-29 07:15:02,496 [INFO] Step 1/5: File ingestion scan (max 20/dir, skip inbox)...
+2026-05-29 07:15:15,862 [WARNING]   File ingestion warning: [SCAN] 26年工作区: C:\Users\01455310\Documents\Obsidian Vault\26年中集环科工作区
+  → 2 新文件
+[SCAN] 工作文件根目录: C:\Users\01455310\Desktop\26年工作文件
+  → 0 新文件
+[SCAN] 季度经营分析: C:\Users\01455310\Desktop\26年工作文件\26年季度经营分析会
+ 
+2026-05-29 13:00:01,328 [INFO] === Midday Scan ===
+2026-05-29 13:01:31,361 [WARNING]   File scan timed out (90s), continuing.
+2026-05-29 13:01:34,225 [INFO]   Email check complete.
+2026-05-29 13:01:34,225 [INFO] === Midday Scan END ===

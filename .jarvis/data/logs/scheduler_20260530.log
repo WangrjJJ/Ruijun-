@@ -1,0 +1,16 @@
+2026-05-30 07:32:14,768 [INFO] === Daily Brief Pipeline START ===
+2026-05-30 07:32:14,820 [INFO] Step 1/5: File ingestion scan (max 20/dir, skip inbox)...
+2026-05-30 07:33:45,043 [WARNING]   File ingestion timed out (90s), continuing pipeline.
+2026-05-30 07:33:45,044 [INFO] Step 2/5: Email ingestion...
+2026-05-30 07:34:09,310 [INFO]   Email ingestion complete.
+2026-05-30 07:34:09,311 [INFO] Step 3/5: Daily brief generation...
+2026-05-30 07:34:10,505 [INFO]   Brief generated: C:\Users\01455310\Documents\Obsidian Vault\26年中集环科工作区\日简报\每日工作简报_2026-05-30.md
+2026-05-30 07:34:10,506 [INFO] Step 4/5: Plan generation...
+2026-05-30 07:34:10,798 [INFO]   Plans generated.
+2026-05-30 07:34:10,799 [INFO] Step 5/5: Health check (quick)...
+2026-05-30 07:34:11,327 [INFO]   Health check OK.
+2026-05-30 07:34:11,327 [INFO] === Daily Brief Pipeline END ===
+2026-05-30 13:35:20,819 [INFO] === Midday Scan ===
+2026-05-30 13:36:51,646 [WARNING]   File scan timed out (90s), continuing.
+2026-05-30 13:37:51,663 [WARNING]   Email check timed out (60s), continuing.
+2026-05-30 13:37:51,663 [INFO] === Midday Scan END ===
